@@ -1,0 +1,481 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:InfoG2WpfControls">
+
+
+    <!-- Region Default Microsoft Brushes -->
+    <SolidColorBrush x:Key="DisabledForegroundBrush" Color="#888" />
+
+    <SolidColorBrush x:Key="DisabledBackgroundBrush" Color="#EEE" />
+
+    <SolidColorBrush x:Key="SelectedBackgroundBrush" Color="#DDD" />
+
+    <LinearGradientBrush x:Key="NormalBorderBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#CCC" Offset="0.0"/>
+                <GradientStop Color="#444" Offset="1.0"/>
+            </GradientStopCollection>
+        </GradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="HorizontalNormalBorderBrush" StartPoint="0,0" EndPoint="1,0">
+        <GradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#CCC" Offset="0.0"/>
+                <GradientStop Color="#444" Offset="1.0"/>
+            </GradientStopCollection>
+        </GradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="DefaultedBorderBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#777" Offset="0.0"/>
+                <GradientStop Color="#000" Offset="1.0"/>
+            </GradientStopCollection>
+        </GradientBrush.GradientStops>
+    </LinearGradientBrush>
+    <!-- EndRegion Default Microsoft Brushes -->
+
+    <!-- Region MyTextBox -->
+
+    <!-- Region Brushes -->
+    <!--Borda desabilitada-->
+    <SolidColorBrush x:Key="DisabledBorderBrush" Color="#AAA" />
+
+    <!-- Borda solida -->
+    <SolidColorBrush x:Key="SolidBorderBrush" Color="#888" />
+
+    <!-- Borda selecionada/sob o mouse-->
+    <SolidColorBrush x:Key="LightBorderBrush" Color="CornflowerBlue" />
+    <!-- EndRegion Brushes -->
+
+    <!-- Region Data templates -->
+    <!-- Template default da marca d'agua-->
+    <DataTemplate x:Key="DefaultWatermarkTemplate">
+        <ContentControl Content="{Binding}" Margin="5,0,0,0" Foreground="Gray" Focusable="False" />
+    </DataTemplate>
+    <!-- EndRegion Data templates -->
+
+    <!-- Region Converters -->
+    <local:HeightToFontSizeConverter x:Key="HeightToFontSizeConverter"/>
+    <!-- EndRegion Converters -->
+
+    <!-- Region MyTextBox Template -->
+    <!--Template do MyTextBox (baseado no textbox fornecido pela microsoft)-->
+    <Style x:Key="MyTextBox" TargetType="{x:Type local:MyTextBox}">
+        <!-- Region Propriedades gerais de comportamento-->
+        <Setter Property="SnapsToDevicePixels" Value="True"/>
+        <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <Setter Property="AllowDrop" Value="true"/>
+        <!-- EndRegion Propriedades gerais de comportamento-->
+
+        <!-- Region Templates personalizaveis-->
+        <Setter Property="WatermarkTemplate" Value="{StaticResource DefaultWatermarkTemplate}" />
+        <!-- EndRegion Templates personalizaveis-->
+
+        <!-- Region Delimitadores de tamanho-->
+        <Setter Property="MinWidth" Value="50"/>
+        <Setter Property="MinHeight" Value="10"/>
+        <Setter Property="Height" Value="Auto"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="CharacterCasing" Value="Upper"/>
+        <!-- EndRegion Delimitadores de tamanho-->
+
+        <!-- Region Control Template -->
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:MyTextBox}">
+                    <!-- Region Componentes -->
+                    <Grid>
+                        <!--Borda externa-->
+                        <Border 
+                            Grid.Row="0"
+                            Name="Border"
+                            CornerRadius="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=CornerRadius}" 
+                            Padding="2"
+                            Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=NoFocusColor}"
+                            BorderBrush="{StaticResource SolidBorderBrush}"
+                            BorderThickness="1" >
+                        </Border>
+                        <!--ScrollViwer (default do textbox)-->
+                        <ScrollViewer Grid.Row="0" Margin="2,0" x:Name="PART_ContentHost"/>
+
+                        <!--Conteiner da marca D'agua-->
+                        <ContentPresenter 
+                                    Grid.Row="0"
+                                    x:Name="WatermarkHost"
+                                    Content="{TemplateBinding Watermark}"
+                                    ContentTemplate="{TemplateBinding WatermarkTemplate}"
+                                    VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                    IsHitTestVisible="False"
+                                    Margin="{TemplateBinding Padding}"
+                                    Visibility="Collapsed" />
+
+                    </Grid>
+                    <!-- EndRegion Componentes -->
+
+                    <!-- Region Gatilhos -->
+                    <ControlTemplate.Triggers>
+                        <!--Gatilhos de visual-->
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource DisabledBackgroundBrush}"/>
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DisabledBackgroundBrush}"/>
+                            <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=HaveFocusColor}"/>
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource LightBorderBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource LightBorderBrush}"/>
+                        </Trigger>
+                        <Trigger Property="AutoSizeFont" Value="True">
+                            <Setter Property="FontSize" Value="{Binding Path=ActualHeight, RelativeSource={RelativeSource Self}, Converter={StaticResource HeightToFontSizeConverter}}"/>
+                        </Trigger>
+
+                        <!--Gatilhos de visual de condicao multipla-->
+                        <!--Gatilho da marca d'agua-->
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsFocused" Value="False" />
+                                <Condition Property="Text" Value="" />
+                            </MultiTrigger.Conditions>
+                            <MultiTrigger.Setters>
+                                <Setter Property="Visibility" TargetName="WatermarkHost" Value="Visible" />
+                            </MultiTrigger.Setters>
+                        </MultiTrigger>
+
+                    </ControlTemplate.Triggers>
+                    <!-- EndRegion Gatilhos -->
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <!-- EndRegion Control Template -->
+    </Style>
+    <!-- EndRegion MyTextBox Template -->
+
+    <Style TargetType="{x:Type local:MyTextBox}" BasedOn="{StaticResource MyTextBox}" />
+    <!-- EndRegion MyTextBox -->
+
+    <!-- Region Tile -->
+
+    <!-- Region Brushes -->
+    <!-- Borda do color picker-->
+    <LinearGradientBrush x:Key="ColorPickerDarkBorderBrush" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="#FFA3AEB9" Offset="0" />
+        <GradientStop Color="#FF8399A9" Offset="0.375" />
+        <GradientStop Color="#FF718597" Offset="0.375" />
+        <GradientStop Color="#FF617584" Offset="1" />
+    </LinearGradientBrush>
+
+    <!-- Fundo do popup color picker-->
+    <LinearGradientBrush x:Key="PopupBackgroundBrush" StartPoint="0,0" EndPoint="0,1">
+        <LinearGradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Offset="0" Color="#FFffffff" />
+                <GradientStop Offset="1" Color="#FFE8EBED" />
+            </GradientStopCollection>
+        </LinearGradientBrush.GradientStops>
+    </LinearGradientBrush>
+    <!-- EndRegion Brushes -->
+
+    <!-- Region Data Templates-->
+    <!--Template default do titulo da Tile-->
+    <DataTemplate x:Key="DefaultTileLabelTemplate">
+        <TextBlock Text="{Binding}" Foreground="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Tile}}, Path=Foreground}" Focusable="False" TextWrapping="Wrap"/>
+    </DataTemplate>
+
+    <!--Template do icone mostrado na tile-->
+    <DataTemplate x:Key="TileIconTemplate">
+        <Image Source="{Binding}" Focusable="False" Width="70" Height="70"/>
+    </DataTemplate>
+    <!-- EndRegion Data Templates-->
+    
+    <!-- Region Tile Template -->
+    <Style x:Key="Tile" TargetType="{x:Type local:Tile}">
+        <!-- Region Propriedades gerais de comportamento -->
+        <Setter Property="SnapsToDevicePixels" Value="true"/>
+        <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+        <!-- EndRegion Propriedades gerais de comportamento -->
+
+        <!-- Region Templates personalizaveis -->
+        <Setter Property="LabelTemplate" Value="{StaticResource DefaultTileLabelTemplate}" />
+        <!-- EndRegion Templates personalizaveis-->
+
+        <!-- Region Delimitadores de tamanho -->
+        <Setter Property="MinHeight" Value="125"/>
+        <Setter Property="MinWidth" Value="125"/>
+        <Setter Property="MaxHeight" Value="125"/>
+        <Setter Property="MaxWidth" Value="125"/>
+        <!-- EndRegion Delimitadores de tamanho -->
+
+        <!-- Region Menu do contexto-->
+        <!--<Setter Property="ContextMenu">
+            <Setter.Value>
+                <ContextMenu Name="cm" >
+                    <MenuItem Header="Mudar Icone"/>
+                    <MenuItem Header="Mudar Cor" />
+                    <MenuItem Header="Restaurar Default"/>
+                </ContextMenu>
+            </Setter.Value>
+        </Setter>-->
+        <!-- EndRegion Menu do contexto-->
+
+        <!-- Region Control Template -->
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:Tile}">
+                    <!-- Region Componentes -->
+                    <Grid>
+                        <!--Borda principal (com a cor de fundo)-->
+                        <Border 
+                          x:Name="Border"  
+                          CornerRadius="0"
+                          BorderThickness="3"
+                          Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Background}"
+                          BorderBrush="Transparent">
+                        </Border>
+                        <!--Borda delimitadora preta-->
+                        <Border BorderThickness="1" Margin="3,3,3,3" BorderBrush="Black" CornerRadius="0" Opacity="0.3"/>
+                        <!--Borda para escurecer o contorno-->
+                        <Border x:Name="TileBorder" Margin="1,1,1,1" Opacity="0" BorderThickness="3" BorderBrush="Black" CornerRadius="0" />
+                        <!--Borda para mudar o visual com o mouse sobre a tile-->
+                        <Border x:Name="MouseOverVisual" Margin="1,1,1,1" Opacity="0" BorderThickness="2" BorderBrush="Transparent" Background="#2FFFFFFF" CornerRadius="0" />
+
+                        <!--Container do Icone-->
+                        <ContentPresenter x:Name="IconHost"
+                                    Margin="10,10,10,0"
+                                    Content="{TemplateBinding Icon}"
+                                    ContentTemplate="{StaticResource TileIconTemplate}"
+                                    VerticalAlignment="Top"
+                                    HorizontalAlignment="Center"
+                                    IsHitTestVisible="False"
+                                    RecognizesAccessKey="True"/>
+
+                        <!--Conteiner do titulo da tile-->
+                        <ContentPresenter x:Name="LabelHost"
+                                    Margin="10,5,10,5"
+                                    Content="{TemplateBinding Label}"
+                                    ContentTemplate="{TemplateBinding LabelTemplate}"
+                                    VerticalAlignment="Bottom"
+                                    HorizontalAlignment="{TemplateBinding LabelAlignment}"
+                                    IsHitTestVisible="False"
+                                    RecognizesAccessKey="True"/>
+
+                        <!-- Popup para escolher a cor-->
+                        <!--<Popup x:Name="PART_ColorPickerPalettePopup" VerticalAlignment="Bottom" IsOpen="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=PickColor}" StaysOpen="False" AllowsTransparency="True" Focusable="False" HorizontalOffset="1" VerticalOffset="1" PopupAnimation="Slide">
+                            <Border BorderThickness="1" Background="{StaticResource PopupBackgroundBrush}" BorderBrush="{StaticResource ColorPickerDarkBorderBrush}" Padding="3">
+                                <Grid x:Name="_colorPaletteHost" Visibility="Visible" Margin="4">
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition />
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="Cor" Background="AliceBlue" Padding="2" />
+                                    
+                                </Grid>
+                            </Border>
+                        </Popup>-->
+                    </Grid>
+                    <!-- EndRegion Componentes -->
+
+                    <!-- Region Gatilhos -->
+                    <ControlTemplate.Triggers>
+                        <!-- Gatilhos de visual-->
+                        <Trigger Property="IsFocused" Value="true">
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Background}" />
+                            <Setter TargetName="TileBorder" Property="Opacity" Value="0.3" />
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="MouseOverVisual" Property="Opacity" Value="1" />
+                            <Setter TargetName="TileBorder" Property="Opacity" Value="0.3" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Background}" />
+                            <Setter TargetName="TileBorder" Property="Opacity" Value="0.5" />
+                            <Setter TargetName="MouseOverVisual" Property="Opacity" Value="0" />
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource DisabledBackgroundBrush}" />
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DisabledBorderBrush}" />
+                            <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                    <!-- EndRegion Gatilhos -->                  
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <!-- EndRegion Control Template -->
+    </Style>
+    <!-- EndRegion Tile Template -->
+
+    <Style TargetType="{x:Type local:Tile}" BasedOn="{StaticResource Tile}" />
+    <!-- EndRegion Tile -->
+
+    <!-- Region MyDataGrid -->
+    <!-- Persoanalizacao do estilo do DataGrid (Usando o Template padrao) -->
+    <Style TargetType="{x:Type local:MyDataGrid}" BasedOn="{StaticResource {x:Type DataGrid}}">
+        <!-- Region Propriedades gerais de comportamento -->
+        <Setter Property="SelectionMode" Value="Single"/>
+        <Setter Property="SelectionUnit" Value="FullRow"/>
+        <Setter Property="IsReadOnly" Value="True"/>
+        <!-- EndRegion Propriedades gerais de comportamento -->
+
+        <!-- Region Delimitadores de tamanho -->
+        <Setter Property="MinHeight" Value="125"/>
+        <Setter Property="MinWidth" Value="125"/>
+        <Setter Property="FontSize" Value="14"/>
+        <!-- EndRegion Delimitadores de tamanho -->
+    </Style>
+    <!-- EndRegion MyDataGrid -->
+
+    <!-- Region Tile2 -->
+
+        <!-- Region Brushes -->
+        
+        <!-- EndRegion Brushes -->
+
+        <!-- Region Data Templates-->
+        <!--Template default do titulo da Tile-->
+        <DataTemplate x:Key="DefaultTile2LabelTemplate">
+            <TextBlock Text="{Binding}" Foreground="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Tile2}}, Path=Foreground}" Focusable="False" TextWrapping="Wrap"/>
+        </DataTemplate>
+
+        <!--Template default do titulo da Tile-->
+        <DataTemplate x:Key="DefaultTile2ContentTemplate">
+            <TextBlock Text="{Binding}" Foreground="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Tile2}}, Path=Foreground}" Focusable="False" TextWrapping="Wrap"/>
+        </DataTemplate>
+
+        <!--Template do icone mostrado na tile-->
+        <DataTemplate x:Key="Tile2IconTemplate">
+            <Image Source="{Binding}" Focusable="False" Width="70" Height="70"/>
+        </DataTemplate>
+        <!-- EndRegion Data Templates-->
+
+        <!-- Region Tile Template -->
+        <Style x:Key="Tile2" TargetType="{x:Type local:Tile2}">
+            <!-- Region Propriedades gerais de comportamento -->
+            <Setter Property="SnapsToDevicePixels" Value="true"/>
+            <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+            <!-- EndRegion Propriedades gerais de comportamento -->
+
+            <!-- Region Templates personalizaveis -->
+            <Setter Property="LabelTemplate" Value="{StaticResource DefaultTile2LabelTemplate}" />
+            <!-- EndRegion Templates personalizaveis-->
+
+            <!-- Region Delimitadores de tamanho -->
+            <Setter Property="MinHeight" Value="125"/>
+            <Setter Property="MinWidth" Value="250"/>
+            <Setter Property="MaxHeight" Value="125"/>
+            <Setter Property="MaxWidth" Value="250"/>
+            <!-- EndRegion Delimitadores de tamanho -->
+
+            <!-- Region Control Template -->
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type local:Tile2}">
+                        <!-- Region Componentes -->
+                        <Grid>
+                            <!--Borda principal (com a cor de fundo)-->
+                            <Border 
+                                  x:Name="Border"  
+                                  CornerRadius="0"
+                                  BorderThickness="3"
+                                  Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Background}"
+                                  BorderBrush="Transparent">
+                            </Border>
+                            <!--Borda delimitadora preta-->
+                            <Border BorderThickness="1" Margin="3,3,3,3" BorderBrush="Black" CornerRadius="0" Opacity="0.3"/>
+                            <!--Borda para escurecer o contorno-->
+                            <Border x:Name="TileBorder" Margin="1,1,1,1" Opacity="0" BorderThickness="3" BorderBrush="Black" CornerRadius="0" />
+                            <!--Borda para mudar o visual com o mouse sobre a tile-->
+                            <Border x:Name="MouseOverVisual" Margin="1,1,1,1" Opacity="0" BorderThickness="2" BorderBrush="Transparent" Background="#2FFFFFFF" CornerRadius="0" />
+
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition />
+                                    <RowDefinition Height="30"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid Grid.Row="0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="90"/>
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+
+                                    <!--Container do Icone-->
+                                    <ContentPresenter 
+                                            Grid.Column="0"
+                                            x:Name="IconHost"
+                                            Margin="5,10,0,0"
+                                            Content="{TemplateBinding Icon}"
+                                            ContentTemplate="{StaticResource Tile2IconTemplate}"
+                                            VerticalAlignment="Top"
+                                            HorizontalAlignment="Center"
+                                            IsHitTestVisible="False"
+                                            RecognizesAccessKey="True"/>
+
+                                    <ContentPresenter 
+                                            Grid.Column="1"
+                                            x:Name="ContentHost"
+                                            Margin="5,10,10,0"
+                                            Content="{TemplateBinding Content}"
+                                            ContentTemplate="{StaticResource DefaultTile2ContentTemplate}"
+                                            VerticalAlignment="Top"
+                                            HorizontalAlignment="Left"
+                                            IsHitTestVisible="False"
+                                            RecognizesAccessKey="True"/>
+                                </Grid>
+
+                                <!--Conteiner do titulo da tile-->
+                                <ContentPresenter
+                                        Grid.Row="1"
+                                        x:Name="LabelHost"
+                                        Margin="10,5,10,5"
+                                        Content="{TemplateBinding Label}"
+                                        ContentTemplate="{TemplateBinding LabelTemplate}"
+                                        VerticalAlignment="Bottom"
+                                        HorizontalAlignment="{TemplateBinding LabelAlignment}"
+                                        IsHitTestVisible="False"
+                                        RecognizesAccessKey="True"/>
+                            </Grid>
+                        </Grid>
+                        <!-- EndRegion Componentes -->
+
+                        <!-- Region Gatilhos -->
+                        <ControlTemplate.Triggers>
+                            <!-- Gatilhos de visual-->
+                            <Trigger Property="IsFocused" Value="true">
+                                <Setter TargetName="Border" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Background}" />
+                                <Setter TargetName="TileBorder" Property="Opacity" Value="0.3" />
+                            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="true">
+                                <Setter TargetName="MouseOverVisual" Property="Opacity" Value="1" />
+                                <Setter TargetName="TileBorder" Property="Opacity" Value="0.3" />
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="true">
+                                <Setter TargetName="Border" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Background}" />
+                                <Setter TargetName="TileBorder" Property="Opacity" Value="0.5" />
+                                <Setter TargetName="MouseOverVisual" Property="Opacity" Value="0" />
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="false">
+                                <Setter TargetName="Border" Property="Background" Value="{StaticResource DisabledBackgroundBrush}" />
+                                <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DisabledBorderBrush}" />
+                                <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                        <!-- EndRegion Gatilhos -->
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <!-- EndRegion Control Template -->
+        </Style>
+        <!-- EndRegion Tile Template -->
+
+        <Style TargetType="{x:Type local:Tile2}" BasedOn="{StaticResource Tile2}" />
+        <!-- EndRegion Tile2 -->
+</ResourceDictionary>
