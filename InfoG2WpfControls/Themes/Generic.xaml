@@ -566,8 +566,8 @@
         <!-- EndRegion Propriedades Gerais de Comportamento -->
 
         <!-- Region Delimitadores de tamanho -->
-        <Setter Property="MinHeight" Value="23"/>
-        <Setter Property="MinWidth" Value="75"/>
+        <Setter Property="MinHeight" Value="10"/>
+        <Setter Property="MinWidth" Value="10"/>
         <!-- EndRegion Delimitadores de tamanho -->
         
         <!-- Region Control Template -->
