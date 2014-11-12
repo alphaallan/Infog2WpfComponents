@@ -37,6 +37,44 @@
             </GradientStopCollection>
         </GradientBrush.GradientStops>
     </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="NormalBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FFF" Offset="0.0"/>
+                <GradientStop Color="#CCC" Offset="1.0"/>
+            </GradientStopCollection>
+        </GradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="DarkBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FFF" Offset="0.0"/>
+                <GradientStop Color="#AAA" Offset="1.0"/>
+            </GradientStopCollection>
+        </GradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="PressedBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#BBB" Offset="0.0"/>
+                <GradientStop Color="#EEE" Offset="0.1"/>
+                <GradientStop Color="#EEE" Offset="0.9"/>
+                <GradientStop Color="#FFF" Offset="1.0"/>
+            </GradientStopCollection>
+        </GradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="PressedBorderBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#444" Offset="0.0"/>
+                <GradientStop Color="#888" Offset="1.0"/>
+            </GradientStopCollection>
+        </GradientBrush.GradientStops>
+    </LinearGradientBrush>
     <!-- EndRegion Default Microsoft Brushes -->
 
     <!-- Region MyTextBox -->
@@ -230,18 +268,6 @@
         <Setter Property="MaxWidth" Value="125"/>
         <!-- EndRegion Delimitadores de tamanho -->
 
-        <!-- Region Menu do contexto-->
-        <!--<Setter Property="ContextMenu">
-            <Setter.Value>
-                <ContextMenu Name="cm" >
-                    <MenuItem Header="Mudar Icone"/>
-                    <MenuItem Header="Mudar Cor" />
-                    <MenuItem Header="Restaurar Default"/>
-                </ContextMenu>
-            </Setter.Value>
-        </Setter>-->
-        <!-- EndRegion Menu do contexto-->
-
         <!-- Region Control Template -->
         <Setter Property="Template">
             <Setter.Value>
@@ -282,20 +308,6 @@
                                     HorizontalAlignment="{TemplateBinding LabelAlignment}"
                                     IsHitTestVisible="False"
                                     RecognizesAccessKey="True"/>
-
-                        <!-- Popup para escolher a cor-->
-                        <!--<Popup x:Name="PART_ColorPickerPalettePopup" VerticalAlignment="Bottom" IsOpen="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=PickColor}" StaysOpen="False" AllowsTransparency="True" Focusable="False" HorizontalOffset="1" VerticalOffset="1" PopupAnimation="Slide">
-                            <Border BorderThickness="1" Background="{StaticResource PopupBackgroundBrush}" BorderBrush="{StaticResource ColorPickerDarkBorderBrush}" Padding="3">
-                                <Grid x:Name="_colorPaletteHost" Visibility="Visible" Margin="4">
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition />
-                                    </Grid.RowDefinitions>
-                                    <TextBlock Text="Cor" Background="AliceBlue" Padding="2" />
-                                    
-                                </Grid>
-                            </Border>
-                        </Popup>-->
                     </Grid>
                     <!-- EndRegion Componentes -->
 
@@ -350,7 +362,6 @@
     <!-- EndRegion MyDataGrid -->
 
     <!-- Region Tile2 -->
-
         <!-- Region Brushes -->
         
         <!-- EndRegion Brushes -->
@@ -493,49 +504,9 @@
         <!-- EndRegion Tile Template -->
 
         <Style TargetType="{x:Type local:Tile2}" BasedOn="{StaticResource Tile2}" />
-        <!-- EndRegion Tile2 -->
+    <!-- EndRegion Tile2 -->
     
     <!-- Region MyButton -->
-    <!-- Region Brushes -->
-    <LinearGradientBrush x:Key="NormalBrush" StartPoint="0,0" EndPoint="0,1">
-        <GradientBrush.GradientStops>
-            <GradientStopCollection>
-                <GradientStop Color="#FFF" Offset="0.0"/>
-                <GradientStop Color="#CCC" Offset="1.0"/>
-            </GradientStopCollection>
-        </GradientBrush.GradientStops>
-    </LinearGradientBrush>
-
-    <LinearGradientBrush x:Key="DarkBrush" StartPoint="0,0" EndPoint="0,1">
-        <GradientBrush.GradientStops>
-            <GradientStopCollection>
-                <GradientStop Color="#FFF" Offset="0.0"/>
-                <GradientStop Color="#AAA" Offset="1.0"/>
-            </GradientStopCollection>
-        </GradientBrush.GradientStops>
-    </LinearGradientBrush>
-
-    <LinearGradientBrush x:Key="PressedBrush" StartPoint="0,0" EndPoint="0,1">
-        <GradientBrush.GradientStops>
-            <GradientStopCollection>
-                <GradientStop Color="#BBB" Offset="0.0"/>
-                <GradientStop Color="#EEE" Offset="0.1"/>
-                <GradientStop Color="#EEE" Offset="0.9"/>
-                <GradientStop Color="#FFF" Offset="1.0"/>
-            </GradientStopCollection>
-        </GradientBrush.GradientStops>
-    </LinearGradientBrush>
-
-    <LinearGradientBrush x:Key="PressedBorderBrush" StartPoint="0,0" EndPoint="0,1">
-        <GradientBrush.GradientStops>
-            <GradientStopCollection>
-                <GradientStop Color="#444" Offset="0.0"/>
-                <GradientStop Color="#888" Offset="1.0"/>
-            </GradientStopCollection>
-        </GradientBrush.GradientStops>
-    </LinearGradientBrush>
-    <!-- EndRegion Brushes -->
-
     <!-- Region Styles -->
     <Style x:Key="ButtonFocusVisual">
         <Setter Property="Control.Template">
@@ -560,6 +531,14 @@
         <Setter Property="SnapsToDevicePixels" Value="true"/>
         <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}"/>
         <!-- EndRegion Propriedades Gerais de Comportamento -->
+        
+        <!-- Region Propriedades -->
+        <Setter Property="NormalBrush" Value="{StaticResource NormalBrush}"/>
+        <Setter Property="PressedBrush" Value="{StaticResource PressedBrush}"/>
+        <Setter Property="NormalBorderBrush" Value="{StaticResource NormalBorderBrush}"/>
+        <Setter Property="PressedBorderBrush" Value="{StaticResource PressedBorderBrush}"/>
+        <Setter Property="MouseOverBrush" Value="{StaticResource DarkBrush}"/>
+        <!-- EndRegion Propriedades -->
 
         <!-- Region Delimitadores de tamanho -->
         <Setter Property="MinHeight" Value="10"/>
@@ -575,8 +554,8 @@
                           x:Name="Border"  
                           CornerRadius="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=CornerRadius}" 
                           BorderThickness="1"
-                          Background="{StaticResource NormalBrush}"
-                          BorderBrush="{StaticResource NormalBorderBrush}">
+                          Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=NormalBrush}"
+                          BorderBrush="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=NormalBorderBrush}">
                         
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -600,11 +579,11 @@
                             <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DefaultedBorderBrush}" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter TargetName="Border" Property="Background" Value="{StaticResource DarkBrush}" />
+                            <Setter TargetName="Border" Property="Background" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=MouseOverBrush}" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
-                            <Setter TargetName="Border" Property="Background" Value="{StaticResource PressedBrush}" />
-                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource PressedBorderBrush}" />
+                            <Setter TargetName="Border" Property="Background" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=PressedBrush}" />
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=PressedBorderBrush}" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter TargetName="Border" Property="Background" Value="{StaticResource DisabledBackgroundBrush}" />
@@ -613,7 +592,7 @@
                         </Trigger>
                         <Trigger Property="Icon" Value="{x:Null}">
                             <Setter TargetName="IconHost" Property="Margin" Value="0"/>
-                        </Trigger>
+                        </Trigger>                
                     </ControlTemplate.Triggers>
                     <!-- EndRegion Gatilhos -->
                 </ControlTemplate>
@@ -625,6 +604,25 @@
     <!-- EndRegion MyButton-->
 
     <!-- Region MyImageButton -->
+    <!-- Region Styles -->
+    <Style x:Key="ImageButtonFocusVisual">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border>
+                        <Rectangle 
+                            Margin="2"
+                            StrokeThickness="1"
+                            Stroke="#60000000"
+                            StrokeDashArray="1 2"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- EndRegion Styles -->
+    
+    <!-- Region MyImageButton Template -->
     <Style TargetType="{x:Type local:MyImageButton}">
         <!-- Region Propriedades Gerais de Comportamento -->
         <Setter Property="SnapsToDevicePixels" Value="true"/>
@@ -632,70 +630,46 @@
         <!-- EndRegion Propriedades Gerais de Comportamento -->
 
         <!-- Region Delimitadores de tamanho -->
-        <Setter Property="MinHeight" Value="23"/>
-        <Setter Property="MinWidth" Value="75"/>
+        <Setter Property="MinHeight" Value="10"/>
+        <Setter Property="MinWidth" Value="10"/>
         <!-- EndRegion Delimitadores de tamanho -->
+
+        <!-- Region Control Template -->
         <Setter Property="Template">
-            
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:MyImageButton}">
                     <!-- Region Componentes -->
-                    <Grid>
-                        <!--Borda principal (com a cor de fundo)-->
-                        <Border 
+                    <Border 
                           x:Name="Border"  
-                          CornerRadius="0"
-                          BorderThickness="3"
-                          Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Background}"
+                          CornerRadius="2" 
+                          BorderThickness="1"
+                          Background="Transparent"
                           BorderBrush="Transparent">
-                        </Border>
-                        <!--Borda delimitadora preta-->
-                        <Border BorderThickness="1" Margin="3,3,3,3" BorderBrush="Black" CornerRadius="0" Opacity="0.3"/>
-                        <!--Borda para escurecer o contorno-->
-                        <Border x:Name="TileBorder" Margin="1,1,1,1" Opacity="0" BorderThickness="3" BorderBrush="Black" CornerRadius="0" />
-                        <!--Borda para mudar o visual com o mouse sobre a tile-->
-                        <Border x:Name="MouseOverVisual" Margin="1,1,1,1" Opacity="0" BorderThickness="2" BorderBrush="Transparent" Background="#2FFFFFFF" CornerRadius="0" />
 
-                        <!--Container do Icone-->
-                        <ContentPresenter x:Name="IconHost"
-                                    Margin="10,10,10,0"
-                                    Content="{TemplateBinding Icon}"
-                                    ContentTemplate="{StaticResource TileIconTemplate}"
-                                    VerticalAlignment="Top"
-                                    HorizontalAlignment="Center"
-                                    IsHitTestVisible="False"
-                                    RecognizesAccessKey="True"/>
+                        <StackPanel>
+                            <!--Container do Icone-->
+                            <Image x:Name="IconHost" Grid.Column="0" Margin="2" Source="{TemplateBinding Icon}" Focusable="False"/>
 
-                        <!--Conteiner do titulo da tile-->
-                        <ContentPresenter x:Name="LabelHost"
-                                    Margin="10,5,10,5"
-                                    Content="{TemplateBinding Label}"
-                                    ContentTemplate="{TemplateBinding LabelTemplate}"
-                                    VerticalAlignment="Bottom"
-                                    HorizontalAlignment="{TemplateBinding LabelAlignment}"
-                                    IsHitTestVisible="False"
-                                    RecognizesAccessKey="True"/>
-                    </Grid>
+                            <ContentPresenter Grid.Column="1" Margin="2" HorizontalAlignment="Center" VerticalAlignment="Center" RecognizesAccessKey="True"/>
+                        </StackPanel>
+                    </Border>
                     <!-- EndRegion Componentes -->
 
                     <!-- Region Gatilhos -->
                     <ControlTemplate.Triggers>
-                        <!-- Gatilhos de visual-->
-                        <Trigger Property="IsFocused" Value="true">
-                            <Setter TargetName="Border" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Background}" />
-                            <Setter TargetName="TileBorder" Property="Opacity" Value="0.3" />
+                        <Trigger Property="IsKeyboardFocused" Value="true">
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DefaultedBorderBrush}" />
+                        </Trigger>
+                        <Trigger Property="IsDefaulted" Value="true">
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DefaultedBorderBrush}" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter TargetName="MouseOverVisual" Property="Opacity" Value="1" />
-                            <Setter TargetName="TileBorder" Property="Opacity" Value="0.3" />
+                            <Setter TargetName="Border" Property="Background" Value="#2F00FFFF" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
-                            <Setter TargetName="Border" Property="BorderBrush" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Background}" />
-                            <Setter TargetName="TileBorder" Property="Opacity" Value="0.5" />
-                            <Setter TargetName="MouseOverVisual" Property="Opacity" Value="0" />
+                            <Setter TargetName="Border" Property="BorderBrush" Value="#2FFFFFFF" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter TargetName="Border" Property="Background" Value="{StaticResource DisabledBackgroundBrush}" />
                             <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DisabledBorderBrush}" />
                             <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}"/>
                         </Trigger>
@@ -704,7 +678,191 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <!-- EndRegion Control Template -->
     </Style>
+    <!-- EndRegion MyImageButton Template -->
     <!-- EndRegion MyImageButton -->
     
+    <!-- Region MyComboBox -->
+    <!-- Region Brushes -->
+    <SolidColorBrush x:Key="WindowBackgroundBrush" Color="#FFF" />
+    <!-- EndRegion Brushes -->
+
+    <!-- Region Component Templates-->
+    <!-- Region Toogle Button -->
+    <ControlTemplate x:Key="MyComboBoxToggleButton" TargetType="ToggleButton">
+        <!-- Region Components -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="20" />
+            </Grid.ColumnDefinitions>
+            <Border
+                  x:Name="Border" 
+                  Grid.ColumnSpan="2"
+                  CornerRadius="2"
+                  Background="{StaticResource NormalBrush}"
+                  BorderBrush="{StaticResource NormalBorderBrush}"
+                  BorderThickness="1" />
+            <Border 
+                  Grid.Column="0"
+                  CornerRadius="2,0,0,2" 
+                  Margin="1" 
+                  Background="{StaticResource WindowBackgroundBrush}" 
+                  BorderBrush="{StaticResource NormalBorderBrush}"
+                  BorderThickness="0,0,1,0" />
+            <Path 
+                  x:Name="Arrow"
+                  Grid.Column="1"     
+                  Fill="#444"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  Data="M 0 0 L 4 4 L 8 0 Z"/>
+        </Grid>
+        <!-- EndRegion Components -->
+
+        <!-- Region Gatilhos -->
+        <ControlTemplate.Triggers>
+            <Trigger Property="ToggleButton.IsMouseOver" Value="true">
+                <Setter TargetName="Border" Property="Background" Value="{StaticResource DarkBrush}" />
+            </Trigger>
+            <Trigger Property="ToggleButton.IsChecked" Value="true">
+                <Setter TargetName="Border" Property="Background" Value="{StaticResource PressedBrush}" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="Border" Property="Background" Value="{StaticResource DisabledBackgroundBrush}" />
+                <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DisabledBorderBrush}" />
+                <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}"/>
+                <Setter TargetName="Arrow" Property="Fill" Value="{StaticResource DisabledForegroundBrush}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+        <!-- EndRegion Gatilhos -->
+    </ControlTemplate>
+    <!-- EndRegion Toogle Button -->
+
+    <!-- Region TextBox -->
+    <ControlTemplate x:Key="MyComboBoxTextBox" TargetType="{x:Type local:MyTextBox}">
+        <Border x:Name="PART_ContentHost" Focusable="False" Background="{TemplateBinding Background}" />
+    </ControlTemplate>
+    <!-- EndRegion TextBox -->
+    <!-- EndRegion Component Templates-->
+    
+    <!-- Region MyComboBox Template -->
+    <Style x:Key="{x:Type local:MyComboBox}" TargetType="{x:Type local:MyComboBox}">
+        <!-- Region Propriedades gerais de comportamento-->
+        <Setter Property="SnapsToDevicePixels" Value="true"/>
+        <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto"/>
+        <Setter Property="ScrollViewer.CanContentScroll" Value="true"/>
+        <!-- EndRegion Propriedades gerais de comportamento-->
+
+        <!-- Region Delimitadores de tamanho-->
+        <Setter Property="MinWidth" Value="120"/>
+        <Setter Property="MinHeight" Value="20"/>
+        <Setter Property="Height" Value="Auto"/>
+        <Setter Property="FontSize" Value="12"/>
+        <!-- EndRegion Delimitadores de tamanho-->
+
+        <!-- Region Control Template -->
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:MyComboBox}">
+                    <!-- Region Compoenentes -->
+                    <Grid>
+                        <!-- Region Toggle -->
+                        <ToggleButton 
+                            Name="ToggleButton" 
+                            Template="{StaticResource MyComboBoxToggleButton}" 
+                            Grid.Column="2" 
+                            Focusable="false"
+                            IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}"
+                            ClickMode="Press">
+                        </ToggleButton>
+                        <!-- EndRegion Toggle -->
+                        
+                        <!-- Region Visor -->
+                        <ContentPresenter
+                            Name="ContentSite"
+                            IsHitTestVisible="False" 
+                            Content="{TemplateBinding SelectionBoxItem}"
+                            ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                            ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                            Margin="3,3,23,3"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Left" />
+                        <!-- EndRegion Visor -->
+                        
+                        <!-- Region Entrada de Texto -->
+                        <local:MyTextBox x:Name="PART_EditableTextBox"
+                            Style="{x:Null}" 
+                            Template="{StaticResource MyComboBoxTextBox}" 
+                            HorizontalAlignment="Left" 
+                            VerticalAlignment="Center" 
+                            Margin="3,3,23,3"
+                            Focusable="True" 
+                            Background="Transparent"
+                            Visibility="Hidden"
+                            IsReadOnly="{TemplateBinding IsReadOnly}"/>
+                        <!-- EndRegion Entrada de Texto -->
+
+                        <!-- Region Lista -->
+                        <Popup 
+                            Name="Popup"
+                            Placement="Bottom"
+                            IsOpen="{TemplateBinding IsDropDownOpen}"
+                            AllowsTransparency="True" 
+                            Focusable="False"
+                            PopupAnimation="Slide">
+                            <Grid 
+                              Name="DropDown"
+                              SnapsToDevicePixels="True"                
+                              MinWidth="{TemplateBinding ActualWidth}"
+                              MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                <Border 
+                                    x:Name="DropDownBorder"
+                                    Background="{StaticResource WindowBackgroundBrush}"
+                                    BorderThickness="1"
+                                    BorderBrush="{StaticResource SolidBorderBrush}"/>
+                                <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
+                                    <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained"/>
+                                </ScrollViewer>
+                            </Grid>
+                        </Popup>
+                        <!-- EndRegion Lista -->
+                    </Grid>
+                    <!-- EndRegion Compoenentes -->
+                    
+                    <!-- Region Gatilhos -->
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="HasItems" Value="false">
+                            <Setter TargetName="DropDownBorder" Property="MinHeight" Value="95"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="false">
+                            <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsGrouping" Value="true">
+                            <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
+                        </Trigger>
+                        <Trigger SourceName="Popup" Property="Popup.AllowsTransparency" Value="true">
+                            <Setter TargetName="DropDownBorder" Property="CornerRadius" Value="4"/>
+                            <Setter TargetName="DropDownBorder" Property="Margin" Value="0,2,0,0"/>
+                        </Trigger>
+                        <Trigger Property="IsEditable" Value="true">
+                            <Setter Property="IsTabStop" Value="false"/>
+                            <Setter TargetName="PART_EditableTextBox" Property="Visibility"    Value="Visible"/>
+                            <Setter TargetName="ContentSite" Property="Visibility" Value="Hidden"/>
+                        </Trigger>
+                        <Trigger Property="AutoSizeFont" Value="True">
+                            <Setter Property="FontSize" Value="{Binding Path=ActualHeight, RelativeSource={RelativeSource Self}, Converter={StaticResource HeightToFontSizeConverter}}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                    <!-- EndRegion Gatilhos -->
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <!-- EndRegion Control Template -->
+    </Style>
+    <!-- EndRegion MyComboBox Template -->
+    <!-- EndRegion MyComboBox -->
+
 </ResourceDictionary>

@@ -68,23 +68,5 @@ namespace InfoG2WpfControls
         public static readonly DependencyProperty IconProperty =
             DependencyProperty.Register("Icon", typeof(ImageSource), typeof(Tile), new PropertyMetadata(null));
         #endregion Icon
-
-        //propriedades e comando do color picker
-        #region Color Picker
-        //Propriedade que indica se o menu de escolher a cor está aberto
-        private bool PickColor
-        {
-            get { return (bool)GetValue(PickColorProperty); }
-            set { SetValue(PickColorProperty, value); }
-        }
-        public static readonly DependencyProperty PickColorProperty =
-            DependencyProperty.Register("PickColor", typeof(bool), typeof(Tile), new PropertyMetadata(false));
-
-        //Evento para abrir o color picker
-        private void pickColor(object sender, EventArgs e)
-        {
-            PickColor = true;
-        }
-        #endregion Color Picker
     }
 }

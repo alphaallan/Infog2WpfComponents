@@ -238,10 +238,11 @@ namespace InfoG2WpfControls
                     else
                     {
                         text = val.ToString();
-                        if ((val % 1 == 0) && !(text.EndsWith(NumberFormatInfo.CurrentInfo.NumberDecimalSeparator + "0")))
+                        if ((val % 1 == 0) && !(text.EndsWith(NumberFormatInfo.CurrentInfo.NumberDecimalSeparator + "0")) && (_this.Mask == MyTextBoxTextType.Decimal))
                         {
                             text += NumberFormatInfo.CurrentInfo.NumberDecimalSeparator + "0";
                         }
+                        if (_this.Mask == MyTextBoxTextType.Money) text = String.Format("{0:.00}", val);
                     }
                 }
                 catch
@@ -287,6 +288,7 @@ namespace InfoG2WpfControls
                         return true;
                     break;
 
+                case MyTextBoxTextType.Money:
                 case MyTextBoxTextType.Decimal:
                     if (str == NumberFormatInfo.CurrentInfo.NumberDecimalSeparator ||
                         str == NumberFormatInfo.CurrentInfo.NegativeSign)
@@ -294,7 +296,7 @@ namespace InfoG2WpfControls
                     break;
             }
 
-            if (mask.Equals(MyTextBoxTextType.Integer) || mask.Equals(MyTextBoxTextType.Decimal))
+            if (mask.Equals(MyTextBoxTextType.Integer) || mask.Equals(MyTextBoxTextType.Decimal) || mask.Equals(MyTextBoxTextType.Money))
             {
                 foreach (char ch in str)
                 {
@@ -322,10 +324,17 @@ namespace InfoG2WpfControls
                         if (int.TryParse(value, out val)) return val.ToString();
                         return string.Empty;
                     }
+
                 case MyTextBoxTextType.Decimal:
                     {
                         double val;
                         if (double.TryParse(value, out val)) return val.ToString();
+                        return string.Empty;
+                    }
+                case MyTextBoxTextType.Money:
+                    {
+                        double val;
+                        if (double.TryParse(value, out val)) return String.Format("{0:.00}", val);
                         return string.Empty;
                     }
             }
@@ -349,7 +358,8 @@ namespace InfoG2WpfControls
     {
         Any,
         Integer,
-        Decimal
+        Decimal,
+        Money
     }
 
     class HeightToFontSizeConverter : IValueConverter

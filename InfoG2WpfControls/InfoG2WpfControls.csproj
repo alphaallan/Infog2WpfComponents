@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="FocusAdvancement.cs" />
     <Compile Include="MyButton.cs" />
+    <Compile Include="MyComboBox.cs" />
     <Compile Include="MyDataGrid.cs" />
     <Compile Include="MyImageButton.cs" />
     <Compile Include="MyTextBox.cs" />

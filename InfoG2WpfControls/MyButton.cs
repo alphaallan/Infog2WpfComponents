@@ -31,6 +31,49 @@ namespace InfoG2WpfControls
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register("CornerRadius", typeof(double), typeof(MyButton), new PropertyMetadata(2.0));
 
+        #region Brushes
+
+        public Brush NormalBrush
+        {
+            get { return (Brush)GetValue(NormalBrushProperty); }
+            set { SetValue(NormalBrushProperty, value); }
+        }
+        public static readonly DependencyProperty NormalBrushProperty =
+            DependencyProperty.Register("NormalBrush", typeof(Brush), typeof(MyButton), new PropertyMetadata(Brushes.Gainsboro));
+
+        public Brush NormalBorderBrush
+        {
+            get { return (Brush)GetValue(NormalBorderBrushProperty); }
+            set { SetValue(NormalBorderBrushProperty, value); }
+        }
+        public static readonly DependencyProperty NormalBorderBrushProperty =
+            DependencyProperty.Register("NormalBorderBrush", typeof(Brush), typeof(MyButton), new PropertyMetadata(Brushes.DimGray));
+
+        public Brush PressedBrush
+        {
+            get { return (Brush)GetValue(PressedBrushProperty); }
+            set { SetValue(PressedBrushProperty, value); }
+        }
+        public static readonly DependencyProperty PressedBrushProperty =
+            DependencyProperty.Register("PressedBrush", typeof(Brush), typeof(MyButton), new PropertyMetadata(Brushes.Gray));
+
+        public Brush PressedBorderBrush
+        {
+            get { return (Brush)GetValue(PressedBorderBrushProperty); }
+            set { SetValue(PressedBorderBrushProperty, value); }
+        }
+        public static readonly DependencyProperty PressedBorderBrushProperty =
+            DependencyProperty.Register("PressedBorderBrush", typeof(Brush), typeof(MyButton), new PropertyMetadata(Brushes.DarkGray));
+
+        public Brush MouseOverBrush
+        {
+            get { return (Brush)GetValue(MouseOverBrushProperty); }
+            set { SetValue(MouseOverBrushProperty, value); }
+        }
+        public static readonly DependencyProperty MouseOverBrushProperty =
+            DependencyProperty.Register("MouseOverBrush", typeof(Brush), typeof(MyButton), new PropertyMetadata(Brushes.LightGray));
+        #endregion Brushes
+
         //Propriedades do icone
         #region Icon
         //Caminho do icone
