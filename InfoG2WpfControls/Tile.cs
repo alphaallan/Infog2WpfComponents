@@ -54,6 +54,16 @@ namespace InfoG2WpfControls
         }
         public static readonly DependencyProperty LabelAlignmentProperty =
             DependencyProperty.Register("LabelAlignment", typeof(HorizontalAlignment), typeof(Tile), new PropertyMetadata(HorizontalAlignment.Left));
+
+        //Label colocada na tile (canto superior direito
+        [Category("Label")]
+        public string UpLabel
+        {
+            get { return (string)GetValue(UpLabelProperty); }
+            set { SetValue(UpLabelProperty, value); }
+        }
+        public static readonly DependencyProperty UpLabelProperty =
+            DependencyProperty.Register("UpLabel", typeof(string), typeof(Tile), new PropertyMetadata(""));
         #endregion Label
 
         //Propriedades do icone

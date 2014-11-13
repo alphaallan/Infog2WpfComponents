@@ -3,6 +3,14 @@ Infog2WpfComponents
 Componentes para uso com Wpf
 
 ===================================================== Componentes =====================================================
+EnumRadioButton -> RadioButton Especializado para interagir com tipos enum, Código copiado do CodeProject.
+	Link do Artigo : http://www.codeproject.com/Articles/61725/WPF-radio-buttons-and-enumeration-values
+	
+	Propriedades Adicionais:
+		EnumBiding -> Propriedade tipo enum que será manipulada 
+		EnumValue -> Valor a ser atribuído a propriedade
+ 
+
 MyButton -> Botão com estilo do windows forms por padrão e ícone opcional
 	Propriedades Adicionais:
 		ConerRadius -> Raio das bordas
@@ -71,6 +79,7 @@ MyTextBox -> TextBox com vários adicionais
 Tile -> botão estilizado semelhante as tiles do sistema metro do Windows
 	Propriedades Adicionais:
 		Label -> título da tile
+		UpLabel -> Label Opcional fixada no canto direito superior
 		LabelTemplete -> DataTemplate do título
 		LabelAlignment -> Alinhamento Horizontal do título
 		Icon -> Imagem central da tile	

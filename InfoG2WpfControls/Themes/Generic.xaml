@@ -121,6 +121,7 @@
         <Setter Property="Height" Value="Auto"/>
         <Setter Property="FontSize" Value="12"/>
         <Setter Property="CharacterCasing" Value="Upper"/>
+        <Setter Property="BorderThickness" Value="1"/>
         <!-- EndRegion Delimitadores de tamanho-->
 
         <!-- Region Control Template -->
@@ -136,7 +137,7 @@
                             Padding="2"
                             Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=NoFocusColor}"
                             BorderBrush="{StaticResource SolidBorderBrush}"
-                            BorderThickness="1" >
+                            BorderThickness="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderThickness}" >
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
@@ -246,7 +247,7 @@
 
     <!--Template do icone mostrado na tile-->
     <DataTemplate x:Key="TileIconTemplate">
-        <Image Source="{Binding}" Focusable="False" Width="70" Height="70"/>
+        <Image Source="{Binding}" Focusable="False"/>
     </DataTemplate>
     <!-- EndRegion Data Templates-->
     
@@ -288,26 +289,47 @@
                         <Border x:Name="TileBorder" Margin="1,1,1,1" Opacity="0" BorderThickness="3" BorderBrush="Black" CornerRadius="0" />
                         <!--Borda para mudar o visual com o mouse sobre a tile-->
                         <Border x:Name="MouseOverVisual" Margin="1,1,1,1" Opacity="0" BorderThickness="2" BorderBrush="Transparent" Background="#2FFFFFFF" CornerRadius="0" />
-
-                        <!--Container do Icone-->
-                        <ContentPresenter x:Name="IconHost"
-                                    Margin="10,10,10,0"
+                        
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition />
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <!--Conteiner do titulo da tile-->
+                            <TextBlock x:Name="UpLabelHost"
+                                    Grid.Row="0"          
+                                    Margin="5"
+                                    Text="{TemplateBinding UpLabel}"
+                                    Foreground="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:Tile}}, Path=Foreground}"
+                                    TextAlignment="Right"   
+                                    Focusable="False" 
+                                    TextWrapping="Wrap"   
+                                    HorizontalAlignment="Right"
+                                    IsHitTestVisible="False"/>
+                            
+                            <!--Container do Icone-->
+                            <ContentPresenter x:Name="IconHost"
+                                    Grid.Row="1"          
+                                    Margin="0"
                                     Content="{TemplateBinding Icon}"
                                     ContentTemplate="{StaticResource TileIconTemplate}"
-                                    VerticalAlignment="Top"
+                                    VerticalAlignment="Center"
                                     HorizontalAlignment="Center"
                                     IsHitTestVisible="False"
                                     RecognizesAccessKey="True"/>
 
-                        <!--Conteiner do titulo da tile-->
-                        <ContentPresenter x:Name="LabelHost"
-                                    Margin="10,5,10,5"
+                            <!--Conteiner do titulo da tile-->
+                            <ContentPresenter x:Name="LabelHost"
+                                    Grid.Row="2"          
+                                    Margin="10,5"
                                     Content="{TemplateBinding Label}"
                                     ContentTemplate="{TemplateBinding LabelTemplate}"
-                                    VerticalAlignment="Bottom"
                                     HorizontalAlignment="{TemplateBinding LabelAlignment}"
                                     IsHitTestVisible="False"
                                     RecognizesAccessKey="True"/>
+
+                        </Grid>
                     </Grid>
                     <!-- EndRegion Componentes -->
 
