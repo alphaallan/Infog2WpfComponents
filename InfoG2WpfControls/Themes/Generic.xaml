@@ -1,6 +1,7 @@
 <ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:local="clr-namespace:InfoG2WpfControls">
 
 
@@ -779,7 +780,7 @@
         <!-- EndRegion Propriedades gerais de comportamento-->
 
         <!-- Region Delimitadores de tamanho-->
-        <Setter Property="MinWidth" Value="120"/>
+        <Setter Property="MinWidth" Value="40"/>
         <Setter Property="MinHeight" Value="20"/>
         <Setter Property="Height" Value="Auto"/>
         <Setter Property="FontSize" Value="12"/>
@@ -886,5 +887,180 @@
     </Style>
     <!-- EndRegion MyComboBox Template -->
     <!-- EndRegion MyComboBox -->
+
+    <!-- Region MyDataPicker -->
+    
+    <!-- Region Component Templates-->
+    <!-- Region Toogle Button -->
+    <ControlTemplate x:Key="MyDatePickerToggleButton" TargetType="Button">
+        <!-- Region Components -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="20" />
+            </Grid.ColumnDefinitions>
+            <Border
+                  x:Name="Border" 
+                  Grid.ColumnSpan="2"
+                  CornerRadius="2"
+                  Background="{StaticResource NormalBrush}"
+                  BorderBrush="{StaticResource NormalBorderBrush}"
+                  BorderThickness="1" />
+            <Border 
+                  Grid.Column="0"
+                  CornerRadius="2,0,0,2" 
+                  Margin="1" 
+                  Background="{StaticResource WindowBackgroundBrush}" 
+                  BorderBrush="{StaticResource NormalBorderBrush}"
+                  BorderThickness="0,0,1,0" />
+            <Path 
+                  x:Name="Arrow"
+                  Grid.Column="1"     
+                  Fill="#444"
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  Data="M 0 0 L 4 4 L 8 0 Z"/>
+        </Grid>
+        <!-- EndRegion Components -->
+
+        <!-- Region Gatilhos -->
+        <ControlTemplate.Triggers>
+            <Trigger Property="Button.IsMouseOver" Value="true">
+                <Setter TargetName="Border" Property="Background" Value="{StaticResource DarkBrush}" />
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter TargetName="Border" Property="Background" Value="{StaticResource DisabledBackgroundBrush}" />
+                <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DisabledBorderBrush}" />
+                <Setter Property="Foreground" Value="{StaticResource DisabledForegroundBrush}"/>
+                <Setter TargetName="Arrow" Property="Fill" Value="{StaticResource DisabledForegroundBrush}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+        <!-- EndRegion Gatilhos -->
+    </ControlTemplate>
+    <!-- EndRegion Toogle Button -->
+    <!-- EndRegion Component Templates-->
+    
+    <!-- Region MyDatePicker Template -->
+    <Style TargetType="{x:Type local:MyDatePicker}">
+        <!-- Region Propriedades gerais de comportamento -->
+        <Setter Property="IsTodayHighlighted" Value="True" />
+        <Setter Property="SelectedDateFormat" Value="Short" />
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <!-- EndRegion Propriedades gerais de comportamento -->
+
+        <!-- Region Propriedades gerais-->
+        <Setter Property="Foreground" Value="#FF333333" />
+        <Setter Property="SelectedDate" Value="{x:Static sys:DateTime.Now}" />
+        <Setter Property="CalendarStyle" Value="{StaticResource {x:Type Calendar}}" />
+        <!-- EndRegion Propriedades gerais-->
+        
+        <!-- Region Delimitadores de tamanho -->
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="MinHeight" Value="15" />
+        <Setter Property="MinWidth" Value="95" />
+        <Setter Property="Height" Value="Auto" />
+        <!-- EndRegion Delimitadores de tamanho -->
+
+        <!-- Region Control Template -->
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:MyDatePicker}">
+                    <!-- Region Componentes -->
+                    <Border Name="Border"
+                            Padding="0"
+                            VerticalAlignment="Stretch"
+                            BorderBrush="{StaticResource NormalBorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            CornerRadius="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=CornerRadius}">
+                       
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Normal" />
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <DoubleAnimation Duration="0" To="1" Storyboard.TargetProperty="Opacity" Storyboard.TargetName="PART_DisabledVisual" />
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                        <Grid x:Name="PART_Root">
+                            
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            
+                            <Button x:Name="PART_Button"
+                                Grid.Column="1"
+                                Foreground="{TemplateBinding Foreground}"
+                                Focusable="False"
+                                HorizontalAlignment="Left"
+                                Margin="0"
+                                Grid.Row="0"
+                                Template="{StaticResource MyDatePickerToggleButton}"
+                                VerticalAlignment="Stretch" />
+                            
+                            <DatePickerTextBox x:Name="PART_TextBox"
+                               Grid.Column="0"
+                               Margin="2,0"                
+                               HorizontalAlignment="Stretch"
+                               HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                               VerticalContentAlignment="Stretch"
+                               VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                               Foreground="{TemplateBinding Foreground}"
+                               Focusable="{TemplateBinding Focusable}"              
+                               Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=NoFocusColor}"/>
+                            
+                            <Grid x:Name="PART_DisabledVisual"
+                                  Grid.ColumnSpan="2"
+                                  Grid.Column="0"
+                                  IsHitTestVisible="False"
+                                  Opacity="0"
+                                  Grid.Row="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <Rectangle Grid.Column="0"
+                                     Fill="#A5FFFFFF"
+                                     RadiusY="1"
+                                     Grid.Row="0"
+                                     RadiusX="1" />
+                                <Rectangle Grid.Column="1"
+                                     Fill="#A5FFFFFF"
+                                     Height="18"
+                                     Margin="3,0,3,0"
+                                     RadiusY="1"
+                                     Grid.Row="0"
+                                     RadiusX="1"
+                                     Width="19" />
+                                <Popup x:Name="PART_Popup"
+                                     AllowsTransparency="True"
+                                     Placement="Bottom"
+                                     PlacementTarget="{Binding ElementName=PART_TextBox}"
+                                     StaysOpen="False" />
+                            </Grid>
+                        </Grid>
+                    </Border>
+                    <!-- EndRegion Componentes -->
+                    
+                    <!-- Region Gatilhos -->
+                    <ControlTemplate.Triggers>
+                        <Trigger SourceName="PART_TextBox" Property="IsFocused" Value="True">
+                            <Setter TargetName="PART_TextBox" Property="Background" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=HaveFocusColor}"/>
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource LightBorderBrush}"/>
+                        </Trigger>
+                        <Trigger Property="AutoSizeFont" Value="True">
+                            <Setter Property="FontSize" Value="{Binding Path=ActualHeight, RelativeSource={RelativeSource Self}, Converter={StaticResource HeightToFontSizeConverter}}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                    <!-- EndRegion Gatilhos -->
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <!-- EndRegion Control Template -->
+    </Style>
+    <!-- EndRegion MyDatePicker Template -->
+    <!-- EndRegion MyDataPicker -->
 
 </ResourceDictionary>

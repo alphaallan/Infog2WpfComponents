@@ -38,6 +38,19 @@ MyDataGrid -> DataGrid com alguns valores padrão alterados
 		MinWidth -> 125
 		FontSize -> 14
 
+MyDatePicker -> DatePicker com algumas alterações de comportamento e aparência
+	Propriedades Adicionais:
+		AutoSizeFont -> booleano que ativa o dimensionamento automático da fonte de acordo com a altura do controle
+		ConerRadius -> Raio das bordas
+		NoFocusColor -> Cor do fundo quando sem foco
+		HaveFocusColor -> Cor do fundo quando em foco
+	
+	Comportamentos Adicionais:
+		Dimensiona a altura da ComboBox automaticamente de acordo com a fonte por padrão (desativado caso AutoSize 
+			esteja ativado ou a altura esteja atribuída)
+		Muda a cor de fundo quando está focado
+		Inicia com a data atual
+		
 MyImageButton -> Botão de imagem com um título abaixo opcional
 	Propriedades Adicionais:
 		Label -> Texto do título do botão
@@ -63,7 +76,7 @@ MyTextBox -> TextBox com vários adicionais
 	Comportamentos Adicionais:
 		Dimensiona a altura da ComboBox automaticamente de acordo com a fonte por padrão (desativado caso AutoSize 
 			esteja ativado ou a altura esteja atribuída)
-		Moda a cor de fundo quando está focada
+		Muda a cor de fundo quando está focada
 		Apresenta marca d'água (quando houver) e o prefixo (quando houver) se estiver sem foco 
 		Filtragem de tipo de texto
 		

@@ -66,6 +66,7 @@
     <Compile Include="MyButton.cs" />
     <Compile Include="MyComboBox.cs" />
     <Compile Include="MyDataGrid.cs" />
+    <Compile Include="MyDatePicker.cs" />
     <Compile Include="MyImageButton.cs" />
     <Compile Include="MyTextBox.cs" />
     <Compile Include="MyTextBoxLabel.xaml.cs">
