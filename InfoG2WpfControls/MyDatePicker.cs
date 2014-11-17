@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -63,5 +64,67 @@ namespace InfoG2WpfControls
             DependencyProperty.Register("HaveFocusColor", typeof(Brush), typeof(MyDatePicker), new PropertyMetadata(Brushes.LightYellow));
         #endregion Brushes
         #endregion Layout
+
+
+        protected override void OnPreviewKeyDown(KeyEventArgs e)
+        {
+            DatePickerTextBox DateBox = (DatePickerTextBox)this.Template.FindName("PART_TextBox", this);
+
+            if (e.Key == Key.Back)
+            {
+                this.Text = DateTime.Now.ToShortDateString();
+                DateBox.CaretIndex = 0;
+                e.Handled = true;
+            }
+            else if (e.Key >= Key.D0 && e.Key <= Key.D9) //Ler digitos de 0 a 9
+            {
+                char[] buff = DateBox.Text.ToCharArray();
+                char carac = e.Key.ToString()[1];
+
+                if (DateBox.CaretIndex < 10)
+                {
+                    int CaretIndex = DateBox.CaretIndex;
+                    if ((CaretIndex == 2) || (CaretIndex == 5)) CaretIndex++;
+                    
+                    buff[CaretIndex] = carac;
+                    string OutText = new string(buff);
+                    DateBox.Text = OutText;
+
+                    CaretIndex++;
+                    DateBox.CaretIndex = CaretIndex;
+                }
+
+                e.Handled = true;
+            }
+            else if (e.Key >= Key.NumPad0 && e.Key <= Key.NumPad9) //Ler digitos de 0 a 9
+            {
+                char[] buff = DateBox.Text.ToCharArray();
+                char carac = e.Key.ToString()[6];
+
+                if (DateBox.CaretIndex < 10)
+                {
+                    int CaretIndex = DateBox.CaretIndex;
+                    if ((CaretIndex == 2) || (CaretIndex == 5)) CaretIndex++;
+
+                    buff[CaretIndex] = carac;
+                    string OutText = new string(buff);
+                    DateBox.Text = OutText;
+
+                    CaretIndex++;
+                    DateBox.CaretIndex = CaretIndex;
+                }
+
+                e.Handled = true;
+            }
+            else if (((e.Key != Key.Tab) 
+                   && (e.Key != Key.Enter) 
+                   && (e.Key != Key.Left)
+                   && (e.Key != Key.Right)) || e.Key == Key.Insert)
+            {
+                e.Handled = true;
+            }
+
+            base.OnPreviewKeyDown(e); //Chamada do método da base
+        }
     }
 }
