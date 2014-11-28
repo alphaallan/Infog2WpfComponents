@@ -586,9 +586,9 @@
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
                             <!--Container do Icone-->
-                            <Image x:Name="IconHost" Grid.Column="0" Margin="2" Source="{TemplateBinding Icon}" Focusable="False"/>
+                            <Image x:Name="IconHost" Grid.Column="0" Margin="2" Source="{TemplateBinding Icon}" Focusable="False" Width="{TemplateBinding IconSize}"/>
                                                         
-                            <ContentPresenter Grid.Column="1" Margin="2" HorizontalAlignment="Center" VerticalAlignment="Center" RecognizesAccessKey="True"/>
+                            <TextBlock Grid.Column="1" Margin="2" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Text="{TemplateBinding Content}"/>
                         </Grid>
                     </Border>
                     <!-- EndRegion Componentes -->
@@ -615,7 +615,10 @@
                         </Trigger>
                         <Trigger Property="Icon" Value="{x:Null}">
                             <Setter TargetName="IconHost" Property="Margin" Value="0"/>
-                        </Trigger>                
+                        </Trigger>  
+                        <Trigger Property="IconSize" Value="0.0">
+                            <Setter TargetName="IconHost" Property="Width" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ActualHeight}"/>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                     <!-- EndRegion Gatilhos -->
                 </ControlTemplate>

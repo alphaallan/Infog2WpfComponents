@@ -85,6 +85,19 @@ namespace InfoG2WpfControls
         }
         public static readonly DependencyProperty IconProperty =
             DependencyProperty.Register("Icon", typeof(ImageSource), typeof(MyButton), new PropertyMetadata(null));
+
+        [Category("Icon")]
+        public double IconSize
+        {
+            get { return (double)GetValue(IconSizeProperty); }
+            set { SetValue(IconSizeProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for IconSize.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IconSizeProperty =
+            DependencyProperty.Register("IconSize", typeof(double), typeof(MyButton), new PropertyMetadata(0.0));
+
+        
         #endregion Icon
     }
 }
