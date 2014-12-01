@@ -20,6 +20,7 @@ MyButton -> Botão com estilo do windows forms por padrão e ícone opcional
 		PressedBorderBrush -> cor da borda quando pressionado
 		MouseOverBrush -> cor do fundo quando sob o mouse
 		Icon -> Caminho para uma imagem opcional que fica a esquerda do texto do botão (auto dimensionada)
+		IconSize -> Tamanho opcional do ícone
 
 MyComboBox -> Combobox com o estilo padrão do windows forms
 	Propriedades Adicionais:

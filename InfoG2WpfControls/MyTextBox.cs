@@ -242,7 +242,7 @@ namespace InfoG2WpfControls
                         {
                             text += NumberFormatInfo.CurrentInfo.NumberDecimalSeparator + "0";
                         }
-                        if (_this.Mask == MyTextBoxTextType.Money) text = String.Format("{0:.00}", val);
+                        if (_this.Mask == MyTextBoxTextType.Money) text = String.Format("{0:N2}", Math.Truncate(val * 100) / 100).Replace(NumberFormatInfo.CurrentInfo.CurrencyGroupSeparator, "");
                     }
                 }
                 catch
