@@ -213,7 +213,7 @@ namespace InfoG2WpfControls
                         if (caret != 0)
                             caret--;
                     }
-                    else
+                    else if(_this.Mask != MyTextBoxTextType.Money)
                     {
                         text = NumberFormatInfo.CurrentInfo.NegativeSign + _this.Text;
                         caret++;
