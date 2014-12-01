@@ -154,6 +154,7 @@ namespace InfoG2WpfControls
             MyTextBox _this = (sender as MyTextBox);
             bool isValid = IsSymbolValid(_this.Mask, e.Text);
             e.Handled = !isValid;
+
             if (isValid)
             {
                 int caret = _this.CaretIndex;
@@ -242,7 +243,7 @@ namespace InfoG2WpfControls
                         {
                             text += NumberFormatInfo.CurrentInfo.NumberDecimalSeparator + "0";
                         }
-                        if (_this.Mask == MyTextBoxTextType.Money) text = String.Format("{0:N2}", Math.Truncate(val * 100) / 100).Replace(NumberFormatInfo.CurrentInfo.CurrencyGroupSeparator, "");
+                        if (_this.Mask == MyTextBoxTextType.Money) text = String.Format("{0:F2}", Math.Truncate(val * 100) / 100);
                     }
                 }
                 catch
@@ -334,7 +335,7 @@ namespace InfoG2WpfControls
                 case MyTextBoxTextType.Money:
                     {
                         double val;
-                        if (double.TryParse(value, out val)) return String.Format("{0:.00}", val);
+                        if (double.TryParse(value, out val)) return String.Format("{0:F2}", val);
                         return string.Empty;
                     }
             }
