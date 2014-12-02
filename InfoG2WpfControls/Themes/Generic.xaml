@@ -615,8 +615,10 @@
                         </Trigger>
                         <Trigger Property="Icon" Value="{x:Null}">
                             <Setter TargetName="IconHost" Property="Margin" Value="0"/>
+                            <Setter TargetName="IconHost" Property="Width" Value="0"/>
+                            <Setter Property="IconSize" Value="0"/>
                         </Trigger>  
-                        <Trigger Property="IconSize" Value="0.0">
+                        <Trigger Property="IconSize" Value="-1.0">
                             <Setter TargetName="IconHost" Property="Width" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=ActualHeight}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>

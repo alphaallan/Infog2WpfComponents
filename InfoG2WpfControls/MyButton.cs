@@ -95,7 +95,7 @@ namespace InfoG2WpfControls
 
         // Using a DependencyProperty as the backing store for IconSize.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty IconSizeProperty =
-            DependencyProperty.Register("IconSize", typeof(double), typeof(MyButton), new PropertyMetadata(0.0));
+            DependencyProperty.Register("IconSize", typeof(double), typeof(MyButton), new PropertyMetadata(-1.0));
 
         
         #endregion Icon
