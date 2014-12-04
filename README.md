@@ -68,7 +68,6 @@ MyTextBox -> TextBox com vários adicionais
 			Decimal -> numero fracionário
 			Money -> numero fracionário com duas casas decimais
 		ConerRadius -> Raio das bordas
-		NoFocusColor -> Cor do fundo quando sem foco
 		HaveFocusColor -> Cor do fundo quando em foco
 		Watermark -> marca d'água opcional
 		WatermarkTemplate -> DataTemplate da marca d'água
