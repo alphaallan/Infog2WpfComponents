@@ -2,34 +2,51 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
                     xmlns:local="clr-namespace:InfoG2WpfControls">
-   
+
+    <!-- Region Brushes -->
+    <SolidColorBrush x:Key="DisabledForegroundBrush" Color="#DDD" />
+
+    <SolidColorBrush x:Key="DisabledBackgroundBrush" Color="#999" />
+
+    <SolidColorBrush x:Key="DisabledBorderBrush" Color="#555" />
     
-    <Style TargetType="Label">
-        <Setter Property="Foreground" Value="White"/>
-    </Style>
+    <SolidColorBrush x:Key="SolidBorderBrush" Color="#888" />
+    
+    <SolidColorBrush x:Key="LightBorderBrush" Color="CornflowerBlue" />
 
-    <Style TargetType="GroupBox">
-        <Setter Property="Foreground" Value="White"/>
-    </Style>
+    <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="#FF2B2B2B"/>
+    <!-- #FF132B5B Azul -->
+    <!-- EndRegion Brushes -->
 
+    <!-- Region Templates -->
+    <DataTemplate x:Key="DarkWatermarkTemplate">
+        <ContentControl Content="{Binding}" Margin="5,0,0,0" Foreground="LightGray" Focusable="False" />
+    </DataTemplate>
+    <!-- EndRegion Templates -->
+    
+    <!-- Region Controles Locais -->
     <Style TargetType="{x:Type local:EnumRadioButton}">
         <Setter Property="Foreground" Value="White"/>
     </Style>
 
     <Style TargetType="{x:Type local:MyComboBox}">
         <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="#5F000000"/>
         <Setter Property="HaveFocusColor" Value="Gray"/>
         <Setter Property="ListBackground" Value="Gray"/>
     </Style>
 
     <Style TargetType="{x:Type local:MyDatePicker}">
         <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="#5F000000"/>
         <Setter Property="HaveFocusColor" Value="Gray"/>
     </Style>
 
     <Style TargetType="{x:Type local:MyTextBox}">
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="HaveFocusColor" Value="Gray"/>
+        <Setter Property="Background" Value="#5F000000"/>
+        <Setter Property="WatermarkTemplate" Value="{StaticResource DarkWatermarkTemplate}"/>
     </Style>
 
     <Style TargetType="{x:Type local:MyButton}">
@@ -41,7 +58,18 @@
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="RowBackground" Value="LightGray"/>
         <Setter Property="AlternatingRowBackground" Value="Gainsboro"/>
+        <Setter Property="Background" Value="#5F000000"/>
         <Setter Property="AlternatingRowBackground" Value="Gray"/>
+    </Style>
+    <!-- EndRegion Controles Locais -->
+
+    <!-- Region Controles Padrão -->
+    <Style TargetType="Label">
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+
+    <Style TargetType="GroupBox">
+        <Setter Property="Foreground" Value="White"/>
     </Style>
 
     <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
@@ -50,6 +78,10 @@
         <Setter Property="Padding" Value="4"/>
     </Style>
 
+    <Style TargetType="TabControl">
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+    
     <Style TargetType="TabItem">
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Background" Value="#5F000000"/>
@@ -83,13 +115,16 @@
             </Setter.Value>
         </Setter>
     </Style>
-    
-    <Style TargetType="TabControl">
-        <Setter Property="Background" Value="Transparent"/>
-    </Style>
 
+    <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}">
+        <Setter Property="Background" Value="#FF132B5B"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+    <!-- EndRegion Controles Padrão -->
+
+    <!-- Region Controles xctk -->
     <Style TargetType="{x:Type xctk:MaskedTextBox}">
-        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Background" Value="#5F000000"/>
         <Setter Property="BorderBrush" Value="#888"/>
         <Setter Property="Foreground" Value="White"/>
         <Style.Triggers>
@@ -98,4 +133,5 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    <!-- EndRegion Controles xctk -->
 </ResourceDictionary>

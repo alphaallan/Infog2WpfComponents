@@ -58,7 +58,7 @@ namespace InfoG2WpfControls
             set { SetValue(PressedBrushProperty, value); }
         }
         public static readonly DependencyProperty PressedBrushProperty =
-            DependencyProperty.Register("PressedBrush", typeof(Brush), typeof(MyButton), new PropertyMetadata(new BrushConverter().ConvertFrom("#FFD2D2D2")));
+            DependencyProperty.Register("PressedBrush", typeof(Brush), typeof(MyButton), new PropertyMetadata(new BrushConverter().ConvertFrom("#FFC6C6C6")));
 
         public Brush PressedBorderBrush
         {
@@ -66,7 +66,7 @@ namespace InfoG2WpfControls
             set { SetValue(PressedBorderBrushProperty, value); }
         }
         public static readonly DependencyProperty PressedBorderBrushProperty =
-            DependencyProperty.Register("PressedBorderBrush", typeof(Brush), typeof(MyButton), new PropertyMetadata(new BrushConverter().ConvertFrom("#FF5F5F5F")));
+            DependencyProperty.Register("PressedBorderBrush", typeof(Brush), typeof(MyButton), new PropertyMetadata(new BrushConverter().ConvertFrom("#FFC1C1C1")));
 
         public Brush MouseOverBrush
         {
@@ -74,7 +74,7 @@ namespace InfoG2WpfControls
             set { SetValue(MouseOverBrushProperty, value); }
         }
         public static readonly DependencyProperty MouseOverBrushProperty =
-            DependencyProperty.Register("MouseOverBrush", typeof(Brush), typeof(MyButton), new PropertyMetadata(new BrushConverter().ConvertFrom("#FFE6E6E6")));
+            DependencyProperty.Register("MouseOverBrush", typeof(Brush), typeof(MyButton), new PropertyMetadata(new BrushConverter().ConvertFrom("#FFDADADA")));
 
         public Brush FocusedBorderBrush
         {
@@ -82,7 +82,7 @@ namespace InfoG2WpfControls
             set { SetValue(FocusedBorderBrushProperty, value); }
         }
         public static readonly DependencyProperty FocusedBorderBrushProperty =
-            DependencyProperty.Register("FocusedBorderBrush", typeof(Brush), typeof(MyButton), new PropertyMetadata(new BrushConverter().ConvertFrom("#FFCDCDCD")));
+            DependencyProperty.Register("FocusedBorderBrush", typeof(Brush), typeof(MyButton), new PropertyMetadata(new BrushConverter().ConvertFrom("#FFDADADA")));
 
         #endregion Brushes
 

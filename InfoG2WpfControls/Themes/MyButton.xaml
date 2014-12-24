@@ -88,15 +88,6 @@
     </Style>
     <!-- EndRegion Styles -->
 
-    <Style x:Key="MyButtonDefault" TargetType="{x:Type local:MyButton}">
-        <Setter Property="Borderless" Value="True"/>
-        <Setter Property="Background" Value="#EC7063"/>
-        <Setter Property="PressedBrush" Value="#E26659"/>
-        <Setter Property="MouseOverBrush" Value="#F67A6D"/>
-        <Setter Property="FocusedBorderBrush" Value="#DD6154"/>
-        <Setter Property="Foreground" Value="White" />
-    </Style>
-
     <Style x:Key="MyButtonDanger" TargetType="{x:Type local:MyButton}">
         <Setter Property="Borderless" Value="True"/>
         <Setter Property="Background" Value="#EC7063"/>
@@ -136,10 +127,9 @@
 
     <Style x:Key="MyButtonSuccess" TargetType="{x:Type local:MyButton}">
         <Setter Property="Borderless" Value="True"/>
-        <Setter Property="Background" Value="#58D68D"/>
-        <Setter Property="PressedBrush" Value="#4ECC83"/>
-        <Setter Property="MouseOverBrush" Value="#62E097"/>
-        <Setter Property="FocusedBorderBrush" Value="#49C77E"/>
+        <Setter Property="Background" Value="#77DA48"/>
+        <Setter Property="PressedBrush" Value="#6DD03E"/>
+        <Setter Property="MouseOverBrush" Value="#81E452"/>
         <Setter Property="Foreground" Value="White" />
     </Style>
 
@@ -151,6 +141,32 @@
         <Setter Property="FocusedBorderBrush" Value="#E5C404"/>
         <Setter Property="Foreground" Value="White" />
     </Style>
+    
+    <Style x:Key="MyButtonGray" TargetType="{x:Type local:MyButton}">
+        <Setter Property="Borderless" Value="True"/>
+        <Setter Property="Background" Value="Gray"/>
+        <Setter Property="PressedBrush" Value="#FF767676"/>
+        <Setter Property="MouseOverBrush" Value="#FF8A8A8A"/>
+        <Setter Property="Foreground" Value="White" />
+    </Style>
 
+    <Style x:Key="MyButtonPurple" TargetType="{x:Type local:MyButton}">
+        <Setter Property="Borderless" Value="True"/>
+        <Setter Property="Background" Value="Purple"/>
+        <Setter Property="PressedBrush" Value="#FF750075"/>
+        <Setter Property="MouseOverBrush" Value="#FF8A0A8A"/>
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+    
+    <Style x:Key="MyButtonOrange" TargetType="{x:Type local:MyButton}">
+        <Setter Property="Borderless" Value="True"/>
+        <Setter Property="Background" Value="#FFA700"/>
+        <Setter Property="PressedBrush" Value="#F59D00"/>
+        <Setter Property="MouseOverBrush" Value="#FFB20A"/>
+        <Setter Property="Foreground" Value="White" />
+    </Style>
 
+    <Style x:Key="MyButton" TargetType="{x:Type local:MyButton}">
+
+    </Style>
 </ResourceDictionary>
