@@ -31,23 +31,26 @@ namespace InfoG2WpfControls
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register("CornerRadius", typeof(double), typeof(MyButton), new PropertyMetadata(2.0));
 
+        //public MyButtonType Type
+        //{
+        //    get { return (MyButtonType)GetValue(TypeProperty); }
+        //    set { SetValue(TypeProperty, value); }
+        //}
+        //public static readonly DependencyProperty TypeProperty =
+        //    DependencyProperty.Register("Type", typeof(MyButtonType), typeof(MyButton), new PropertyMetadata(MyButtonType.Manual));
+
+
+        public bool Borderless
+        {
+            get { return (bool)GetValue(BorderlessProperty); }
+            set { SetValue(BorderlessProperty, value); }
+        }
+        public static readonly DependencyProperty BorderlessProperty =
+            DependencyProperty.Register("Borderless", typeof(bool), typeof(MyButton), new PropertyMetadata(false));
+
+        
+
         #region Brushes
-
-        public Brush NormalBrush
-        {
-            get { return (Brush)GetValue(NormalBrushProperty); }
-            set { SetValue(NormalBrushProperty, value); }
-        }
-        public static readonly DependencyProperty NormalBrushProperty =
-            DependencyProperty.Register("NormalBrush", typeof(Brush), typeof(MyButton), new PropertyMetadata(Brushes.Gainsboro));
-
-        public Brush NormalBorderBrush
-        {
-            get { return (Brush)GetValue(NormalBorderBrushProperty); }
-            set { SetValue(NormalBorderBrushProperty, value); }
-        }
-        public static readonly DependencyProperty NormalBorderBrushProperty =
-            DependencyProperty.Register("NormalBorderBrush", typeof(Brush), typeof(MyButton), new PropertyMetadata(Brushes.DimGray));
 
         public Brush PressedBrush
         {
@@ -55,7 +58,7 @@ namespace InfoG2WpfControls
             set { SetValue(PressedBrushProperty, value); }
         }
         public static readonly DependencyProperty PressedBrushProperty =
-            DependencyProperty.Register("PressedBrush", typeof(Brush), typeof(MyButton), new PropertyMetadata(Brushes.Gray));
+            DependencyProperty.Register("PressedBrush", typeof(Brush), typeof(MyButton), new PropertyMetadata(new BrushConverter().ConvertFrom("#FFD2D2D2")));
 
         public Brush PressedBorderBrush
         {
@@ -63,7 +66,7 @@ namespace InfoG2WpfControls
             set { SetValue(PressedBorderBrushProperty, value); }
         }
         public static readonly DependencyProperty PressedBorderBrushProperty =
-            DependencyProperty.Register("PressedBorderBrush", typeof(Brush), typeof(MyButton), new PropertyMetadata(Brushes.DarkGray));
+            DependencyProperty.Register("PressedBorderBrush", typeof(Brush), typeof(MyButton), new PropertyMetadata(new BrushConverter().ConvertFrom("#FF5F5F5F")));
 
         public Brush MouseOverBrush
         {
@@ -71,7 +74,16 @@ namespace InfoG2WpfControls
             set { SetValue(MouseOverBrushProperty, value); }
         }
         public static readonly DependencyProperty MouseOverBrushProperty =
-            DependencyProperty.Register("MouseOverBrush", typeof(Brush), typeof(MyButton), new PropertyMetadata(Brushes.LightGray));
+            DependencyProperty.Register("MouseOverBrush", typeof(Brush), typeof(MyButton), new PropertyMetadata(new BrushConverter().ConvertFrom("#FFE6E6E6")));
+
+        public Brush FocusedBorderBrush
+        {
+            get { return (Brush)GetValue(FocusedBorderBrushProperty); }
+            set { SetValue(FocusedBorderBrushProperty, value); }
+        }
+        public static readonly DependencyProperty FocusedBorderBrushProperty =
+            DependencyProperty.Register("FocusedBorderBrush", typeof(Brush), typeof(MyButton), new PropertyMetadata(new BrushConverter().ConvertFrom("#FFCDCDCD")));
+
         #endregion Brushes
 
         //Propriedades do icone
@@ -100,4 +112,17 @@ namespace InfoG2WpfControls
         
         #endregion Icon
     }
+
+    //public enum MyButtonType
+    //{
+    //    BorderLess,
+    //    Danger,
+    //    Default,
+    //    Info,
+    //    Manual,
+    //    Primary,
+    //    Success,
+    //    Warning,
+    //    WindowsForm
+    //}
 }

@@ -45,15 +45,6 @@ namespace InfoG2WpfControls
 
         //Brushes usados no datapicker
         #region Brushes
-        //Cor do fundo da caixa quando ela não detém o foco do cursor
-        public Brush NoFocusColor
-        {
-            get { return (Brush)GetValue(NoFocusColorProperty); }
-            set { SetValue(NoFocusColorProperty, value); }
-        }
-        public static readonly DependencyProperty NoFocusColorProperty =
-            DependencyProperty.Register("NoFocusColorColor", typeof(Brush), typeof(MyDatePicker), new PropertyMetadata(Brushes.White));
-
         //Cor do fundo da caixa quando ela detém o foco do cursor
         public Brush HaveFocusColor
         {

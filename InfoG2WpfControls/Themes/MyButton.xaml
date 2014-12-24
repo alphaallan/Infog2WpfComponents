@@ -1,0 +1,156 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+                    xmlns:local="clr-namespace:InfoG2WpfControls">
+    
+    <SolidColorBrush x:Key="DisabledForegroundBrush" Color="#888" />
+    
+    <SolidColorBrush x:Key="DisabledBackgroundBrush" Color="#EEE" />
+    
+    <LinearGradientBrush x:Key="NormalBorderBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#CCC" Offset="0.0"/>
+                <GradientStop Color="#444" Offset="1.0"/>
+            </GradientStopCollection>
+        </GradientBrush.GradientStops>
+    </LinearGradientBrush>
+    <LinearGradientBrush x:Key="DefaultedBorderBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#777" Offset="0.0"/>
+                <GradientStop Color="#000" Offset="1.0"/>
+            </GradientStopCollection>
+        </GradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="NormalBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FFF" Offset="0.0"/>
+                <GradientStop Color="#CCC" Offset="1.0"/>
+            </GradientStopCollection>
+        </GradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="DarkBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#FFF" Offset="0.0"/>
+                <GradientStop Color="#AAA" Offset="1.0"/>
+            </GradientStopCollection>
+        </GradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="PressedBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#BBB" Offset="0.0"/>
+                <GradientStop Color="#EEE" Offset="0.1"/>
+                <GradientStop Color="#EEE" Offset="0.9"/>
+                <GradientStop Color="#FFF" Offset="1.0"/>
+            </GradientStopCollection>
+        </GradientBrush.GradientStops>
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="PressedBorderBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientBrush.GradientStops>
+            <GradientStopCollection>
+                <GradientStop Color="#444" Offset="0.0"/>
+                <GradientStop Color="#888" Offset="1.0"/>
+            </GradientStopCollection>
+        </GradientBrush.GradientStops>
+    </LinearGradientBrush>
+    
+    <SolidColorBrush x:Key="DisabledBorderBrush" Color="#AAA" />
+
+    <!-- Borda solida -->
+    <SolidColorBrush x:Key="SolidBorderBrush" Color="#888" />
+
+    <!-- Borda selecionada/sob o mouse-->
+    <SolidColorBrush x:Key="LightBorderBrush" Color="CornflowerBlue" />
+    
+    <!-- Region Styles -->
+    <Style x:Key="ButtonFocusVisual">
+        <Setter Property="Control.Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border>
+                        <Rectangle 
+                            Margin="2"
+                            StrokeThickness="1"
+                            Stroke="#60000000"
+                            StrokeDashArray="1 2"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- EndRegion Styles -->
+
+    <Style x:Key="MyButtonDefault" TargetType="{x:Type local:MyButton}">
+        <Setter Property="Borderless" Value="True"/>
+        <Setter Property="Background" Value="#EC7063"/>
+        <Setter Property="PressedBrush" Value="#E26659"/>
+        <Setter Property="MouseOverBrush" Value="#F67A6D"/>
+        <Setter Property="FocusedBorderBrush" Value="#DD6154"/>
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+
+    <Style x:Key="MyButtonDanger" TargetType="{x:Type local:MyButton}">
+        <Setter Property="Borderless" Value="True"/>
+        <Setter Property="Background" Value="#EC7063"/>
+        <Setter Property="PressedBrush" Value="#E26659"/>
+        <Setter Property="MouseOverBrush" Value="#F67A6D"/>
+        <Setter Property="FocusedBorderBrush" Value="#DD6154"/>
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+
+    <Style x:Key="MyButtonWindowsForm" TargetType="{x:Type local:MyButton}">
+        <Setter Property="Background" Value="{StaticResource NormalBrush}"/>
+        <Setter Property="PressedBrush" Value="{StaticResource PressedBrush}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource NormalBorderBrush}"/>
+        <Setter Property="PressedBorderBrush" Value="{StaticResource PressedBorderBrush}"/>
+        <Setter Property="MouseOverBrush" Value="{StaticResource DarkBrush}"/>
+        <Setter Property="FocusedBorderBrush" Value="{StaticResource DefaultedBorderBrush}"/>
+        <Setter Property="Foreground" Value="Black" />
+    </Style>
+
+    <Style x:Key="MyButtonInfo" TargetType="{x:Type local:MyButton}">
+        <Setter Property="Borderless" Value="True"/>
+        <Setter Property="Background" Value="#5DADE2"/>
+        <Setter Property="PressedBrush" Value="#53A3D8"/>
+        <Setter Property="MouseOverBrush" Value="#67B7EC"/>
+        <Setter Property="FocusedBorderBrush" Value="#4E9ED3"/>
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+
+    <Style x:Key="MyButtonPrimary" TargetType="{x:Type local:MyButton}">
+        <Setter Property="Borderless" Value="True"/>
+        <Setter Property="Background" Value="#1ABC9C"/>
+        <Setter Property="PressedBrush" Value="#10B292"/>
+        <Setter Property="MouseOverBrush" Value="#24C6A6"/>
+        <Setter Property="FocusedBorderBrush" Value="#0BAD8C"/>
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+
+    <Style x:Key="MyButtonSuccess" TargetType="{x:Type local:MyButton}">
+        <Setter Property="Borderless" Value="True"/>
+        <Setter Property="Background" Value="#58D68D"/>
+        <Setter Property="PressedBrush" Value="#4ECC83"/>
+        <Setter Property="MouseOverBrush" Value="#62E097"/>
+        <Setter Property="FocusedBorderBrush" Value="#49C77E"/>
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+
+    <Style x:Key="MyButtonWarning" TargetType="{x:Type local:MyButton}">
+        <Setter Property="Borderless" Value="True"/>
+        <Setter Property="Background" Value="#F4D313"/>
+        <Setter Property="PressedBrush" Value="#EAC909"/>
+        <Setter Property="MouseOverBrush" Value="#FEDD1D"/>
+        <Setter Property="FocusedBorderBrush" Value="#E5C404"/>
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+
+
+</ResourceDictionary>
