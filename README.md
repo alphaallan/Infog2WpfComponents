@@ -10,7 +10,12 @@ EnumRadioButton -> RadioButton Especializado para interagir com tipos enum, Cód
 		EnumBiding -> Propriedade tipo enum que será manipulada 
 		EnumValue -> Valor a ser atribuído a propriedade
  
-
+Header -> Componente para adicionar uma Label acima do seu conteúdo
+	Propriedades Adicionais:
+		Text: Texto a ser mostrado na Label do Header
+	
+	Obs: controle das propriedades da Label feitas pelos valores do próprio controle
+ 
 MyButton -> Botão com estilo do windows forms por padrão e ícone opcional
 	Propriedades Adicionais:
 		ConerRadius -> Raio das bordas
@@ -99,6 +104,7 @@ Tile -> botão estilizado semelhante as tiles do sistema metro do Windows
 		
 Tile2 -> versão 2x1 da tile que adiciona uma área de notificação acessada pela propriedade Content
 		
+
 =======================================================================================================================
 
 ================================================= Classes auxiliares ==================================================

@@ -1071,4 +1071,35 @@
         </Style.Triggers>
     </Style>
     <!-- EndRegion MyToggleButton -->
+
+    <!-- Region Header -->
+    <Style TargetType="{x:Type local:Header}">
+        <Setter Property="Padding" Value="0,5"/>
+        
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:Header}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        
+                        <Label Grid.Row="0" 
+                               Padding="{TemplateBinding Padding}"
+                               FontFamily="{TemplateBinding FontFamily}"  
+                               FontSize="{TemplateBinding FontSize}" 
+                               FontStyle="{TemplateBinding FontStyle}"
+                               FontStretch="{TemplateBinding FontStretch}"
+                               FontWeight="{TemplateBinding FontWeight}"
+                               Foreground="{TemplateBinding Foreground}"
+                               Content="{TemplateBinding Text}"/>
+                        <ContentPresenter Grid.Row="1"/>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- endRegion Header -->
+
 </ResourceDictionary>

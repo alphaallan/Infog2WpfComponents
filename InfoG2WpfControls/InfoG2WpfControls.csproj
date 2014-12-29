@@ -75,6 +75,7 @@
   <ItemGroup>
     <Compile Include="EnumRadioButton.cs" />
     <Compile Include="FocusAdvancement.cs" />
+    <Compile Include="Header.cs" />
     <Compile Include="MyButton.cs" />
     <Compile Include="MyComboBox.cs" />
     <Compile Include="MyDataGrid.cs" />
