@@ -70,6 +70,7 @@
 
     <Style TargetType="GroupBox">
         <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Margin" Value="5"/>
     </Style>
 
     <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
@@ -78,10 +79,16 @@
         <Setter Property="Padding" Value="4"/>
     </Style>
 
+    <Style TargetType="CheckBox">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Margin" Value="5,5,5,0"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+
     <Style TargetType="TabControl">
         <Setter Property="Background" Value="Transparent"/>
     </Style>
-    
+
     <Style TargetType="TabItem">
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Background" Value="#5F000000"/>

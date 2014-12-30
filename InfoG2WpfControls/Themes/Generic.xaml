@@ -117,7 +117,7 @@
         <!-- EndRegion Templates personalizaveis-->
 
         <!-- Region Delimitadores de tamanho-->
-        <Setter Property="MinWidth" Value="50"/>
+        <Setter Property="MinWidth" Value="20"/>
         <Setter Property="MinHeight" Value="10"/>
         <Setter Property="Height" Value="Auto"/>
         <Setter Property="FontSize" Value="12"/>
@@ -385,10 +385,6 @@
     <!-- EndRegion MyDataGrid -->
 
     <!-- Region Tile2 -->
-        <!-- Region Brushes -->
-        
-        <!-- EndRegion Brushes -->
-
         <!-- Region Data Templates-->
         <!--Template default do titulo da Tile-->
         <DataTemplate x:Key="DefaultTile2LabelTemplate">
@@ -660,7 +656,7 @@
                             <!--Container do Icone-->
                             <Image x:Name="IconHost" Grid.Column="0" Margin="2" Source="{TemplateBinding Icon}" Focusable="False"/>
 
-                            <ContentPresenter Grid.Column="1" Margin="2" HorizontalAlignment="Center" VerticalAlignment="Center" RecognizesAccessKey="True"/>
+                            <ContentPresenter x:Name="ContentHost" Grid.Column="1" Margin="2" HorizontalAlignment="Center" VerticalAlignment="Center" RecognizesAccessKey="True"/>
                         </StackPanel>
                     </Border>
                     <!-- EndRegion Componentes -->
@@ -683,6 +679,10 @@
                             <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" />
                             <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
                         </Trigger>
+                        <Trigger Property="Content" Value="{x:Null}">
+                            <Setter TargetName="ContentHost" Property="Margin" Value="0"/>
+                            <Setter TargetName="ContentHost" Property="Height" Value="0"/>
+                        </Trigger>
                     </ControlTemplate.Triggers>
                     <!-- EndRegion Gatilhos -->
                 </ControlTemplate>
@@ -694,10 +694,6 @@
     <!-- EndRegion MyImageButton -->
     
     <!-- Region MyComboBox -->
-    <!-- Region Brushes -->
-    <SolidColorBrush x:Key="WindowBackgroundBrush" Color="#FFF" />
-    <!-- EndRegion Brushes -->
-
     <!-- Region Component Templates-->
     <!-- Region Toogle Button -->
     <ControlTemplate x:Key="MyComboBoxToggleButton" TargetType="{x:Type local:MyToggleButton}">
@@ -1074,8 +1070,16 @@
 
     <!-- Region Header -->
     <Style TargetType="{x:Type local:Header}">
-        <Setter Property="Padding" Value="0,5"/>
+        <!-- Region Propriedades Gerais de Comportamento -->
+        <Setter Property="IsTabStop" Value="False"/>
+        <!-- EndRegion Propriedades Gerais de Comportamento -->
+
+        <!-- Region Delimitadores de Tamanho -->
+        <Setter Property="Padding" Value="0,2"/>
+        <Setter Property="Margin" Value="5,2,5,3"/>
+        <!-- EndRegion Delimitadores de Tamanho -->
         
+        <!-- Region Control Template -->
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:Header}">
@@ -1099,6 +1103,7 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+        <!-- EndRegion Control Template -->
     </Style>
     <!-- endRegion Header -->
 
