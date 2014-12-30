@@ -101,6 +101,16 @@ namespace InfoG2WpfControls
         public static readonly DependencyProperty PrefixProperty =
             DependencyProperty.Register("Prefix", typeof(string), typeof(MyTextBox), new PropertyMetadata(""));
 
+
+
+        public string Postfix
+        {
+            get { return (string)GetValue(PostfixProperty); }
+            set { SetValue(PostfixProperty, value); }
+        }
+        public static readonly DependencyProperty PostfixProperty =
+            DependencyProperty.Register("Postfix", typeof(string), typeof(MyTextBox), new PropertyMetadata(""));
+
         
         #endregion Layout
 

@@ -77,6 +77,7 @@ MyTextBox -> TextBox com vários adicionais
 		Watermark -> marca d'água opcional
 		WatermarkTemplate -> DataTemplate da marca d'água
 		Prefix -> Prefixo opcional apresentado a esquerda do texto (apenas na interface de usuário)
+		Postfix -> Pós-fixo opcional apresentado a direita do texto (apenas na interface de usuário)
 		
 	Comportamentos Adicionais:
 		Dimensiona a altura da ComboBox automaticamente de acordo com a fonte por padrão (desativado caso AutoSize 

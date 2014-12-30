@@ -143,6 +143,7 @@
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="Auto"/>
                                     <ColumnDefinition />
+                                    <ColumnDefinition Width="Auto"/>
                                 </Grid.ColumnDefinitions>
                                 <ContentPresenter 
                                     Grid.Column="0"
@@ -167,6 +168,15 @@
                                     IsHitTestVisible="False"
                                     Margin="{TemplateBinding Padding}"
                                     Visibility="Collapsed" />
+
+                                <ContentPresenter 
+                                    Grid.Column="2"
+                                    x:Name="PostfixHost"
+                                    Content="{TemplateBinding Postfix}"
+                                    VerticalAlignment="Center"
+                                    HorizontalAlignment="Left"
+                                    IsHitTestVisible="False"
+                                    Margin="{TemplateBinding Padding}"/>
                             </Grid>
                         </Border>
                     </Grid>
@@ -192,6 +202,7 @@
                         </Trigger>
                         <Trigger Property="IsFocused" Value="True">
                             <Setter Property="Visibility" TargetName="PrefixHost" Value="Collapsed" />
+                            <Setter Property="Visibility" TargetName="PostfixHost" Value="Collapsed" />
                         </Trigger>
 
                         <!--Gatilhos de visual de condicao multipla-->
