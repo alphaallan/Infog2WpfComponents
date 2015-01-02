@@ -6,9 +6,9 @@
     <!-- Region Brushes -->
     <SolidColorBrush x:Key="DisabledForegroundBrush" Color="#DDD" />
 
-    <SolidColorBrush x:Key="DisabledBackgroundBrush" Color="#999" />
+    <SolidColorBrush x:Key="DisabledBackgroundBrush" Color="#7F555555" />
 
-    <SolidColorBrush x:Key="DisabledBorderBrush" Color="#555" />
+    <SolidColorBrush x:Key="DisabledBorderBrush" Color="#7F333333" />
     
     <SolidColorBrush x:Key="SolidBorderBrush" Color="#888" />
     
@@ -83,6 +83,10 @@
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Margin" Value="5,5,5,0"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
+    </Style>
+
+    <Style TargetType="RadioButton">
+        <Setter Property="Foreground" Value="White"/>
     </Style>
 
     <Style TargetType="TabControl">
