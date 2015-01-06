@@ -22,9 +22,10 @@ namespace InfoG2WpfControls
 
         #region Propriedades de dependência
 
-
         #region Propriedades de Comportamento
-        //Ativa o redimencionamento da fonte de acordo com a altura do controle
+        /// <summary>
+        /// Ativa o redimencionamento da fonte de acordo com a altura do controle
+        /// </summary>
         public bool AutoSizeFont
         {
             get { return (bool)GetValue(AutoSizeFontProperty); }
@@ -32,6 +33,17 @@ namespace InfoG2WpfControls
         }
         public static readonly DependencyProperty AutoSizeFontProperty =
             DependencyProperty.Register("AutoSizeFont", typeof(bool), typeof(MyTextBox), new PropertyMetadata(false));
+
+        /// <summary>
+        /// Trava para impedir valores negatívos em máscaras numéricas
+        /// </summary>
+        public bool NoNegative
+        {
+            get { return (bool)GetValue(NoNegativeProperty); }
+            set { SetValue(NoNegativeProperty, value); }
+        }
+        public static readonly DependencyProperty NoNegativeProperty =
+            DependencyProperty.Register("NoNegative", typeof(bool), typeof(MyTextBox), new PropertyMetadata(false));
 
         //Mascara
         #region Mask
@@ -45,18 +57,8 @@ namespace InfoG2WpfControls
         #endregion Mask
         #endregion Propriedades de Comportamento
 
+        #region Layout
 
-        //Propriedades de Layout
-        #region Layout 
-        //Raio das bordas
-        public double CornerRadius
-        {
-            get { return (double)GetValue(CornerRadiusProperty); }
-            set { SetValue(CornerRadiusProperty, value); }
-        }
-        public static readonly DependencyProperty CornerRadiusProperty =
-            DependencyProperty.Register("CornerRadius", typeof(double), typeof(MyTextBox), new PropertyMetadata(2.0));
-        
         //Brushes usados na textbox
         #region Brushes
         //Cor do fundo da caixa quando ela detém o foco do cursor
@@ -92,7 +94,20 @@ namespace InfoG2WpfControls
             DependencyProperty.Register("WatermarkTemplate", typeof(DataTemplate), typeof(MyTextBox), new UIPropertyMetadata(null));
         #endregion Marca d'água
 
+        /// <summary>
+        /// Raio das bordas da caixa de texto
+        /// </summary>
+        public double CornerRadius
+        {
+            get { return (double)GetValue(CornerRadiusProperty); }
+            set { SetValue(CornerRadiusProperty, value); }
+        }
+        public static readonly DependencyProperty CornerRadiusProperty =
+            DependencyProperty.Register("CornerRadius", typeof(double), typeof(MyTextBox), new PropertyMetadata(2.0));
 
+        /// <summary>
+        /// Préfixo Mostrado antes do valor na caixa de texto quandoela está sem foco 
+        /// </summary>
         public string Prefix
         {
             get { return (string)GetValue(PrefixProperty); }
@@ -102,7 +117,9 @@ namespace InfoG2WpfControls
             DependencyProperty.Register("Prefix", typeof(string), typeof(MyTextBox), new PropertyMetadata(""));
 
 
-
+        /// <summary>
+        /// Pós-fixo Mostrado após o valor na caixa de texto quandoela está sem foco 
+        /// </summary>
         public string Postfix
         {
             get { return (string)GetValue(PostfixProperty); }
@@ -214,7 +231,7 @@ namespace InfoG2WpfControls
                         if (caret != 0)
                             caret--;
                     }
-                    else if(_this.Mask != MyTextBoxTextType.Money)
+                    else if((_this.Mask != MyTextBoxTextType.Money) && (_this.NoNegative == false))
                     {
                         text = NumberFormatInfo.CurrentInfo.NegativeSign + _this.Text;
                         caret++;
