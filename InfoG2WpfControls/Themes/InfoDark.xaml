@@ -56,10 +56,13 @@
     <Style TargetType="{x:Type local:MyDataGrid}">
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Background" Value="Transparent"/>
-        <Setter Property="RowBackground" Value="LightGray"/>
+        <Setter Property="RowBackground" Value="Gray"/>
         <Setter Property="AlternatingRowBackground" Value="Gainsboro"/>
         <Setter Property="Background" Value="#5F000000"/>
-        <Setter Property="AlternatingRowBackground" Value="Gray"/>
+    </Style>
+    
+    <Style TargetType="{x:Type local:Header}">
+        <Setter Property="Foreground" Value="White"/>
     </Style>
     <!-- EndRegion Controles Locais -->
 
@@ -101,12 +104,12 @@
                 <ControlTemplate TargetType="{x:Type TabItem}">
                     <Grid>
                         <Border 
-                                            Name="Border"
-                                            Margin="0" 
-                                            Background="{TemplateBinding Background}"
-                                            BorderBrush="{TemplateBinding BorderBrush}" 
-                                            BorderThickness="1" 
-                                            CornerRadius="2,2,0,0" >
+                            Name="Border"
+                            Margin="0" 
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}" 
+                            BorderThickness="1" 
+                            CornerRadius="2,2,0,0" >
                             <ContentPresenter x:Name="ContentSite"
                                               VerticalAlignment="Center"
                                               HorizontalAlignment="Center"
