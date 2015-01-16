@@ -57,7 +57,7 @@
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="RowBackground" Value="Gray"/>
-        <Setter Property="AlternatingRowBackground" Value="Gainsboro"/>
+        <Setter Property="AlternatingRowBackground" Value="DarkGray" />
         <Setter Property="Background" Value="#5F000000"/>
     </Style>
     
