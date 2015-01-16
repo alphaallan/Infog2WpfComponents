@@ -663,12 +663,16 @@
                           Background="Transparent"
                           BorderBrush="Transparent">
 
-                        <StackPanel>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
                             <!--Container do Icone-->
-                            <Image x:Name="IconHost" Grid.Column="0" Margin="2" Source="{TemplateBinding Icon}" Focusable="False"/>
+                            <Image x:Name="IconHost" Grid.Row="0" Margin="2" Source="{TemplateBinding Icon}" Focusable="False"/>
 
-                            <ContentPresenter x:Name="ContentHost" Grid.Column="1" Margin="2" HorizontalAlignment="Center" VerticalAlignment="Center" RecognizesAccessKey="True"/>
-                        </StackPanel>
+                            <ContentPresenter x:Name="ContentHost" Grid.Row="1" Margin="2" HorizontalAlignment="Center" VerticalAlignment="Center" RecognizesAccessKey="True"/>
+                        </Grid>
                     </Border>
                     <!-- EndRegion Componentes -->
 
