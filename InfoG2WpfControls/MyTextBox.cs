@@ -261,7 +261,11 @@ namespace InfoG2WpfControls
                         {
                             text += NumberFormatInfo.CurrentInfo.NumberDecimalSeparator + "0";
                         }
-                        if (_this.Mask == MyTextBoxTextType.Money) text = String.Format("{0:F2}", Math.Truncate(Math.Truncate(val * 1000) / 10)/100);
+                        if (_this.Mask == MyTextBoxTextType.Money)
+                        {
+                            string temp = String.Format("{0:F4}", val);
+                            text = temp.Substring(0, temp.Length - 2);
+                        }
                     }
                 }
                 catch
