@@ -671,7 +671,7 @@
                             <!--Container do Icone-->
                             <Image x:Name="IconHost" Grid.Row="0" Margin="2" Source="{TemplateBinding Icon}" Focusable="False"/>
 
-                            <ContentPresenter x:Name="ContentHost" Grid.Row="1" Margin="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" RecognizesAccessKey="True"/>
+                            <ContentPresenter x:Name="ContentHost" Grid.Row="1" Margin="2" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="Center" RecognizesAccessKey="True"/>
                         </Grid>
                     </Border>
                     <!-- EndRegion Componentes -->
