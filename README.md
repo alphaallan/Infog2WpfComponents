@@ -94,7 +94,12 @@ MyTextBox -> TextBox com vários adicionais
 		ValidateValue -> valida um valor
 		ValidateTextBox -> Valida o conteúdo da textbox
 			
-	
+StickyNote -> Componente de nota adesiva
+	Propriedades Adicionais:
+		Header -> Titulo da nota
+		Text -> texto Principal da nota
+		CreatedDate -> Data de criação da nota
+			
 Tile -> botão estilizado semelhante as tiles do sistema metro do Windows
 	Propriedades Adicionais:
 		Label -> título da tile
@@ -105,7 +110,6 @@ Tile -> botão estilizado semelhante as tiles do sistema metro do Windows
 		
 Tile2 -> versão 2x1 da tile que adiciona uma área de notificação acessada pela propriedade Content
 		
-
 =======================================================================================================================
 
 ================================================= Classes auxiliares ==================================================

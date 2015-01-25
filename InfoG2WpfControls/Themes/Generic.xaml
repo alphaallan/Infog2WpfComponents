@@ -1128,4 +1128,99 @@
     </Style>
     <!-- endRegion Header -->
 
+    <!-- Region StickyNote -->
+
+    <!-- Region Converters -->
+    <local:BooleanInverter x:Key="BoolInverter" />
+    <local:DateTimeToStringConverter x:Key="DateTimeConverter"/>
+    <!-- EndRegion Converters -->
+    
+    <Style TargetType="{x:Type local:StickyNote}">
+        <!-- Region Propriedades Gerais-->
+        <Setter Property="Background" Value="LightYellow"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <!-- EndRegion Propriedades Gerais-->
+
+        <!-- Region Delimitadores de Tamanho -->
+        <Setter Property="MinHeight" Value="50"/>
+        <Setter Property="MinWidth" Value="100"/>
+        <Setter Property="Width" Value="150"/>
+        <Setter Property="Height" Value="100"/>
+        <Setter Property="Margin" Value="5"/>
+        <!-- EndRegion Delimitadores de Tamanho -->
+        
+        <!-- Region Control Template -->
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:StickyNote}">
+                    <Border Background="Transparent" BorderBrush="#80000000" BorderThickness="1">
+                        <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition />
+                                </Grid.RowDefinitions>
+
+                                <!-- Region Note Header-->
+                                <Grid Grid.Row="0" Background="#20000000">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="20"/>
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Canvas Grid.Column="0" Margin="2" Width="16" Height="16" Background="#10000000"
+                                            ToolTip="{TemplateBinding DateCreated, Converter={StaticResource DateTimeConverter}, ConverterParameter='dd/MM/yyyy - HH:mm'}">
+                                        <Ellipse Width="16" Height="16" Stroke="Black"/>
+                                        <Path Fill="Black" Data="M 7 4 L 7 9 L 13 9 L 13 7 L 9 7 L 9 4"/>
+                                    </Canvas>
+                                    
+
+                                    <TextBox Grid.Column="1" Margin="5,2"
+                                         BorderBrush="Transparent"
+                                         VerticalAlignment="Stretch"
+                                         HorizontalAlignment="Stretch"
+                                         FocusVisualStyle="{x:Null}"
+                                         AcceptsReturn="True"
+                                         Background="Transparent"
+                                         Foreground="{TemplateBinding Foreground}" 
+                                         FontSize="{TemplateBinding FontSize}" 
+                                         FontFamily="{TemplateBinding FontFamily}"
+                                         IsReadOnly="{TemplateBinding IsReadOnly}"
+                                         TextWrapping="Wrap" 
+                                         Text="{TemplateBinding Header}"/>
+                                </Grid>
+                                <!-- EndRegion Note Header-->
+
+                                <!-- Region Note Body -->
+                                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto">
+                                    <TextBox Margin="5"
+                                         BorderBrush="Transparent"
+                                         VerticalAlignment="Stretch"
+                                         HorizontalAlignment="Stretch"
+                                         FocusVisualStyle="{x:Null}"
+                                         AcceptsReturn="True"
+                                         Background="{TemplateBinding Background}"
+                                         VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"
+                                         HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                         Foreground="{TemplateBinding Foreground}" 
+                                         FontSize="{TemplateBinding FontSize}" 
+                                         FontFamily="{TemplateBinding FontFamily}"
+                                         IsReadOnly="{TemplateBinding IsReadOnly}"
+                                         TextWrapping="{TemplateBinding TextWrapping}" 
+                                         Text="{TemplateBinding Text}"/>
+                                </ScrollViewer>
+                                <!-- EndRegion Note Body -->
+
+                            </Grid>
+                        </Border>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <!-- EndRegion Control Template -->
+    </Style>
+    <!-- EndRegion StickyNote -->
+
 </ResourceDictionary>

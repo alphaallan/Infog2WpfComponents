@@ -166,6 +166,22 @@
         <Setter Property="Foreground" Value="White" />
     </Style>
 
+    <Style x:Key="MyButtonGreen" TargetType="{x:Type local:MyButton}">
+        <Setter Property="Borderless" Value="True"/>
+        <Setter Property="Background" Value="Green"/>
+        <Setter Property="PressedBrush" Value="DarkGreen"/>
+        <Setter Property="MouseOverBrush" Value="#149414"/>
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+    
+    <Style x:Key="MyButtonRed" TargetType="{x:Type local:MyButton}">
+        <Setter Property="Borderless" Value="True"/>
+        <Setter Property="Background" Value="#CB0000"/>
+        <Setter Property="PressedBrush" Value="DarkRed"/>
+        <Setter Property="MouseOverBrush" Value="#FF1414"/>
+        <Setter Property="Foreground" Value="White" />
+    </Style>
+    
     <Style x:Key="MyButton" TargetType="{x:Type local:MyButton}">
 
     </Style>
