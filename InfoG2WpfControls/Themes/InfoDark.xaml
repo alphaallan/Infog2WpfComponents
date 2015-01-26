@@ -135,6 +135,17 @@
         <Setter Property="Background" Value="#FF132B5B"/>
         <Setter Property="FontSize" Value="14"/>
     </Style>
+
+    <Style TargetType="PasswordBox">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="BorderBrush" Value="#888"/>
+        <Setter Property="Background" Value="#5F000000"/>
+        <Style.Triggers>
+            <Trigger Property="IsFocused" Value="True">
+                <Setter Property="Background" Value="Gray"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
     <!-- EndRegion Controles Padrão -->
 
     <!-- Region Controles xctk -->

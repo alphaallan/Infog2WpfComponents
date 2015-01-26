@@ -52,7 +52,7 @@ namespace InfoG2WpfControls
         /// </summary>
         /// <param name="Text">Texto da Nota</param>
         public StickyNote(string Text) 
-            : this(Text, string.Empty, DateTime.Now)
+            : this(Text, DateTime.Now.ToString("dd/MM/yyyy"), DateTime.Now)
         {
 
         }
@@ -61,7 +61,7 @@ namespace InfoG2WpfControls
         /// Construtor Padrão
         /// </summary>
         public StickyNote()
-            : this(string.Empty, string.Empty, DateTime.Now)
+            : this(string.Empty)
         {
 
         }
