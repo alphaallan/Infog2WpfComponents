@@ -76,6 +76,7 @@ MyTextBox -> TextBox com vários adicionais
 
 	Propriedades Adicionais:
 		* AutoSizeFont -> booleano que ativa o dimensionamento automático da fonte de acordo com a altura do controle
+		* AutoSelect -> booleano para ativar auto seleção de texto quando o controle recebe o foco
 		* Mask -> Define o tipo de texto a ser admitido 
 			1. Any -> texto livre
 			2. Integer -> Inteiro

@@ -17,6 +17,8 @@ namespace InfoG2WpfControls
         static MyTextBox()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(MyTextBox), new FrameworkPropertyMetadata(typeof(MyTextBox)));
+            EventManager.RegisterClassHandler(typeof(MyTextBox), MyTextBox.GotFocusEvent, new RoutedEventHandler(MyTextBox_GotFocus_AutoSelect));
+            EventManager.RegisterClassHandler(typeof(MyTextBox), MyTextBox.MouseDownEvent, new RoutedEventHandler(MyTextBox_GotFocus_OnClick_AutoSelect));
         }
 
 
@@ -44,6 +46,20 @@ namespace InfoG2WpfControls
         }
         public static readonly DependencyProperty NoNegativeProperty =
             DependencyProperty.Register("NoNegative", typeof(bool), typeof(MyTextBox), new PropertyMetadata(false));
+
+
+        /// <summary>
+        /// Ativa a seleção automática do texto ao receber o foco da janela
+        /// </summary>
+        public bool AutoSelect
+        {
+            get { return (bool)GetValue(AutoSelectProperty); }
+            set { SetValue(AutoSelectProperty, value); }
+        }
+        public static readonly DependencyProperty AutoSelectProperty =
+            DependencyProperty.Register("AutoSelect", typeof(bool), typeof(MyTextBox), new PropertyMetadata(false));
+
+        
 
         //Mascara
         #region Mask
@@ -134,6 +150,23 @@ namespace InfoG2WpfControls
         #endregion
 
         #region Funções
+        private static void MyTextBox_GotFocus_AutoSelect(object sender, RoutedEventArgs e)
+        {
+            MyTextBox box = (sender as MyTextBox);
+            if (box.AutoSelect) box.SelectAll();
+        }
+
+        private static void MyTextBox_GotFocus_OnClick_AutoSelect(object sender, RoutedEventArgs e)
+        {
+            MyTextBox box = (sender as MyTextBox);
+            if (box.AutoSelect && box.IsFocused == false)
+            {
+                box.Focus();
+                box.SelectAll();
+                e.Handled = true;
+            }
+        }
+
         private static void MaskChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (e.OldValue is MyTextBox)
