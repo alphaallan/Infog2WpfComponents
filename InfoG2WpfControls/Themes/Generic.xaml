@@ -1189,7 +1189,7 @@
                                          FontFamily="{TemplateBinding FontFamily}"
                                          IsReadOnly="{TemplateBinding IsReadOnly}"
                                          TextWrapping="Wrap" 
-                                         Text="{TemplateBinding Header}"/>
+                                         Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path= Header}"/>
                                 </Grid>
                                 <!-- EndRegion Note Header-->
 
@@ -1209,7 +1209,7 @@
                                          FontFamily="{TemplateBinding FontFamily}"
                                          IsReadOnly="{TemplateBinding IsReadOnly}"
                                          TextWrapping="{TemplateBinding TextWrapping}" 
-                                         Text="{TemplateBinding Text}"/>
+                                         Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path= Text}"/>
                                 </ScrollViewer>
                                 <!-- EndRegion Note Body -->
 
