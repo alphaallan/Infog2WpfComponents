@@ -13,7 +13,7 @@ namespace InfoG2WpfControls
     /// Site: http://blog.functionalfun.net/2008/06/wpf-passwordbox-and-data-binding.html
     /// Snip:
     /// <PasswordBox ff:PasswordBoxAssistant.BindPassword="true"  
-    ///              ff:PasswordBoxAssistant.BoundPassword="{Binding Path=Password}">
+    ///              ff:PasswordBoxAssistant.BoundPassword="{Binding Path=Password, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
     /// </summary>
     public static class PasswordBoxAssistant
     {
