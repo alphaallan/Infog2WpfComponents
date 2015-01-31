@@ -203,7 +203,7 @@ namespace InfoG2WpfControls
         private static void MyTextBox_PreviewTextInput(object sender, System.Windows.Input.TextCompositionEventArgs e)
         {
             MyTextBox _this = (sender as MyTextBox);
-            bool isValid = IsSymbolValid(_this.Mask, e.Text);
+            bool isValid = IsSymbolValid(_this.Mask, e.Text) && ((_this.Text.Length < _this.MaxLength) || (_this.MaxLength <= 0));
             e.Handled = !isValid;
 
             if (isValid)
@@ -390,7 +390,7 @@ namespace InfoG2WpfControls
                 case MyTextBoxTextType.Money:
                     {
                         double val;
-                        if (double.TryParse(value, out val)) return String.Format("{0:F3}", val);
+                        if (double.TryParse(value, out val)) return val.ToString("F3");
                         return string.Empty;
                     }
             }
@@ -415,7 +415,7 @@ namespace InfoG2WpfControls
         Any,
         Integer,
         Decimal,
-        Money
+        Money,
     }
 
     class HeightToFontSizeConverter : IValueConverter
