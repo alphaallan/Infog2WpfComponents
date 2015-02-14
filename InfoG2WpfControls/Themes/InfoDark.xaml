@@ -146,6 +146,14 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    
+    <Style TargetType="TreeView">
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+    
+    <Style TargetType="TreeViewItem">
+        <Setter Property="Foreground" Value="White"/>       
+    </Style>
     <!-- EndRegion Controles Padrão -->
 
     <!-- Region Controles xctk -->
