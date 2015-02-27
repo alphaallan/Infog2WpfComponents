@@ -64,6 +64,12 @@
     <Style TargetType="{x:Type local:Header}">
         <Setter Property="Foreground" Value="White"/>
     </Style>
+    
+    <Style TargetType="{x:Type local:NumberSpinner}">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="HaveFocusColor" Value="Gray"/>
+        <Setter Property="Background" Value="#5F000000"/>
+    </Style>
     <!-- EndRegion Controles Locais -->
 
     <!-- Region Controles Padrão -->

@@ -88,6 +88,7 @@
       <DependentUpon>MyTextBoxLabel.xaml</DependentUpon>
     </Compile>
     <Compile Include="MyToggleButton.cs" />
+    <Compile Include="NumberSpinner.cs" />
     <Compile Include="PasswordBoxAssistant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
