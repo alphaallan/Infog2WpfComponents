@@ -164,7 +164,7 @@ namespace InfoG2WpfControls
             set { SetValue(ValueProperty, value); }
         }
         public static readonly DependencyProperty ValueProperty =
-            DependencyProperty.Register("Value", typeof(double), typeof(NumberSpinner), new PropertyMetadata(0.0));
+            DependencyProperty.Register("Value", typeof(double), typeof(NumberSpinner), new FrameworkPropertyMetadata(default(double), FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
 
         /// <summary>
         /// Commandoo executado para gerenciar mudar o valor pelo setas ou botões do controle
@@ -177,7 +177,18 @@ namespace InfoG2WpfControls
         public static readonly DependencyProperty UpDownManagerProperty =
             DependencyProperty.Register("UpDownManager", typeof(UpDownLink), typeof(NumberSpinner), new PropertyMetadata(null));
         #endregion Controle do Valor
-        
+
+        /// <summary>
+        /// Raio das bordas da caixa de texto
+        /// </summary>
+        public double CornerRadius
+        {
+            get { return (double)GetValue(CornerRadiusProperty); }
+            set { SetValue(CornerRadiusProperty, value); }
+        }
+        public static readonly DependencyProperty CornerRadiusProperty =
+            DependencyProperty.Register("CornerRadius", typeof(double), typeof(NumberSpinner), new PropertyMetadata(2.0));
+
         /// <summary>
         /// Função de controle do valor
         /// </summary>
