@@ -110,6 +110,7 @@
         <Setter Property="KeyboardNavigation.TabNavigation" Value="None"/>
         <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
         <Setter Property="AllowDrop" Value="true"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource SolidBorderBrush}"/>
         <!-- EndRegion Propriedades gerais de comportamento-->
 
         <!-- Region Templates personalizaveis-->
@@ -137,7 +138,7 @@
                             CornerRadius="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=CornerRadius}" 
                             Padding="2"
                             Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Background}"
-                            BorderBrush="{DynamicResource SolidBorderBrush}"
+                            BorderBrush="{Binding BorderBrush}"
                             BorderThickness="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderThickness}" >
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -1236,7 +1237,7 @@
             <Border 
                   x:Name="Border" 
                   Grid.Column="0"
-                  CornerRadius="0" 
+                  CornerRadius="0,2,0,0" 
                   Margin="0" 
                   Background="{TemplateBinding Background}" 
                   BorderBrush="{DynamicResource SolidBorderBrush}"
@@ -1277,7 +1278,7 @@
             <Border 
                   x:Name="Border" 
                   Grid.Column="0"
-                  CornerRadius="0" 
+                  CornerRadius="0,0,2,0" 
                   Margin="0" 
                   Background="{TemplateBinding Background}" 
                   BorderBrush="{DynamicResource SolidBorderBrush}"
@@ -1309,10 +1310,12 @@
     <!-- EndRegion Button Down -->
     <!-- EndRegion Component Templates-->
 
-    <Style TargetType="{x:Type local:NumberSpinner}">
+    <Style x:Key="NumberSpinner" TargetType="{x:Type local:NumberSpinner}">
         
         <!-- Region Propriedades Gerais -->
         <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource SolidBorderBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
         <!-- EndRegion Propriedades Gerais -->
 
         <!-- Region Delimitadores de tamanho-->
@@ -1329,6 +1332,8 @@
                     
                     <!-- Region Componentes -->
                     <Border x:Name="BG" Background="{TemplateBinding Background}"
+                            CornerRadius="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=CornerRadius}" 
+                            Padding="2"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}">
                         <Grid>
@@ -1353,7 +1358,7 @@
                             <!-- EndRegion Entrada de Texto -->
 
                             <!-- Region Botões -->
-                            <Grid Grid.Column="1">
+                            <Grid Grid.Column="1" Margin="2,-2,-2,-2">
                                 <Grid.RowDefinitions>
                                     <RowDefinition />
                                     <RowDefinition />
@@ -1403,6 +1408,8 @@
         </Setter>
         <!-- EndRegion Control Template -->
     </Style>
+
+    <Style TargetType="{x:Type local:NumberSpinner}" BasedOn="{StaticResource NumberSpinner}" />
     <!-- EndRegion NumericUpDown -->
 
 </ResourceDictionary>
