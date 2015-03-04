@@ -138,7 +138,7 @@
                             CornerRadius="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=CornerRadius}" 
                             Padding="2"
                             Background="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Background}"
-                            BorderBrush="{Binding BorderBrush}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=BorderThickness}" >
                             <Grid>
                                 <Grid.ColumnDefinitions>
