@@ -574,7 +574,7 @@
                             <!--Container do Icone-->
                             <Image x:Name="IconHost" Grid.Column="0" Margin="2" Source="{TemplateBinding Icon}" Focusable="False" Width="{TemplateBinding IconSize}"/>
 
-                            <TextBlock Grid.Column="1" Margin="2" Padding="{TemplateBinding Padding}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Text="{TemplateBinding Content}"/>
+                            <TextBlock Grid.Column="1" Margin="2,0" Padding="{TemplateBinding Padding}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Text="{TemplateBinding Content}"/>
                         </Grid>
                     </Border>
                     <!-- EndRegion Componentes -->
@@ -1073,7 +1073,7 @@
     <!-- EndRegion MyDataPicker -->
 
     <!-- Region MyToggleButton -->
-    <Style TargetType="{x:Type local:MyToggleButton}" BasedOn="{StaticResource {x:Type ToggleButton}}">
+    <Style x:Key="MyToggleButton" TargetType="{x:Type local:MyToggleButton}" BasedOn="{StaticResource {x:Type ToggleButton}}">
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="true">
                 <Setter Property="Background" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=MouseOverBrush}" />
@@ -1088,6 +1088,7 @@
             </Trigger>
         </Style.Triggers>
     </Style>
+    <Style TargetType="{x:Type local:MyToggleButton}" BasedOn="{StaticResource MyToggleButton}" />
     <!-- EndRegion MyToggleButton -->
 
     <!-- Region Header -->
