@@ -32,6 +32,16 @@ namespace InfoG2WpfControls
         public static readonly DependencyProperty TextProperty =
             DependencyProperty.Register("Text", typeof(string), typeof(Header), new PropertyMetadata(""));
 
+
+
+        public object Appendix
+        {
+            get { return (object)GetValue(AppendixProperty); }
+            set { SetValue(AppendixProperty, value); }
+        }
+        public static readonly DependencyProperty AppendixProperty =
+            DependencyProperty.Register("Appendix", typeof(object), typeof(Header), new PropertyMetadata(null));
+
         
     }
 }

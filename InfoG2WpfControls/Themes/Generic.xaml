@@ -1111,9 +1111,9 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        
-                        <Label Grid.Row="0" 
-                               Padding="{TemplateBinding Padding}"
+
+                        <StackPanel Grid.Row="0" Orientation="Horizontal">
+                            <Label Padding="{TemplateBinding Padding}"
                                FontFamily="{TemplateBinding FontFamily}"  
                                FontSize="{TemplateBinding FontSize}" 
                                FontStyle="{TemplateBinding FontStyle}"
@@ -1121,6 +1121,10 @@
                                FontWeight="{TemplateBinding FontWeight}"
                                Foreground="{TemplateBinding Foreground}"
                                Content="{TemplateBinding Text}"/>
+
+                            <ContentPresenter Content="{TemplateBinding Appendix}"/>
+                        </StackPanel>
+                        
                         <ContentPresenter Grid.Row="1"/>
                     </Grid>
                 </ControlTemplate>
