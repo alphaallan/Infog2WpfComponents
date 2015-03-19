@@ -37,7 +37,6 @@ namespace InfoG2WpfControls
             temp.Command = UpDownManager;
             temp.CommandParameter = "DOWN";
             this.InputBindings.Add(temp);
-
         }
 
         #region Brushes
