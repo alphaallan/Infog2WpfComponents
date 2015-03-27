@@ -383,9 +383,13 @@
     <!-- Persoanalizacao do estilo do DataGrid (Usando o Template padrao) -->
     <Style TargetType="{x:Type local:MyDataGrid}" BasedOn="{StaticResource {x:Type DataGrid}}">
         <!-- Region Propriedades gerais de comportamento -->
+        <Setter Property="AutoGenerateColumns" Value="False"/>
         <Setter Property="SelectionMode" Value="Single"/>
         <Setter Property="SelectionUnit" Value="FullRow"/>
         <Setter Property="IsReadOnly" Value="True"/>
+        <Setter Property="CanUserAddRows" Value="False"/>
+        <Setter Property="CanUserDeleteRows" Value="False"/>
+        <Setter Property="CanUserResizeRows" Value="False"/>
         <!-- EndRegion Propriedades gerais de comportamento -->
 
         <!-- Region Delimitadores de tamanho -->
@@ -1111,9 +1115,9 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-                        
-                        <Label Grid.Row="0" 
-                               Padding="{TemplateBinding Padding}"
+
+                        <StackPanel Grid.Row="0" Orientation="Horizontal">
+                            <Label Padding="{TemplateBinding Padding}"
                                FontFamily="{TemplateBinding FontFamily}"  
                                FontSize="{TemplateBinding FontSize}" 
                                FontStyle="{TemplateBinding FontStyle}"
@@ -1121,6 +1125,10 @@
                                FontWeight="{TemplateBinding FontWeight}"
                                Foreground="{TemplateBinding Foreground}"
                                Content="{TemplateBinding Text}"/>
+
+                            <ContentPresenter Content="{TemplateBinding Appendix}"/>
+                        </StackPanel>
+                        
                         <ContentPresenter Grid.Row="1"/>
                     </Grid>
                 </ControlTemplate>
@@ -1351,6 +1359,8 @@
                                                 VerticalAlignment="Center"
                                                 Focusable="True" 
                                                 Mask="Integer"
+                                                AutoSelect="True"
+                                                MaxLength="16"
                                                 Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Value}"
                                                 Background="Transparent"
                                                 HaveFocusColor="{TemplateBinding HaveFocusColor}"             
