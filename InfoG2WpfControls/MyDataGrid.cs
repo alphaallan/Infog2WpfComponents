@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -21,5 +22,27 @@ namespace InfoG2WpfControls
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(MyDataGrid), new FrameworkPropertyMetadata(typeof(MyDataGrid)));
         }
+
+        public MyDataGrid()
+        {
+            this.SelectionChanged += MyDataGrid_SelectionChanged;
+        }
+
+        void MyDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.SelectedItemsList = this.SelectedItems;
+        }
+
+        /// <summary>
+        /// Propriedade para uso com MVVM em caso de seleção de multiplas linhas
+        /// </summary>
+        public IList SelectedItemsList
+        {
+            get { return (IList)GetValue(SelectedItemsListProperty); }
+            set { SetValue(SelectedItemsListProperty, value); }
+        }
+
+        public static readonly DependencyProperty SelectedItemsListProperty =
+                DependencyProperty.Register("SelectedItemsList", typeof(IList), typeof(MyDataGrid), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault));
     }
 }
