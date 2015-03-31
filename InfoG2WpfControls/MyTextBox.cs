@@ -220,10 +220,12 @@ namespace InfoG2WpfControls
                     caret = _this.SelectionStart;
                 }
 
-                if (e.Text == NumberFormatInfo.CurrentInfo.NumberDecimalSeparator)
+                
+                if (e.Text == NumberFormatInfo.CurrentInfo.NumberDecimalSeparator || e.Text == ",")
                 {
                     while (true)
                     {
+                        text = text.Replace(",", NumberFormatInfo.CurrentInfo.NumberDecimalSeparator);
                         int ind = text.IndexOf(NumberFormatInfo.CurrentInfo.NumberDecimalSeparator);
                         if (ind == -1)
                             break;
@@ -273,7 +275,7 @@ namespace InfoG2WpfControls
 
                 if (!textInserted)
                 {
-                    text = text.Substring(0, caret) + e.Text +
+                    text = text.Substring(0, caret) + ((e.Text != ",") ? e.Text : NumberFormatInfo.CurrentInfo.NumberDecimalSeparator) +
                         ((caret < _this.Text.Length) ? text.Substring(caret) : string.Empty);
 
                     caret++;
@@ -347,7 +349,7 @@ namespace InfoG2WpfControls
                 case MyTextBoxTextType.Money:
                 case MyTextBoxTextType.Decimal:
                     if (str == NumberFormatInfo.CurrentInfo.NumberDecimalSeparator ||
-                        str == NumberFormatInfo.CurrentInfo.NegativeSign)
+                        str == NumberFormatInfo.CurrentInfo.NegativeSign || str == ",")
                         return true;
                     break;
             }
