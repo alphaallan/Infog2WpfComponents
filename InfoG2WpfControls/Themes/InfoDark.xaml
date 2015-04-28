@@ -32,19 +32,19 @@
     <Style TargetType="{x:Type local:MyComboBox}">
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Background" Value="#5F000000"/>
-        <Setter Property="HaveFocusColor" Value="Gray"/>
+        <Setter Property="HaveFocusColor" Value="#FF505050"/>
         <Setter Property="ListBackground" Value="Gray"/>
     </Style>
 
     <Style TargetType="{x:Type local:MyDatePicker}">
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Background" Value="#5F000000"/>
-        <Setter Property="HaveFocusColor" Value="Gray"/>
+        <Setter Property="HaveFocusColor" Value="#FF505050"/>
     </Style>
 
     <Style TargetType="{x:Type local:MyTextBox}">
         <Setter Property="Foreground" Value="White"/>
-        <Setter Property="HaveFocusColor" Value="Gray"/>
+        <Setter Property="HaveFocusColor" Value="#FF505050"/>
         <Setter Property="Background" Value="#5F000000"/>
         <Setter Property="WatermarkTemplate" Value="{StaticResource DarkWatermarkTemplate}"/>
     </Style>
@@ -67,7 +67,7 @@
     
     <Style TargetType="{x:Type local:NumberSpinner}">
         <Setter Property="Foreground" Value="White"/>
-        <Setter Property="HaveFocusColor" Value="Gray"/>
+        <Setter Property="HaveFocusColor" Value="#FF505050"/>
         <Setter Property="Background" Value="#5F000000"/>
     </Style>
     <!-- EndRegion Controles Locais -->
@@ -169,7 +169,7 @@
         <Setter Property="Foreground" Value="White"/>
         <Style.Triggers>
             <Trigger Property="IsFocused" Value="True">
-                <Setter Property="Background" Value="DarkGray"/>
+                <Setter Property="Background" Value="#FF505050"/>
             </Trigger>
         </Style.Triggers>
     </Style>
