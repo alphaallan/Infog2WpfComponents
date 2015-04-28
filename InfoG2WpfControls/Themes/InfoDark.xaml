@@ -14,7 +14,11 @@
     
     <SolidColorBrush x:Key="LightBorderBrush" Color="CornflowerBlue" />
 
+    <SolidColorBrush x:Key="FocusedBackgroundBrush" Color="#FF3C3C3C" />
+
     <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="#FF2B2B2B"/>
+
+    <SolidColorBrush x:Key="PageBackGround" Color="#FF383838"/>
     <!-- #FF132B5B Azul -->
     <!-- EndRegion Brushes -->
 
@@ -32,19 +36,19 @@
     <Style TargetType="{x:Type local:MyComboBox}">
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Background" Value="#5F000000"/>
-        <Setter Property="HaveFocusColor" Value="#FF505050"/>
-        <Setter Property="ListBackground" Value="Gray"/>
+        <Setter Property="HaveFocusColor" Value="{StaticResource FocusedBackgroundBrush}"/>
+        <Setter Property="ListBackground" Value="#FF272727"/>
     </Style>
 
     <Style TargetType="{x:Type local:MyDatePicker}">
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Background" Value="#5F000000"/>
-        <Setter Property="HaveFocusColor" Value="#FF505050"/>
+        <Setter Property="HaveFocusColor" Value="{StaticResource FocusedBackgroundBrush}"/>
     </Style>
 
     <Style TargetType="{x:Type local:MyTextBox}">
         <Setter Property="Foreground" Value="White"/>
-        <Setter Property="HaveFocusColor" Value="#FF505050"/>
+        <Setter Property="HaveFocusColor" Value="{StaticResource FocusedBackgroundBrush}"/>
         <Setter Property="Background" Value="#5F000000"/>
         <Setter Property="WatermarkTemplate" Value="{StaticResource DarkWatermarkTemplate}"/>
     </Style>
@@ -67,7 +71,7 @@
     
     <Style TargetType="{x:Type local:NumberSpinner}">
         <Setter Property="Foreground" Value="White"/>
-        <Setter Property="HaveFocusColor" Value="#FF505050"/>
+        <Setter Property="HaveFocusColor" Value="{StaticResource FocusedBackgroundBrush}"/>
         <Setter Property="Background" Value="#5F000000"/>
     </Style>
     <!-- EndRegion Controles Locais -->
@@ -169,7 +173,10 @@
         <Setter Property="Foreground" Value="White"/>
         <Style.Triggers>
             <Trigger Property="IsFocused" Value="True">
-                <Setter Property="Background" Value="#FF505050"/>
+                <Setter Property="Background" Value="{StaticResource FocusedBackgroundBrush}"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{StaticResource DisabledBackgroundBrush}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
