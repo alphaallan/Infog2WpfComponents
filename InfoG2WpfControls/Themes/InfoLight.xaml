@@ -9,16 +9,12 @@
     <SolidColorBrush x:Key="DisabledBackgroundBrush" Color="#7F555555" />
 
     <SolidColorBrush x:Key="DisabledBorderBrush" Color="#7F333333" />
-    
+
     <SolidColorBrush x:Key="SolidBorderBrush" Color="#888" />
-    
+
     <SolidColorBrush x:Key="LightBorderBrush" Color="CornflowerBlue" />
 
-    <SolidColorBrush x:Key="FocusedBackgroundBrush" Color="#FF3C3C3C" />
-
     <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="#FF2B2B2B"/>
-
-    <SolidColorBrush x:Key="PageBackGround" Color="#FF383838"/>
     <!-- #FF132B5B Azul -->
     <!-- EndRegion Brushes -->
 
@@ -27,7 +23,7 @@
         <ContentControl Content="{Binding}" Margin="5,0,0,0" Foreground="LightGray" Focusable="False" />
     </DataTemplate>
     <!-- EndRegion Templates -->
-    
+
     <!-- Region Controles Locais -->
     <Style TargetType="{x:Type local:EnumRadioButton}">
         <Setter Property="Foreground" Value="White"/>
@@ -36,19 +32,19 @@
     <Style TargetType="{x:Type local:MyComboBox}">
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Background" Value="#5F000000"/>
-        <Setter Property="HaveFocusColor" Value="{StaticResource FocusedBackgroundBrush}"/>
-        <Setter Property="ListBackground" Value="#FF272727"/>
+        <Setter Property="HaveFocusColor" Value="Gray"/>
+        <Setter Property="ListBackground" Value="Gray"/>
     </Style>
 
     <Style TargetType="{x:Type local:MyDatePicker}">
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Background" Value="#5F000000"/>
-        <Setter Property="HaveFocusColor" Value="{StaticResource FocusedBackgroundBrush}"/>
+        <Setter Property="HaveFocusColor" Value="Gray"/>
     </Style>
 
     <Style TargetType="{x:Type local:MyTextBox}">
         <Setter Property="Foreground" Value="White"/>
-        <Setter Property="HaveFocusColor" Value="{StaticResource FocusedBackgroundBrush}"/>
+        <Setter Property="HaveFocusColor" Value="Gray"/>
         <Setter Property="Background" Value="#5F000000"/>
         <Setter Property="WatermarkTemplate" Value="{StaticResource DarkWatermarkTemplate}"/>
     </Style>
@@ -64,14 +60,14 @@
         <Setter Property="AlternatingRowBackground" Value="DarkGray" />
         <Setter Property="Background" Value="#5F000000"/>
     </Style>
-    
+
     <Style TargetType="{x:Type local:Header}">
         <Setter Property="Foreground" Value="White"/>
     </Style>
-    
+
     <Style TargetType="{x:Type local:NumberSpinner}">
         <Setter Property="Foreground" Value="White"/>
-        <Setter Property="HaveFocusColor" Value="{StaticResource FocusedBackgroundBrush}"/>
+        <Setter Property="HaveFocusColor" Value="Gray"/>
         <Setter Property="Background" Value="#5F000000"/>
     </Style>
     <!-- EndRegion Controles Locais -->
@@ -156,13 +152,13 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    
+
     <Style TargetType="TreeView">
         <Setter Property="Foreground" Value="White"/>
     </Style>
-    
+
     <Style TargetType="TreeViewItem">
-        <Setter Property="Foreground" Value="White"/>       
+        <Setter Property="Foreground" Value="White"/>
     </Style>
     <!-- EndRegion Controles Padrão -->
 
@@ -173,10 +169,7 @@
         <Setter Property="Foreground" Value="White"/>
         <Style.Triggers>
             <Trigger Property="IsFocused" Value="True">
-                <Setter Property="Background" Value="{StaticResource FocusedBackgroundBrush}"/>
-            </Trigger>
-            <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Background" Value="{StaticResource DisabledBackgroundBrush}"/>
+                <Setter Property="Background" Value="DarkGray"/>
             </Trigger>
         </Style.Triggers>
     </Style>
