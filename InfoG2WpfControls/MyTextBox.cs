@@ -206,7 +206,7 @@ namespace InfoG2WpfControls
             bool isValid = IsSymbolValid(_this.Mask, e.Text) && ((_this.Text.Length < _this.MaxLength) || (_this.MaxLength <= 0));
             e.Handled = !isValid;
 
-            if (isValid)
+            if (isValid && _this.Mask != MyTextBoxTextType.Digits)
             {
                 int caret = _this.CaretIndex;
                 string text = _this.Text;
@@ -354,7 +354,8 @@ namespace InfoG2WpfControls
                     break;
             }
 
-            if (mask.Equals(MyTextBoxTextType.Integer) || mask.Equals(MyTextBoxTextType.Decimal) || mask.Equals(MyTextBoxTextType.Money))
+            if (mask.Equals(MyTextBoxTextType.Integer) || mask.Equals(MyTextBoxTextType.Decimal) 
+             || mask.Equals(MyTextBoxTextType.Money) || mask.Equals(MyTextBoxTextType.Digits))
             {
                 foreach (char ch in str)
                 {
@@ -402,7 +403,7 @@ namespace InfoG2WpfControls
 
         private static void ValidateTextBox(MyTextBox _this)
         {
-            if (_this.Mask != MyTextBoxTextType.Any)
+            if (_this.Mask != MyTextBoxTextType.Any && _this.Mask != MyTextBoxTextType.Digits)
             {
                 _this.Text = ValidateValue(_this.Mask, _this.Text);
             }
@@ -418,6 +419,7 @@ namespace InfoG2WpfControls
         Integer,
         Decimal,
         Money,
+        Digits
     }
 
     class HeightToFontSizeConverter : IValueConverter
