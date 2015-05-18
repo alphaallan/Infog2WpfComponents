@@ -11,7 +11,7 @@
     <SolidColorBrush x:Key="DisabledBackgroundBrush" Color="#EEE" />
 
     <SolidColorBrush x:Key="SelectedBackgroundBrush" Color="#DDD" />
-
+    
     <LinearGradientBrush x:Key="NormalBorderBrush" StartPoint="0,0" EndPoint="0,1">
         <GradientBrush.GradientStops>
             <GradientStopCollection>
@@ -795,11 +795,11 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:MyComboBox}">
                     <!-- Region Componentes -->
-                    <Grid>
-                        <Border x:Name="BG" BorderThickness="0" Background="{TemplateBinding Background}"/>
-                        
-                        <!-- Region Toggle -->
-                        <local:MyToggleButton 
+                    <Border x:Name="BG" BorderThickness="1" Background="{TemplateBinding Background}" CornerRadius="3">
+                        <Grid>
+
+                            <!-- Region Toggle -->
+                            <local:MyToggleButton 
                             Name="ToggleButton" 
                             Template="{StaticResource MyComboBoxToggleButton}" 
                             Grid.Column="2" 
@@ -809,60 +809,61 @@
                             PressedBrush="{TemplateBinding ButtonPressedBrush}"
                             IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}"
                             ClickMode="Press">
-                        </local:MyToggleButton>
-                        <!-- EndRegion Toggle -->
-                        
-                        <!-- Region Visor -->
-                        <ContentPresenter
-                            Name="ContentSite"
-                            IsHitTestVisible="False" 
-                            Content="{TemplateBinding SelectionBoxItem}"
-                            ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
-                            ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                            Margin="3,3,23,3"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Left" />
-                        <!-- EndRegion Visor -->
-                        
-                        <!-- Region Entrada de Texto -->
-                        <local:MyTextBox x:Name="PART_EditableTextBox"
-                            Style="{x:Null}" 
-                            Template="{StaticResource MyComboBoxTextBox}" 
-                            HorizontalAlignment="Left" 
-                            VerticalAlignment="Center" 
-                            Margin="3,3,23,3"
-                            Focusable="True" 
-                            Background="Transparent"
-                            Visibility="Hidden"
-                            HaveFocusColor="{TemplateBinding HaveFocusColor}"             
-                            IsReadOnly="{TemplateBinding IsReadOnly}"/>
-                        <!-- EndRegion Entrada de Texto -->
+                            </local:MyToggleButton>
+                            <!-- EndRegion Toggle -->
 
-                        <!-- Region Lista -->
-                        <Popup 
-                            Name="Popup"
-                            Placement="Bottom"
-                            IsOpen="{TemplateBinding IsDropDownOpen}"
-                            AllowsTransparency="True" 
-                            Focusable="False"
-                            PopupAnimation="Slide">
-                            <Grid 
-                              Name="DropDown"
-                              SnapsToDevicePixels="True"                
-                              MinWidth="{TemplateBinding ActualWidth}"
-                              MaxHeight="{TemplateBinding MaxDropDownHeight}">
-                                <Border 
-                                    x:Name="DropDownBorder"
-                                    Background="{TemplateBinding ListBackground}"
-                                    BorderThickness="1"
-                                    BorderBrush="{DynamicResource SolidBorderBrush}"/>
-                                <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
-                                    <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained"/>
-                                </ScrollViewer>
-                            </Grid>
-                        </Popup>
-                        <!-- EndRegion Lista -->
-                    </Grid>
+                            <!-- Region Visor -->
+                            <ContentPresenter
+                                Name="ContentSite"
+                                IsHitTestVisible="False" 
+                                Content="{TemplateBinding SelectionBoxItem}"
+                                ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                Margin="3,3,23,3"
+                                VerticalAlignment="Center"
+                                HorizontalAlignment="Left" />
+                            <!-- EndRegion Visor -->
+
+                            <!-- Region Entrada de Texto -->
+                            <local:MyTextBox x:Name="PART_EditableTextBox"
+                                Style="{x:Null}" 
+                                Template="{StaticResource MyComboBoxTextBox}" 
+                                HorizontalAlignment="Left" 
+                                VerticalAlignment="Center" 
+                                Margin="3,3,23,3"
+                                Focusable="True" 
+                                Background="Transparent"
+                                Visibility="Hidden"
+                                HaveFocusColor="{TemplateBinding HaveFocusColor}"             
+                                IsReadOnly="{TemplateBinding IsReadOnly}"/>
+                            <!-- EndRegion Entrada de Texto -->
+
+                            <!-- Region Lista -->
+                            <Popup 
+                                Name="Popup"
+                                Placement="Bottom"
+                                IsOpen="{TemplateBinding IsDropDownOpen}"
+                                AllowsTransparency="True" 
+                                Focusable="False"
+                                PopupAnimation="Slide">
+                                    <Grid 
+                                      Name="DropDown"
+                                      SnapsToDevicePixels="True"                
+                                      MinWidth="{TemplateBinding ActualWidth}"
+                                      MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                            <Border 
+                                            x:Name="DropDownBorder"
+                                            Background="{TemplateBinding ListBackground}"
+                                            BorderThickness="1"
+                                            BorderBrush="{DynamicResource SolidBorderBrush}"/>
+                                    <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
+                                        <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained"/>
+                                    </ScrollViewer>
+                                    </Grid>
+                            </Popup>
+                            <!-- EndRegion Lista -->
+                        </Grid>
+                    </Border>
                     <!-- EndRegion Componentes -->
                     
                     <!-- Region Gatilhos -->
@@ -872,9 +873,14 @@
                         </Trigger>
                         <Trigger Property="IsFocused" Value="True">
                             <Setter TargetName="BG" Property="Background" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=HaveFocusColor}"/>
+                            <Setter TargetName="BG" Property="BorderBrush" Value="{DynamicResource LightBorderBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="BG" Property="BorderBrush" Value="{DynamicResource LightBorderBrush}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
+                            <Setter TargetName="BG" Property="BorderBrush" Value="{DynamicResource DisableBorderBrush}"/>
                         </Trigger>
                         <Trigger Property="IsGrouping" Value="true">
                             <Setter Property="ScrollViewer.CanContentScroll" Value="false"/>
@@ -1053,6 +1059,13 @@
                     
                     <!-- Region Gatilhos -->
                     <ControlTemplate.Triggers>
+                        <Trigger Property="IsFocused" Value="True">
+                            <Setter TargetName="Border" Property="Background" Value="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=HaveFocusColor}"/>
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource LightBorderBrush}"/>
+                        </Trigger>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource LightBorderBrush}"/>
+                        </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter TargetName="Border" Property="Background" Value="{DynamicResource DisabledBackgroundBrush}"/>
                             <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource DisabledBackgroundBrush}"/>
