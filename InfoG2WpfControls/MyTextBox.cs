@@ -169,22 +169,24 @@ namespace InfoG2WpfControls
 
         private static void MaskChangedCallback(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (e.OldValue is MyTextBox)
+            if (d is MyTextBox)
             {
-                (e.OldValue as MyTextBox).PreviewTextInput -= MyTextBox_PreviewTextInput;
-                DataObject.RemovePastingHandler((e.OldValue as MyTextBox), (DataObjectPastingEventHandler)MyTextBoxPastingEventHandler);
+                MyTextBox _this = (d as MyTextBox);
+
+                (d as MyTextBox).PreviewTextInput -= MyTextBox_PreviewTextInput;
+                DataObject.RemovePastingHandler((d as MyTextBox), (DataObjectPastingEventHandler)MyTextBoxPastingEventHandler);
+
+                if ((MyTextBoxTextType)e.NewValue != MyTextBoxTextType.Any)
+                {
+                    _this.PreviewTextInput += MyTextBox_PreviewTextInput;
+                    DataObject.AddPastingHandler(_this, (DataObjectPastingEventHandler)MyTextBoxPastingEventHandler);
+                }
+
+                ValidateTextBox(_this);
+            
             }
 
-            MyTextBox _this = (d as MyTextBox);
-            if (_this == null) return;
-
-            if ((MyTextBoxTextType)e.NewValue != MyTextBoxTextType.Any)
-            {
-                _this.PreviewTextInput += MyTextBox_PreviewTextInput;
-                DataObject.AddPastingHandler(_this, (DataObjectPastingEventHandler)MyTextBoxPastingEventHandler);
-            }
-
-            ValidateTextBox(_this);
+            return;
         }
 
         private static void MyTextBoxPastingEventHandler(object sender, DataObjectPastingEventArgs e)
@@ -393,8 +395,13 @@ namespace InfoG2WpfControls
                 case MyTextBoxTextType.Money:
                     {
                         double val;
-                        if (double.TryParse(value, out val)) return val.ToString("F3");
+                        if (double.TryParse(value, out val)) return val.ToString("F2");
                         return string.Empty;
+                    }
+                case MyTextBoxTextType.Digits:
+                    {
+                        foreach (char c in value) if (!Char.IsDigit(c)) return string.Empty;
+                        return value;
                     }
             }
 
@@ -403,7 +410,7 @@ namespace InfoG2WpfControls
 
         private static void ValidateTextBox(MyTextBox _this)
         {
-            if (_this.Mask != MyTextBoxTextType.Any && _this.Mask != MyTextBoxTextType.Digits)
+            if (_this.Mask != MyTextBoxTextType.Any)
             {
                 _this.Text = ValidateValue(_this.Mask, _this.Text);
             }
