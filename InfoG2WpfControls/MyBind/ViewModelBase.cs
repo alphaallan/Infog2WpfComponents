@@ -189,7 +189,7 @@ namespace InfoG2WpfControls.MyBind
 
         public event EventHandler<MoveFocusEventArgs> MoveFocus;
 
-        void RaiseMoveFocus(string focusedProperty)
+        public void RaiseMoveFocus(string focusedProperty)
         {
             var handler = this.MoveFocus;
             if (handler != null)
