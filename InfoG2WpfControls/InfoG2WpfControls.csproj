@@ -87,6 +87,7 @@
     <Compile Include="MyBind\FocusBinding.cs" />
     <Compile Include="MyBind\FocusController.cs" />
     <Compile Include="MyBind\IFocusMover.cs" />
+    <Compile Include="MyBind\ViewModelBase.cs" />
     <Compile Include="MyButton.cs" />
     <Compile Include="MyComboBox.cs" />
     <Compile Include="MyDataGrid.cs" />
