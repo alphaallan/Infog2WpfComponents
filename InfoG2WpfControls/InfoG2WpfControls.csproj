@@ -83,6 +83,10 @@
     <Compile Include="EnumRadioButton.cs" />
     <Compile Include="FocusAdvancement.cs" />
     <Compile Include="Header.cs" />
+    <Compile Include="MyBind\BindingDecoratorBase.cs" />
+    <Compile Include="MyBind\FocusBinding.cs" />
+    <Compile Include="MyBind\FocusController.cs" />
+    <Compile Include="MyBind\IFocusMover.cs" />
     <Compile Include="MyButton.cs" />
     <Compile Include="MyComboBox.cs" />
     <Compile Include="MyDataGrid.cs" />
