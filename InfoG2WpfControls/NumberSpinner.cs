@@ -207,11 +207,15 @@ namespace InfoG2WpfControls
         /// </summary>
         private void ManageUpDown(string parameter)
         {
-            if (parameter == "UP") Value += (Step < 1 && !FloatMode) ? 1 : Step;
-            else if (parameter == "DOWN") Value -= (Step < 1 && !FloatMode) ? 1 : Step;
+            double temp = Value;
 
-            if (Value > MaxValue) Value = (Circular) ? MinValue : MaxValue;
-            if (Value < MinValue) Value = (Circular) ? MaxValue : MinValue;
+            if (parameter == "UP") temp += (Step < 1 && !FloatMode) ? 1 : Step;
+            else if (parameter == "DOWN") temp -= (Step < 1 && !FloatMode) ? 1 : Step;
+
+            if (temp > MaxValue) temp = (Circular) ? MinValue : MaxValue;
+            if (temp < MinValue) temp = (Circular) ? MaxValue : MinValue;
+
+            Value = temp;
         }
 
         /// <summary>
