@@ -27,10 +27,12 @@
 
     <!-- Region Controles Locais -->
     <Style TargetType="{x:Type local:EnumRadioButton}">
+        <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
         <Setter Property="Foreground" Value="White"/>
     </Style>
 
     <Style TargetType="{x:Type local:MyComboBox}">
+        <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="Background" Value="White"/>
         <Setter Property="HaveFocusColor" Value="#FFF9C4"/>
@@ -38,12 +40,14 @@
     </Style>
 
     <Style TargetType="{x:Type local:MyDatePicker}">
+        <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Background" Value="White"/>
         <Setter Property="HaveFocusColor" Value="#FFF9C4"/>
     </Style>
 
     <Style TargetType="{x:Type local:MyTextBox}">
+        <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="HaveFocusColor" Value="#FFF9C4"/>
         <Setter Property="Background" Value="White"/>
@@ -51,10 +55,12 @@
     </Style>
 
     <Style TargetType="{x:Type local:MyButton}">
+        <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
         <Setter Property="Foreground" Value="Black"/>
     </Style>
 
     <Style TargetType="{x:Type local:MyDataGrid}">
+        <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="RowBackground" Value="#E0F7FA"/>
@@ -64,10 +70,12 @@
     </Style>
 
     <Style TargetType="{x:Type local:Header}">
+        <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
         <Setter Property="Foreground" Value="White"/>
     </Style>
 
     <Style TargetType="{x:Type local:NumberSpinner}">
+        <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="HaveFocusColor" Value="Gray"/>
         <Setter Property="Background" Value="#5F000000"/>
@@ -76,16 +84,19 @@
 
     <!-- Region Controles Padrão -->
     <Style TargetType="Label">
+        <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
         <Setter Property="Foreground" Value="White"/>
     </Style>
 
     <Style TargetType="GroupBox">
+        <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="BorderBrush" Value="Gray"/>
         <Setter Property="Margin" Value="5"/>
     </Style>
 
     <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
+        <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Padding" Value="4"/>
         <Setter Property="Background">
@@ -102,12 +113,14 @@
     </Style>
 
     <Style TargetType="CheckBox">
+        <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Margin" Value="5,5,5,0"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
     </Style>
 
     <Style TargetType="RadioButton">
+        <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
         <Setter Property="Foreground" Value="White"/>
     </Style>
 
@@ -116,6 +129,7 @@
     </Style>
 
     <Style TargetType="TabItem">
+        <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Background" Value="#5F000000"/>
         <Setter Property="Template">
@@ -155,6 +169,7 @@
     </Style>
 
     <Style TargetType="PasswordBox">
+        <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
         <Setter Property="Foreground" Value="Black"/>
         <Setter Property="BorderBrush" Value="#888"/>
         <Setter Property="Background" Value="White"/>
@@ -166,10 +181,12 @@
     </Style>
 
     <Style TargetType="TreeView">
+        <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
         <Setter Property="Foreground" Value="White"/>
     </Style>
 
     <Style TargetType="TreeViewItem">
+        <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
         <Setter Property="Foreground" Value="White"/>
     </Style>
     <!-- EndRegion Controles Padrão -->
