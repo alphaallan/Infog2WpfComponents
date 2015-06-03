@@ -121,6 +121,20 @@ namespace InfoG2WpfControls
         public static readonly DependencyProperty FloatModeProperty =
             DependencyProperty.Register("FloatMode", typeof(bool), typeof(NumberSpinner), new PropertyMetadata(false));
 
+
+        /// <summary>
+        /// Colocar o controle no modo circular
+        /// </summary>
+        public bool Circular
+        {
+            get { return (bool)GetValue(CircularProperty); }
+            set { SetValue(CircularProperty, value); }
+        }
+        public static readonly DependencyProperty CircularProperty =
+            DependencyProperty.Register("Circular", typeof(bool), typeof(NumberSpinner), new PropertyMetadata(false));
+
+        
+
         /// <summary>
         /// Passo de acrécimo do controle
         /// </summary>
@@ -193,15 +207,19 @@ namespace InfoG2WpfControls
         /// </summary>
         private void ManageUpDown(string parameter)
         {
-            if (parameter == "UP") Value += (Step < 1 && !FloatMode) ? 1 : Step;
-            else if (parameter == "DOWN") Value -= (Step < 1 && !FloatMode) ? 1 : Step;
+            double temp = Value;
 
-            if (Value > MaxValue) Value = MaxValue;
-            if (Value < MinValue) Value = MinValue;
+            if (parameter == "UP") temp += (Step < 1 && !FloatMode) ? 1 : Step;
+            else if (parameter == "DOWN") temp -= (Step < 1 && !FloatMode) ? 1 : Step;
+
+            if (temp > MaxValue) temp = (Circular) ? MinValue : MaxValue;
+            if (temp < MinValue) temp = (Circular) ? MaxValue : MinValue;
+
+            Value = temp;
         }
 
         /// <summary>
-        /// Classe auxiliar para possibilitar a ligaç~~ao de um comando pelo template
+        /// Classe auxiliar para possibilitar a ligação de um comando pelo template
         /// </summary>
         public class UpDownLink : ICommand
         {
