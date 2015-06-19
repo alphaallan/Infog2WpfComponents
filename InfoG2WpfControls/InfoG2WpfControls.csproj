@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -51,10 +52,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="MyTextBoxLabel.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Properties\Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -79,6 +76,7 @@
   <ItemGroup>
     <Compile Include="BooleanInverter.cs" />
     <Compile Include="BoolToVisibility.cs" />
+    <Compile Include="ChartPlotter.cs" />
     <Compile Include="DateTimeToStringConverter.cs" />
     <Compile Include="EnumRadioButton.cs" />
     <Compile Include="FocusAdvancement.cs" />
@@ -94,9 +92,6 @@
     <Compile Include="MyDatePicker.cs" />
     <Compile Include="MyImageButton.cs" />
     <Compile Include="MyTextBox.cs" />
-    <Compile Include="MyTextBoxLabel.xaml.cs">
-      <DependentUpon>MyTextBoxLabel.xaml</DependentUpon>
-    </Compile>
     <Compile Include="MyToggleButton.cs" />
     <Compile Include="NumberSpinner.cs" />
     <Compile Include="PasswordBoxAssistant.cs" />
