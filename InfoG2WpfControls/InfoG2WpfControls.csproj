@@ -74,27 +74,28 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BooleanInverter.cs" />
-    <Compile Include="BoolToVisibility.cs" />
-    <Compile Include="ChartPlotter.cs" />
-    <Compile Include="DateTimeToStringConverter.cs" />
-    <Compile Include="EnumRadioButton.cs" />
+    <Compile Include="Converters\BooleanInverter.cs" />
+    <Compile Include="Converters\BoolToVisibility.cs" />
+    <Compile Include="Controls\ChartPlotter.cs" />
+    <Compile Include="Controls\EnumRadioButton.cs" />
     <Compile Include="FocusAdvancement.cs" />
-    <Compile Include="Header.cs" />
+    <Compile Include="Controls\Header.cs" />
+    <Compile Include="Converters\IsNotNullToBool.cs" />
+    <Compile Include="Converters\IsNullToBool.cs" />
     <Compile Include="MyBind\BindingDecoratorBase.cs" />
     <Compile Include="MyBind\FocusBinding.cs" />
     <Compile Include="MyBind\FocusController.cs" />
     <Compile Include="MyBind\IFocusMover.cs" />
     <Compile Include="MyBind\ViewModelBase.cs" />
-    <Compile Include="MyButton.cs" />
-    <Compile Include="MyComboBox.cs" />
-    <Compile Include="MyDataGrid.cs" />
-    <Compile Include="MyDatePicker.cs" />
-    <Compile Include="MyImageButton.cs" />
-    <Compile Include="MyTextBox.cs" />
-    <Compile Include="MyToggleButton.cs" />
-    <Compile Include="NumberSpinner.cs" />
-    <Compile Include="PasswordBoxAssistant.cs" />
+    <Compile Include="Controls\MyButton.cs" />
+    <Compile Include="Controls\MyComboBox.cs" />
+    <Compile Include="Controls\MyDataGrid.cs" />
+    <Compile Include="Controls\MyDatePicker.cs" />
+    <Compile Include="Controls\MyImageButton.cs" />
+    <Compile Include="Controls\MyTextBox.cs" />
+    <Compile Include="Controls\MyToggleButton.cs" />
+    <Compile Include="Controls\NumberSpinner.cs" />
+    <Compile Include="MyBind\PasswordBoxAssistant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -108,9 +109,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="StickyNote.cs" />
-    <Compile Include="Tile.cs" />
-    <Compile Include="Tile2.cs" />
+    <Compile Include="Controls\StickyNote.cs" />
+    <Compile Include="Controls\Tile.cs" />
+    <Compile Include="Controls\Tile2.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

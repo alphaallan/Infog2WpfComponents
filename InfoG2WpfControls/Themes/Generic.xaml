@@ -1155,7 +1155,6 @@
 
     <!-- Region Converters -->
     <local:BooleanInverter x:Key="BoolInverter" />
-    <local:DateTimeToStringConverter x:Key="DateTimeConverter"/>
     <!-- EndRegion Converters -->
     
     <Style TargetType="{x:Type local:StickyNote}">
@@ -1193,8 +1192,10 @@
                                         <ColumnDefinition />
                                     </Grid.ColumnDefinitions>
 
-                                    <Canvas Grid.Column="0" Margin="2" Width="16" Height="16" Background="#10000000"
-                                            ToolTip="{TemplateBinding DateCreated, Converter={StaticResource DateTimeConverter}, ConverterParameter='dd/MM/yyyy - HH:mm'}">
+                                    <Canvas Grid.Column="0" Margin="2" Width="16" Height="16" Background="#10000000">
+                                        <Canvas.ToolTip>
+                                            <ToolTip Content="{TemplateBinding DateCreated}" ContentStringFormat="dd/MM/yyyy - HH:mm"/>
+                                        </Canvas.ToolTip>
                                         <Ellipse Width="16" Height="16" Stroke="Black"/>
                                         <Path Fill="Black" Data="M 7 4 L 7 9 L 13 9 L 13 7 L 9 7 L 9 4"/>
                                     </Canvas>
