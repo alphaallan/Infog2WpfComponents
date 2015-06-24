@@ -1,4 +1,4 @@
-﻿<ResourceDictionary
+<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
@@ -1155,7 +1155,6 @@
 
     <!-- Region Converters -->
     <local:BooleanInverter x:Key="BoolInverter" />
-    <local:DateTimeToStringConverter x:Key="DateTimeConverter"/>
     <!-- EndRegion Converters -->
     
     <Style TargetType="{x:Type local:StickyNote}">
@@ -1193,8 +1192,10 @@
                                         <ColumnDefinition />
                                     </Grid.ColumnDefinitions>
 
-                                    <Canvas Grid.Column="0" Margin="2" Width="16" Height="16" Background="#10000000"
-                                            ToolTip="{TemplateBinding DateCreated, Converter={StaticResource DateTimeConverter}, ConverterParameter='dd/MM/yyyy - HH:mm'}">
+                                    <Canvas Grid.Column="0" Margin="2" Width="16" Height="16" Background="#10000000">
+                                        <Canvas.ToolTip>
+                                            <ToolTip Content="{TemplateBinding DateCreated}" ContentStringFormat="dd/MM/yyyy - HH:mm"/>
+                                        </Canvas.ToolTip>
                                         <Ellipse Width="16" Height="16" Stroke="Black"/>
                                         <Path Fill="Black" Data="M 7 4 L 7 9 L 13 9 L 13 7 L 9 7 L 9 4"/>
                                     </Canvas>
@@ -1436,4 +1437,26 @@
     <Style TargetType="{x:Type local:NumberSpinner}" BasedOn="{StaticResource NumberSpinner}" />
     <!-- EndRegion NumericUpDown -->
 
+    <!-- Region Chart Plotter -->
+    <Style TargetType="{x:Type local:ChartPlotter}">
+        <Setter Property="IsHitTestVisible" Value="False"/>
+        <Setter Property="MinHeight" Value="20"/>
+        <Setter Property="MinWidth" Value="20"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:ChartPlotter}">
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+
+                        <Image Stretch="Fill" Source="{TemplateBinding Chart}"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    <!-- EndRegion Chart Plotter -->
+    
 </ResourceDictionary>

@@ -135,9 +135,9 @@
 
     <Style x:Key="MyButtonWarning" TargetType="{x:Type local:MyButton}">
         <Setter Property="Borderless" Value="True"/>
-        <Setter Property="Background" Value="#F4D313"/>
-        <Setter Property="PressedBrush" Value="#EAC909"/>
-        <Setter Property="MouseOverBrush" Value="#FEDD1D"/>
+        <Setter Property="Background" Value="#EAC909"/>
+        <Setter Property="PressedBrush" Value="#E0BF00"/>
+        <Setter Property="MouseOverBrush" Value="#F4D313"/>
         <Setter Property="FocusedBorderBrush" Value="#E5C404"/>
         <Setter Property="Foreground" Value="White" />
     </Style>

@@ -7,20 +7,16 @@ using System.Windows.Data;
 
 namespace InfoG2WpfControls
 {
-    public class DateTimeToStringConverter : IValueConverter
+    public class IsNotNullToBool : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            if (value is DateTime && parameter is string)
-            {
-                return ((DateTime)value).ToString(parameter as string);
-            }
-            else return "Convertion Error";
+            return  (value != null);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            throw new NotImplementedException();
+            throw new InvalidOperationException("IsNotNullConverter can only be used OneWay.");
         }
     }
 }
