@@ -578,7 +578,7 @@
                             <!--Container do Icone-->
                             <Image x:Name="IconHost" Grid.Column="0" Margin="2" Source="{TemplateBinding Icon}" Focusable="False" Width="{TemplateBinding IconSize}"/>
 
-                            <TextBlock Grid.Column="1" Margin="2,0" Padding="{TemplateBinding Padding}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Text="{TemplateBinding Content}"/>
+                            <ContentPresenter Grid.Column="1" Margin="2,0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="{TemplateBinding Content}"/>
                         </Grid>
                     </Border>
                     <!-- EndRegion Componentes -->
@@ -1116,6 +1116,8 @@
 
         <!-- Region Delimitadores de Tamanho -->
         <Setter Property="Padding" Value="0,2"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
         <Setter Property="Margin" Value="5,2,5,3"/>
         <!-- EndRegion Delimitadores de Tamanho -->
         
@@ -1141,8 +1143,10 @@
 
                             <ContentPresenter Content="{TemplateBinding Appendix}"/>
                         </StackPanel>
-                        
-                        <ContentPresenter Grid.Row="1"/>
+
+                        <Border Grid.Row="1" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="0" Margin="0">
+                            <ContentPresenter />
+                        </Border>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

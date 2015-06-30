@@ -19,6 +19,7 @@ namespace InfoG2WpfControls
             DefaultStyleKeyProperty.OverrideMetadata(typeof(MyTextBox), new FrameworkPropertyMetadata(typeof(MyTextBox)));
             EventManager.RegisterClassHandler(typeof(MyTextBox), MyTextBox.GotFocusEvent, new RoutedEventHandler(MyTextBox_GotFocus_AutoSelect));
             EventManager.RegisterClassHandler(typeof(MyTextBox), MyTextBox.MouseDownEvent, new RoutedEventHandler(MyTextBox_GotFocus_OnClick_AutoSelect));
+            EventManager.RegisterClassHandler(typeof(MyTextBox), MyTextBox.LostFocusEvent, new RoutedEventHandler(MyTextBox_LostFocus));
         }
 
 
@@ -58,6 +59,18 @@ namespace InfoG2WpfControls
         }
         public static readonly DependencyProperty AutoSelectProperty =
             DependencyProperty.Register("AutoSelect", typeof(bool), typeof(MyTextBox), new PropertyMetadata(false));
+
+
+        /// <summary>
+        /// Forçar setar o texto como zero quando o texto estiver vazio
+        /// </summary>
+        public bool SetZeroWhenEmpty
+        {
+            get { return (bool)GetValue(SetZeroWhenEmptyProperty); }
+            set { SetValue(SetZeroWhenEmptyProperty, value); }
+        }
+        public static readonly DependencyProperty SetZeroWhenEmptyProperty =
+            DependencyProperty.Register("SetZeroWhenEmpty", typeof(bool), typeof(MyTextBox), new PropertyMetadata(false));
 
         
 
@@ -155,6 +168,13 @@ namespace InfoG2WpfControls
             MyTextBox box = (sender as MyTextBox);
             if (box.AutoSelect) box.SelectAll();
         }
+
+        private static void MyTextBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            MyTextBox box = (sender as MyTextBox);
+            if (string.IsNullOrEmpty(box.Text) && box.SetZeroWhenEmpty) box.Text = "0";
+        }
+
 
         private static void MyTextBox_GotFocus_OnClick_AutoSelect(object sender, RoutedEventArgs e)
         {
