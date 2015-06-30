@@ -74,10 +74,13 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\BoolAnd.cs" />
     <Compile Include="Converters\BooleanInverter.cs" />
     <Compile Include="Converters\BoolToVisibility.cs" />
     <Compile Include="Controls\ChartPlotter.cs" />
     <Compile Include="Controls\EnumRadioButton.cs" />
+    <Compile Include="Converters\EnumEquals.cs" />
+    <Compile Include="Converters\EnumNotEquals.cs" />
     <Compile Include="FocusAdvancement.cs" />
     <Compile Include="Controls\Header.cs" />
     <Compile Include="Converters\IsNotNullToBool.cs" />
