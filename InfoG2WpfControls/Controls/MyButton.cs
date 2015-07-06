@@ -31,15 +31,6 @@ namespace InfoG2WpfControls
         public static readonly DependencyProperty CornerRadiusProperty =
             DependencyProperty.Register("CornerRadius", typeof(double), typeof(MyButton), new PropertyMetadata(2.0));
 
-        //public MyButtonType Type
-        //{
-        //    get { return (MyButtonType)GetValue(TypeProperty); }
-        //    set { SetValue(TypeProperty, value); }
-        //}
-        //public static readonly DependencyProperty TypeProperty =
-        //    DependencyProperty.Register("Type", typeof(MyButtonType), typeof(MyButton), new PropertyMetadata(MyButtonType.Manual));
-
-
         public bool Borderless
         {
             get { return (bool)GetValue(BorderlessProperty); }
@@ -47,6 +38,18 @@ namespace InfoG2WpfControls
         }
         public static readonly DependencyProperty BorderlessProperty =
             DependencyProperty.Register("Borderless", typeof(bool), typeof(MyButton), new PropertyMetadata(false));
+
+
+        /// <summary>
+        /// Texto com quebra automática 
+        /// </summary>
+        public string Text
+        {
+            get { return (string)GetValue(TextProperty); }
+            set { SetValue(TextProperty, value); }
+        }
+        public static readonly DependencyProperty TextProperty =
+            DependencyProperty.Register("Text", typeof(string), typeof(MyButton), new PropertyMetadata(string.Empty));
 
         
 
@@ -112,17 +115,4 @@ namespace InfoG2WpfControls
         
         #endregion Icon
     }
-
-    //public enum MyButtonType
-    //{
-    //    BorderLess,
-    //    Danger,
-    //    Default,
-    //    Info,
-    //    Manual,
-    //    Primary,
-    //    Success,
-    //    Warning,
-    //    WindowsForm
-    //}
 }
