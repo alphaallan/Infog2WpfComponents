@@ -1113,6 +1113,8 @@
     <Style TargetType="{x:Type local:Header}">
         <!-- Region Propriedades Gerais de Comportamento -->
         <Setter Property="IsTabStop" Value="False"/>
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="VerticalContentAlignment" Value="Stretch"/>
         <!-- EndRegion Propriedades Gerais de Comportamento -->
 
         <!-- Region Delimitadores de Tamanho -->
@@ -1146,7 +1148,7 @@
                         </StackPanel>
 
                         <Border Grid.Row="1" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Padding="0" Margin="0">
-                            <ContentPresenter />
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                         </Border>
                     </Grid>
                 </ControlTemplate>
