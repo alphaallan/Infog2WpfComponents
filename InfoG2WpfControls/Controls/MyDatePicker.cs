@@ -12,6 +12,7 @@ namespace InfoG2WpfControls
         static MyDatePicker()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(MyDatePicker), new FrameworkPropertyMetadata(typeof(MyDatePicker)));
+            EventManager.RegisterClassHandler(typeof(MyDatePicker), MyDatePicker.PreviewLostKeyboardFocusEvent, new RoutedEventHandler(MyDatePicker_Preview_LostFocus));
         }
 
         //Ativa o redimencionamento da fonte de acordo com a altura do controle
@@ -47,6 +48,12 @@ namespace InfoG2WpfControls
         #endregion Brushes
         #endregion Layout
 
+        private static void MyDatePicker_Preview_LostFocus(object sender, RoutedEventArgs e)
+        {
+            MyDatePicker box = (sender as MyDatePicker);
+            if (box.DisplayDateEnd.HasValue && box.DisplayDate > box.DisplayDateEnd.Value) box.DisplayDate = box.DisplayDateEnd.Value;
+            if (box.DisplayDateStart.HasValue && box.DisplayDate < box.DisplayDateStart.Value) box.DisplayDate = box.DisplayDateStart.Value;
+        }
 
         protected override void OnPreviewKeyDown(KeyEventArgs e)
         {
