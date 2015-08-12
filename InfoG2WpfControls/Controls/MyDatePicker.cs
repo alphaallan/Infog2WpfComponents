@@ -13,6 +13,7 @@ namespace InfoG2WpfControls
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(MyDatePicker), new FrameworkPropertyMetadata(typeof(MyDatePicker)));
             EventManager.RegisterClassHandler(typeof(MyDatePicker), MyDatePicker.PreviewLostKeyboardFocusEvent, new RoutedEventHandler(MyDatePicker_Preview_LostFocus));
+            EventManager.RegisterClassHandler(typeof(MyDatePicker), MyDatePicker.GotFocusEvent, new RoutedEventHandler(MyDatePicker_GotFocus));
         }
 
         //Ativa o redimencionamento da fonte de acordo com a altura do controle
@@ -51,8 +52,23 @@ namespace InfoG2WpfControls
         private static void MyDatePicker_Preview_LostFocus(object sender, RoutedEventArgs e)
         {
             MyDatePicker box = (sender as MyDatePicker);
-            if (box.DisplayDateEnd.HasValue && box.DisplayDate > box.DisplayDateEnd.Value) box.DisplayDate = box.DisplayDateEnd.Value;
-            if (box.DisplayDateStart.HasValue && box.DisplayDate < box.DisplayDateStart.Value) box.DisplayDate = box.DisplayDateStart.Value;
+            if (box.DisplayDateEnd.HasValue && DateTime.Parse(box.Text) > box.DisplayDateEnd.Value)
+            {
+                box.SelectedDate = box.DisplayDateEnd.Value;
+                box.Text = box.DisplayDateEnd.Value.ToShortDateString();
+            }
+            if (box.DisplayDateStart.HasValue && DateTime.Parse(box.Text) < box.DisplayDateStart.Value)
+            {
+                box.SelectedDate = box.DisplayDateStart.Value;
+                box.Text = box.DisplayDateStart.Value.ToShortDateString();
+            }
+        }
+
+        private static void MyDatePicker_GotFocus(object sender, RoutedEventArgs e)
+        {
+            MyDatePicker box = (sender as MyDatePicker);
+            DateTime temp;
+            if (box.SelectedDate.HasValue && DateTime.TryParse(box.Text, out temp) && temp != box.SelectedDate.Value) box.Text = box.SelectedDate.Value.ToShortDateString();
         }
 
         protected override void OnPreviewKeyDown(KeyEventArgs e)
