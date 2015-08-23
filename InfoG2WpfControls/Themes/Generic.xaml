@@ -650,11 +650,14 @@
     <Style TargetType="{x:Type local:MyImageButton}">
         <!-- Region Propriedades Gerais de Comportamento -->
         <Setter Property="SnapsToDevicePixels" Value="true"/>
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
         <!-- EndRegion Propriedades Gerais de Comportamento -->
 
         <!-- Region Delimitadores de tamanho -->
         <Setter Property="MinHeight" Value="10"/>
         <Setter Property="MinWidth" Value="10"/>
+        <Setter Property="Padding" Value="2"/>
         <!-- EndRegion Delimitadores de tamanho -->
 
         <!-- Region Control Template -->
@@ -662,47 +665,53 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:MyImageButton}">
                     <!-- Region Componentes -->
-                    <Border 
+                    <Grid>
+                        <Border 
                           x:Name="Border"  
                           CornerRadius="2" 
                           BorderThickness="1"
-                          Background="Transparent"
-                          BorderBrush="Transparent">
+                          Background="{TemplateBinding Background}"
+                          BorderBrush="{TemplateBinding BorderBrush}">
 
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-                            <!--Container do Icone-->
-                            <Image x:Name="IconHost" Grid.Row="0" Margin="2" Source="{TemplateBinding Icon}" Focusable="False"/>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <!--Container do Icone-->
+                                <Image x:Name="IconHost" Grid.Row="0" Margin="{TemplateBinding Padding}" Source="{TemplateBinding Icon}" Focusable="False"/>
 
-                            <ContentPresenter x:Name="ContentHost" Grid.Row="1" Margin="2" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="Center" RecognizesAccessKey="True"/>
-                        </Grid>
-                    </Border>
+                                <ContentPresenter x:Name="ContentHost" Grid.Row="1" Margin="{TemplateBinding Padding}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="Center" RecognizesAccessKey="True"/>
+                            </Grid>
+                        </Border>
+
+                        <Border x:Name="Overlay" BorderBrush="Transparent" Background="Transparent"/>
+
+                    </Grid>
+                    
+                    
                     <!-- EndRegion Componentes -->
 
                     <!-- Region Gatilhos -->
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsKeyboardFocused" Value="true">
-                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource DefaultedBorderBrush}" />
+                            <Setter TargetName="Overlay" Property="Background" Value="#1FFFFFFF" />
                         </Trigger>
                         <Trigger Property="IsDefaulted" Value="true">
-                            <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource DefaultedBorderBrush}" />
+                            <Setter TargetName="Overlay" Property="Background" Value="#1FFFFFFF" />
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="true">
-                            <Setter TargetName="Border" Property="Background" Value="#2F00FFFF" />
+                            <Setter TargetName="Overlay" Property="Background" Value="#2FFFFFFF" />
                         </Trigger>
                         <Trigger Property="IsPressed" Value="true">
-                            <Setter TargetName="Border" Property="BorderBrush" Value="#2FFFFFFF" />
+                            <Setter TargetName="Overlay" Property="Background" Value="#2F000000" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter TargetName="Border" Property="BorderBrush" Value="{DynamicResource DisabledBorderBrush}" />
                             <Setter Property="Foreground" Value="{DynamicResource DisabledForegroundBrush}"/>
                         </Trigger>
                         <Trigger Property="Content" Value="{x:Null}">
-                            <Setter TargetName="ContentHost" Property="Margin" Value="0"/>
-                            <Setter TargetName="ContentHost" Property="Height" Value="0"/>
+                            <Setter TargetName="ContentHost" Property="Visibility" Value="Collapsed"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                     <!-- EndRegion Gatilhos -->
@@ -800,67 +809,47 @@
                         <Grid>
 
                             <!-- Region Toggle -->
-                            <local:MyToggleButton 
-                            Name="ToggleButton" 
-                            Template="{StaticResource MyComboBoxToggleButton}" 
-                            Grid.Column="2" 
-                            Focusable="false"
-                            Background="{TemplateBinding ButtonBrush}"
-                            MouseOverBrush="{TemplateBinding ButtonMouseOverBrush}"
-                            PressedBrush="{TemplateBinding ButtonPressedBrush}"
-                            IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}"
-                            ClickMode="Press">
-                            </local:MyToggleButton>
+                            <local:MyToggleButton Name="ToggleButton" Focusable="false" ClickMode="Press"
+                                                  Template="{StaticResource MyComboBoxToggleButton}" 
+                                                  Background="{TemplateBinding ButtonBrush}"
+                                                  MouseOverBrush="{TemplateBinding ButtonMouseOverBrush}"
+                                                  PressedBrush="{TemplateBinding ButtonPressedBrush}"
+                                                  IsChecked="{Binding Path=IsDropDownOpen,Mode=TwoWay,RelativeSource={RelativeSource TemplatedParent}}"/>
                             <!-- EndRegion Toggle -->
 
                             <!-- Region Visor -->
-                            <ContentPresenter
-                                Name="ContentSite"
-                                IsHitTestVisible="False" 
-                                Content="{TemplateBinding SelectionBoxItem}"
-                                ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
-                                ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
-                                Margin="3,3,23,3"
-                                VerticalAlignment="Center"
-                                HorizontalAlignment="Left" />
+                            <ContentPresenter Name="ContentSite" IsHitTestVisible="False" 
+                                              Margin="3,3,23,3" VerticalAlignment="Center" HorizontalAlignment="Left"
+                                              Content="{TemplateBinding SelectionBoxItem}"
+                                              ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                              ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"/>
                             <!-- EndRegion Visor -->
 
                             <!-- Region Entrada de Texto -->
-                            <local:MyTextBox x:Name="PART_EditableTextBox"
-                                Style="{x:Null}" 
-                                Template="{StaticResource MyComboBoxTextBox}" 
-                                HorizontalAlignment="Left" 
-                                VerticalAlignment="Center" 
-                                Margin="3,3,23,3"
-                                Focusable="True" 
-                                Background="Transparent"
-                                Visibility="Hidden"
-                                HaveFocusColor="{TemplateBinding HaveFocusColor}"             
-                                IsReadOnly="{TemplateBinding IsReadOnly}"/>
+                            <local:MyTextBox x:Name="PART_EditableTextBox" Focusable="True"
+                                             Margin="3,3,23,3" HorizontalAlignment="Left" VerticalAlignment="Center" 
+                                             Style="{x:Null}" Background="Transparent" Visibility="Hidden"
+                                             Template="{StaticResource MyComboBoxTextBox}" 
+                                             HaveFocusColor="{TemplateBinding HaveFocusColor}"             
+                                             IsReadOnly="{TemplateBinding IsReadOnly}"/>
                             <!-- EndRegion Entrada de Texto -->
 
                             <!-- Region Lista -->
-                            <Popup 
-                                Name="Popup"
-                                Placement="Bottom"
-                                IsOpen="{TemplateBinding IsDropDownOpen}"
-                                AllowsTransparency="True" 
-                                Focusable="False"
-                                PopupAnimation="Slide">
-                                    <Grid 
-                                      Name="DropDown"
-                                      SnapsToDevicePixels="True"                
+                            <Popup Name="Popup" Placement="Bottom" IsOpen="{TemplateBinding IsDropDownOpen}"
+                                   AllowsTransparency="True" Focusable="False" PopupAnimation="Slide">
+                                
+                                <Grid Name="DropDown" SnapsToDevicePixels="True"                
                                       MinWidth="{TemplateBinding ActualWidth}"
                                       MaxHeight="{TemplateBinding MaxDropDownHeight}">
-                                            <Border 
-                                            x:Name="DropDownBorder"
+                                    
+                                    <Border x:Name="DropDownBorder" BorderThickness="1"
                                             Background="{TemplateBinding ListBackground}"
-                                            BorderThickness="1"
                                             BorderBrush="{DynamicResource SolidBorderBrush}"/>
+                                    
                                     <ScrollViewer Margin="4,6,4,6" SnapsToDevicePixels="True">
                                         <StackPanel IsItemsHost="True" KeyboardNavigation.DirectionalNavigation="Contained"/>
                                     </ScrollViewer>
-                                    </Grid>
+                                </Grid>
                             </Popup>
                             <!-- EndRegion Lista -->
                         </Grid>
