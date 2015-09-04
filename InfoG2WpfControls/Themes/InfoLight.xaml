@@ -41,7 +41,7 @@
 
     <Style TargetType="{x:Type local:MyDatePicker}">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
         <Setter Property="Background" Value="White"/>
         <Setter Property="HaveFocusColor" Value="#FFF9C4"/>
     </Style>
@@ -175,7 +175,7 @@
         <Setter Property="Background" Value="White"/>
         <Style.Triggers>
             <Trigger Property="IsFocused" Value="True">
-                <Setter Property="Background" Value="White"/>
+                <Setter Property="Background" Value="#FFF9C4"/>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -189,6 +189,115 @@
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
         <Setter Property="Foreground" Value="White"/>
     </Style>
+
+    <ControlTemplate x:Key="RBTemplate" TargetType="RepeatButton">
+        <Rectangle Fill="Transparent" />
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="ThumbTemplate" TargetType="Thumb">
+        <Border Background="{TemplateBinding Background}" BorderThickness="0" />
+    </ControlTemplate>
+
+    <!-- Template automático para scrollbar (Mudança entre horizontal e vertical via style trigger) -->
+    <Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource {x:Type ScrollBar}}">
+
+        <!-- Region Template Barra Vertical -->
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                    <GradientStop Offset="0" Color="Blue" />
+                    <GradientStop Offset="1" Color="DarkBlue" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ScrollBar">
+                    <Grid>
+                        <Border BorderBrush="#999999" BorderThickness="1" Padding="1">
+
+                            <Border.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                                    <GradientStop Offset="0" Color="#777777" />
+                                    <GradientStop Offset="0.75" Color="LightBlue" />
+                                    <GradientStop Offset="1" Color="LightBlue" />
+                                </LinearGradientBrush>
+                            </Border.Background>
+
+                            <Track x:Name="PART_Track" IsDirectionReversed="True">
+                                <Track.DecreaseRepeatButton>
+                                    <RepeatButton Command="ScrollBar.PageUpCommand" Template="{StaticResource RBTemplate}"/>
+                                </Track.DecreaseRepeatButton>
+                                <Track.Thumb>
+                                    <Thumb BorderThickness="1"
+                                           Background="{TemplateBinding Background}"
+							               BorderBrush="{TemplateBinding BorderBrush}" 
+                                           Template="{StaticResource ThumbTemplate}"/>
+                                </Track.Thumb>
+                                <Track.IncreaseRepeatButton>
+                                    <RepeatButton Command="ScrollBar.PageDownCommand" Template="{StaticResource RBTemplate}"/>
+                                </Track.IncreaseRepeatButton>
+                            </Track>
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+
+            </Setter.Value>
+        </Setter>
+        <!-- EndRegion Template Barra Vertical -->
+
+        <!-- Region Template Barra Horizontal -->
+        <Style.Triggers>
+            <Trigger Property="Orientation" Value="Horizontal">
+                <Setter Property="Background">
+                    <Setter.Value>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                            <GradientStop Offset="0" Color="Blue" />
+                            <GradientStop Offset="1" Color="DarkBlue" />
+                        </LinearGradientBrush>
+                    </Setter.Value>
+                </Setter>
+
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="ScrollBar">
+                            <Grid>
+                                <Border BorderBrush="#999999" BorderThickness="1" Padding="1">
+
+                                    <Border.Background>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                            <GradientStop Offset="0" Color="#777777" />
+                                            <GradientStop Offset="0.75" Color="LightBlue" />
+                                            <GradientStop Offset="1" Color="LightBlue" />
+                                        </LinearGradientBrush>
+                                    </Border.Background>
+
+                                    <Track x:Name="PART_Track">
+                                        <Track.DecreaseRepeatButton>
+                                            <RepeatButton Command="ScrollBar.PageLeftCommand" Template="{StaticResource RBTemplate}"/>
+                                        </Track.DecreaseRepeatButton>
+                                        <Track.Thumb>
+                                            <Thumb Background="{TemplateBinding Background}"
+							                               BorderThickness="1"
+							                               BorderBrush="{TemplateBinding BorderBrush}" 
+                                                           Template="{StaticResource ThumbTemplate}"/>
+                                        </Track.Thumb>
+                                        <Track.IncreaseRepeatButton>
+                                            <RepeatButton Command="ScrollBar.PageRightCommand" Template="{StaticResource RBTemplate}"/>
+                                        </Track.IncreaseRepeatButton>
+                                    </Track>
+                                </Border>
+                            </Grid>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Trigger>
+        </Style.Triggers>
+        <!-- EndRegion Template Barra Horizontal -->
+
+    </Style>
+    
     <!-- EndRegion Controles Padrão -->
 
 
