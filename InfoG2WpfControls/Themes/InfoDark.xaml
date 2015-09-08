@@ -218,7 +218,7 @@
 
                             <Track x:Name="PART_Track" IsDirectionReversed="True">
                                 <Track.DecreaseRepeatButton>
-                                    <RepeatButton Command="ScrollBar.PageUpCommand" Template="{StaticResource RBTemplate}"/>
+                                    <RepeatButton Command="ScrollBar.PageUpCommand" Focusable="False" Template="{StaticResource RBTemplate}"/>
                                 </Track.DecreaseRepeatButton>
                                 <Track.Thumb>
                                     <Thumb BorderThickness="1"
@@ -227,7 +227,7 @@
                                            Template="{StaticResource ThumbTemplate}"/>
                                 </Track.Thumb>
                                 <Track.IncreaseRepeatButton>
-                                    <RepeatButton Command="ScrollBar.PageDownCommand" Template="{StaticResource RBTemplate}"/>
+                                    <RepeatButton Command="ScrollBar.PageDownCommand" Focusable="False" Template="{StaticResource RBTemplate}"/>
                                 </Track.IncreaseRepeatButton>
                             </Track>
                         </Border>
@@ -266,7 +266,7 @@
 
                                     <Track x:Name="PART_Track">
                                         <Track.DecreaseRepeatButton>
-                                            <RepeatButton Command="ScrollBar.PageLeftCommand" Template="{StaticResource RBTemplate}"/>
+                                            <RepeatButton Command="ScrollBar.PageLeftCommand" Focusable="False" Template="{StaticResource RBTemplate}"/>
                                         </Track.DecreaseRepeatButton>
                                         <Track.Thumb>
                                             <Thumb Background="{TemplateBinding Background}"
@@ -275,7 +275,7 @@
                                                            Template="{StaticResource ThumbTemplate}"/>
                                         </Track.Thumb>
                                         <Track.IncreaseRepeatButton>
-                                            <RepeatButton Command="ScrollBar.PageRightCommand" Template="{StaticResource RBTemplate}"/>
+                                            <RepeatButton Command="ScrollBar.PageRightCommand" Focusable="False" Template="{StaticResource RBTemplate}"/>
                                         </Track.IncreaseRepeatButton>
                                     </Track>
                                 </Border>
