@@ -1,6 +1,5 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
                     xmlns:local="clr-namespace:InfoG2WpfControls">
 
     <!-- Region Brushes -->
@@ -291,20 +290,4 @@
 
     <!-- EndRegion Controles Padrão -->
 
-    <!-- Region Controles xctk -->
-    <Style TargetType="{x:Type xctk:MaskedTextBox}">
-        <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="Background" Value="#5F000000"/>
-        <Setter Property="BorderBrush" Value="#888"/>
-        <Setter Property="Foreground" Value="White"/>
-        <Style.Triggers>
-            <Trigger Property="IsFocused" Value="True">
-                <Setter Property="Background" Value="{StaticResource FocusedBackgroundBrush}"/>
-            </Trigger>
-            <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Background" Value="{StaticResource DisabledBackgroundBrush}"/>
-            </Trigger>
-        </Style.Triggers>
-    </Style>
-    <!-- EndRegion Controles xctk -->
 </ResourceDictionary>
