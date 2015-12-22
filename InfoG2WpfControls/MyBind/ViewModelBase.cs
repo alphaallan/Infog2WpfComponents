@@ -2,11 +2,12 @@
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 
 namespace InfoG2WpfControls.MyBind
 {
-    public abstract class ViewModelBase : INotifyPropertyChanged, IFocusMover
+    public abstract class ViewModelBase : DependencyObject, INotifyPropertyChanged, IFocusMover
     {
         /// <summary>
         /// Função para notificar a mudança de uma propriedade para o uso de Binding
