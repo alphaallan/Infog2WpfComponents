@@ -216,9 +216,10 @@ namespace InfoG2WpfControls
         {
             readonly Action<string> Handler;
 
-            public UpDownLink(Action<string> handler)
+            public UpDownLink(Action<string> handler, EventHandler canExcuteChangedHandler = null)
             {
                 Handler = handler;
+                CanExecuteChanged = canExcuteChangedHandler;
             }
 
             public bool CanExecute(object parameter)

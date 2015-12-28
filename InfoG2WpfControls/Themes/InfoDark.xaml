@@ -31,6 +31,7 @@
     <Style TargetType="{x:Type local:EnumRadioButton}">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
         <Setter Property="Foreground" Value="White"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
     </Style>
 
     <Style TargetType="{x:Type local:MyComboBox}">
@@ -66,7 +67,7 @@
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="Background" Value="Transparent"/>
         <Setter Property="RowBackground" Value="#FF4B4B4B"/>
-        <Setter Property="AlternatingRowBackground" Value="Gray" />
+        <Setter Property="AlternatingRowBackground" Value="#FF303030" />
         <Setter Property="Background" Value="#5F000000"/>
     </Style>
     
@@ -84,6 +85,10 @@
     <!-- EndRegion Controles Locais -->
 
     <!-- Region Controles Padrão -->
+    <Style TargetType="Page">
+        <Setter Property="Foreground" Value="White"/>
+    </Style>
+    
     <Style TargetType="Label">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
         <Setter Property="Foreground" Value="White"/>
@@ -156,6 +161,7 @@
     <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}">
         <Setter Property="Background" Value="#FF132B5B"/>
         <Setter Property="FontSize" Value="14"/>
+        <Setter Property="Foreground" Value="White"/>
     </Style>
 
     <Style TargetType="PasswordBox">
