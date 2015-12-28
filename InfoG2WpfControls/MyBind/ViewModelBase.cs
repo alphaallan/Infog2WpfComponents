@@ -130,6 +130,16 @@ namespace InfoG2WpfControls.MyBind
             {
                 return base[index];
             }
+
+            public KeyValueCollection() : base()
+            {
+
+            }
+
+            public KeyValueCollection(System.Collections.Generic.IEnumerable<KeyValuePair<Tkey, Tvalue>> entrada) : base (entrada)
+            {
+
+            }
         }
 
         /// <summary>
