@@ -78,10 +78,15 @@
     <Compile Include="Controls\EnumRadioButton.cs" />
     <Compile Include="Converters\EnumEquals.cs" />
     <Compile Include="Converters\EnumNotEquals.cs" />
+    <Compile Include="DragDrop\DragDropManager.cs" />
+    <Compile Include="DragDrop\DropPreviewAdorner.cs" />
+    <Compile Include="DragDrop\IDragSourceAdvisor.cs" />
+    <Compile Include="DragDrop\IDropTargetAdvisor.cs" />
     <Compile Include="FocusAdvancement.cs" />
     <Compile Include="Controls\Header.cs" />
     <Compile Include="Converters\IsNotNullToBool.cs" />
     <Compile Include="Converters\IsNullToBool.cs" />
+    <Compile Include="MyBind\ActualSizeProxy.cs" />
     <Compile Include="MyBind\BindingDecoratorBase.cs" />
     <Compile Include="MyBind\FocusBinding.cs" />
     <Compile Include="MyBind\FocusController.cs" />
