@@ -69,15 +69,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Themes\Templates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\Arc.cs" />
+    <Compile Include="Converters\AnglePointConverter.cs" />
     <Compile Include="Converters\BoolAnd.cs" />
     <Compile Include="Converters\BooleanInverter.cs" />
     <Compile Include="Converters\BoolToVisibility.cs" />
-    <Compile Include="Controls\ChartPlotter.cs" />
     <Compile Include="Controls\EnumRadioButton.cs" />
+    <Compile Include="Converters\CircularProgressConverter.cs" />
     <Compile Include="Converters\EnumEquals.cs" />
     <Compile Include="Converters\EnumNotEquals.cs" />
+    <Compile Include="Converters\OpacityProgressConverter.cs" />
+    <Compile Include="Converters\ThicknessToDouble.cs" />
     <Compile Include="DragDrop\DragDropManager.cs" />
     <Compile Include="DragDrop\DropPreviewAdorner.cs" />
     <Compile Include="DragDrop\IDragSourceAdvisor.cs" />

@@ -75,6 +75,8 @@ namespace InfoG2WpfControls
                 SetupFooter(buttons);
                 SetupBody((html.Contains("<body")) ? html : "<body scroll=\"no\">" + html + "</body>");
 
+                Owner = Application.Current.MainWindow;
+                Topmost = true;
 
                 if (BodyIcon != null) MainGrid.Children.Add(BodyIcon);
                 MainGrid.Children.Add(Body);
