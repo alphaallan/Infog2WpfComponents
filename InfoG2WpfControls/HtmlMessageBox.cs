@@ -11,6 +11,11 @@ namespace InfoG2WpfControls
 {
     public sealed class HtmlMessageBox
     {
+        public static Style OkButtonStyle;
+        public static Style YesButtonStyle;
+        public static Style NoButtonStyle;
+        public static Style CancelButtonStyle; 
+
         public static MessageBoxResult Show(Size size, string messageBoxContent)
         {
             return new Msb(size, messageBoxContent, string.Empty, MessageBoxButton.OK, MessageBoxImage.None, MessageBoxResult.None).ShowDialog();
@@ -41,7 +46,7 @@ namespace InfoG2WpfControls
             MessageBoxResult Result;
 
             Grid MainGrid;
-            StackPanel Footer;
+            UIElement Footer;
 
             WebBrowser Body;
             Image BodyIcon;
@@ -152,34 +157,40 @@ namespace InfoG2WpfControls
             #region Rodapé
             private void SetupFooter(MessageBoxButton button)
             {
-                Footer = new StackPanel();
-                Grid.SetRow(Footer, 1);
-                Grid.SetColumnSpan(Footer, 2);
-                Footer.Orientation = Orientation.Horizontal;
-                Footer.HorizontalAlignment = HorizontalAlignment.Center;
+                StackPanel FooterStack = new StackPanel();
+                FooterStack.Orientation = Orientation.Horizontal;
+                FooterStack.HorizontalAlignment = HorizontalAlignment.Center;
+
+                Border FooterBorder = new Border();
+                Grid.SetRow(FooterBorder, 1);
+                Grid.SetColumnSpan(FooterBorder, 2);
+                FooterBorder.Background = new System.Windows.Media.BrushConverter().ConvertFromString("#FFF0F0F0") as System.Windows.Media.Brush;
+                FooterBorder.Child = FooterStack;
+
+                Footer = FooterBorder;
 
                 SetupButtons();
 
                 switch (button)
                 {
                     case MessageBoxButton.OK:
-                        Footer.Children.Add(OkButton);
+                        FooterStack.Children.Add(OkButton);
                         break;
 
                     case MessageBoxButton.OKCancel:
-                        Footer.Children.Add(OkButton);
-                        Footer.Children.Add(CancelButton);
+                        FooterStack.Children.Add(OkButton);
+                        FooterStack.Children.Add(CancelButton);
                         break;
 
                     case MessageBoxButton.YesNo:
-                        Footer.Children.Add(YesButton);
-                        Footer.Children.Add(NoButton);
+                        FooterStack.Children.Add(YesButton);
+                        FooterStack.Children.Add(NoButton);
                         break;
 
                     case MessageBoxButton.YesNoCancel:
-                        Footer.Children.Add(YesButton);
-                        Footer.Children.Add(NoButton);
-                        Footer.Children.Add(CancelButton);
+                        FooterStack.Children.Add(YesButton);
+                        FooterStack.Children.Add(NoButton);
+                        FooterStack.Children.Add(CancelButton);
                         break;
                 }
 
@@ -187,29 +198,37 @@ namespace InfoG2WpfControls
 
             private void SetupButtons()
             {
-                OkButton = new Button();
-                YesButton = new Button();
-                NoButton = new Button();
-                CancelButton = new Button();
+                OkButton = new MyButton();
+                YesButton = new MyButton();
+                NoButton = new MyButton();
+                CancelButton = new MyButton();
 
+                if (OkButtonStyle != null) OkButton.Style = OkButtonStyle;
                 OkButton.Content = "OK";
                 OkButton.Margin = new Thickness(5, 10, 5, 10);
                 OkButton.Width = 80;
+                OkButton.MinHeight = 25;
                 OkButton.Click += delegate(object sender, RoutedEventArgs e) { Result = MessageBoxResult.OK; Close(); };
 
+                if (YesButtonStyle != null) YesButton.Style = YesButtonStyle;
                 YesButton.Content = "Sim";
                 YesButton.Margin = new Thickness(5, 10, 5, 10);
                 YesButton.Width = 80;
+                YesButton.MinHeight = 25;
                 YesButton.Click += delegate(object sender, RoutedEventArgs e) { Result = MessageBoxResult.Yes; Close(); };
 
+                if (NoButtonStyle != null) NoButton.Style = NoButtonStyle;
                 NoButton.Content = "Não";
                 NoButton.Margin = new Thickness(5, 10, 5, 10);
                 NoButton.Width = 80;
+                NoButton.MinHeight = 25;
                 NoButton.Click += delegate(object sender, RoutedEventArgs e) { Result = MessageBoxResult.No; Close(); };
 
+                if (CancelButtonStyle != null) CancelButton.Style = CancelButtonStyle;
                 CancelButton.Content = "Cancelar";
                 CancelButton.Margin = new Thickness(5, 10, 5, 10);
                 CancelButton.Width = 80;
+                CancelButton.MinHeight = 25;
                 CancelButton.Click += delegate(object sender, RoutedEventArgs e) { Result = MessageBoxResult.Cancel; Close(); };
             }
             #endregion
