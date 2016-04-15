@@ -126,6 +126,7 @@
     <Compile Include="Controls\Tile.cs" />
     <Compile Include="Controls\Tile2.cs" />
     <Compile Include="HtmlMessageBox.cs" />
+    <Compile Include="VirtualToggleButton.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
