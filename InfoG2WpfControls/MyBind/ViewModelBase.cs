@@ -131,6 +131,17 @@ namespace InfoG2WpfControls.MyBind
                 return base[index];
             }
 
+            public bool HasKey(Tkey key)
+            {
+                return this.Count(x => x.Key.Equals(key)) > 0;
+            }
+
+            public int IndexOfKey(Tkey key)
+            {
+                if (!HasKey(key)) return -1;
+                return IndexOf(GetByKey(key));
+            }
+
             public KeyValueCollection() : base()
             {
 
