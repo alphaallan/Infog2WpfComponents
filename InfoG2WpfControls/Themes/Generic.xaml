@@ -1123,7 +1123,7 @@
                             <RowDefinition/>
                         </Grid.RowDefinitions>
 
-                        <StackPanel Grid.Row="0" Orientation="Horizontal">
+                        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="{TemplateBinding HeaderAlignment}">
                             <Label Padding="{TemplateBinding Padding}"
                                FontFamily="{TemplateBinding FontFamily}"  
                                FontSize="{TemplateBinding FontSize}" 
