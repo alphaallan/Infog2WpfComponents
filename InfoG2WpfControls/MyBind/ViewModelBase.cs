@@ -120,9 +120,9 @@ namespace InfoG2WpfControls.MyBind
                 {
                     return this.Where(x => x.Key.Equals(key)).First();
                 }
-                catch
+                catch (Exception erro)
                 {
-                    throw new ArgumentOutOfRangeException("Key Not Found");
+                    throw new ArgumentOutOfRangeException("Key Not Found "+erro.Message);
                 }
             }
 
