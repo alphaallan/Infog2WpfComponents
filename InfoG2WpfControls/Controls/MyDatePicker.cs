@@ -52,15 +52,15 @@ namespace InfoG2WpfControls
         private static void MyDatePicker_Preview_LostFocus(object sender, RoutedEventArgs e)
         {
             MyDatePicker box = (sender as MyDatePicker);
-            if (box.DisplayDateEnd.HasValue && DateTime.Parse(box.Text) > box.DisplayDateEnd.Value)
+
+            if (box.DisplayDateEnd.HasValue)
             {
-                box.SelectedDate = box.DisplayDateEnd.Value;
-                box.Text = box.DisplayDateEnd.Value.ToShortDateString();
-            }
-            if (box.DisplayDateStart.HasValue && DateTime.Parse(box.Text) < box.DisplayDateStart.Value)
-            {
-                box.SelectedDate = box.DisplayDateStart.Value;
-                box.Text = box.DisplayDateStart.Value.ToShortDateString();
+                DateTime date = new DateTime();
+                if (DateTime.TryParse(box.Text, out date) && (date > box.DisplayDateEnd.Value || date < box.DisplayDateStart.Value))
+                {
+                    box.SelectedDate = box.DisplayDateEnd.Value;
+                    box.Text = box.DisplayDateEnd.Value.ToShortDateString();
+                }
             }
         }
 

@@ -3,7 +3,7 @@
                     xmlns:local="clr-namespace:InfoG2WpfControls">
 
     <!-- Region Brushes -->
-    <SolidColorBrush x:Key="DisabledForegroundBrush" Color="#DDD" />
+    <SolidColorBrush x:Key="DisabledForegroundBrush" Color="#EEE" />
 
     <SolidColorBrush x:Key="DisabledBackgroundBrush" Color="#7F555555" />
 
