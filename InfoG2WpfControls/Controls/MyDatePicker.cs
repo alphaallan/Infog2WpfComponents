@@ -56,10 +56,20 @@ namespace InfoG2WpfControls
             if (box.DisplayDateEnd.HasValue)
             {
                 DateTime date = new DateTime();
-                if (DateTime.TryParse(box.Text, out date) && (date > box.DisplayDateEnd.Value || date < box.DisplayDateStart.Value))
+                if (DateTime.TryParse(box.Text, out date) && date > box.DisplayDateEnd.Value)
                 {
                     box.SelectedDate = box.DisplayDateEnd.Value;
                     box.Text = box.DisplayDateEnd.Value.ToShortDateString();
+                }
+            }
+
+            if (box.DisplayDateStart.HasValue)
+            {
+                DateTime date = new DateTime();
+                if (DateTime.TryParse(box.Text, out date) && date < box.DisplayDateStart.Value)
+                {
+                    box.SelectedDate = box.DisplayDateStart.Value;
+                    box.Text = box.DisplayDateStart.Value.ToShortDateString();
                 }
             }
         }
