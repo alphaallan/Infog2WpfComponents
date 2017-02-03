@@ -16,8 +16,15 @@
     <SolidColorBrush x:Key="FocusedBackgroundBrush" Color="#FF3C3C3C" />
 
     <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="#FF2B2B2B"/>
+    <SolidColorBrush x:Key="{x:Static SystemColors.WindowFrameBrush}" Color="#FF2B2B2B"/>
 
     <SolidColorBrush x:Key="PageBackGround" Color="#FF383838"/>
+
+    <SolidColorBrush x:Key="ColorWindowsDefault" Color="#FF044680" />
+    <SolidColorBrush x:Key="ColorBarDefault" Color="#FF0E1557" />
+
+
+
     <!-- #FF132B5B Azul -->
     <!-- EndRegion Brushes -->
 

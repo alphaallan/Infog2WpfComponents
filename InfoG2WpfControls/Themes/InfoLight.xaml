@@ -1,6 +1,5 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
                     xmlns:local="clr-namespace:InfoG2WpfControls">
 
     <!-- Region Brushes -->
@@ -14,7 +13,15 @@
 
     <SolidColorBrush x:Key="LightBorderBrush" Color="CornflowerBlue" />
 
+    <SolidColorBrush x:Key="FocusedBackgroundBrush" Color="#FF3C3C3C" />
+
     <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="#FF447BBD"/>
+    <SolidColorBrush x:Key="{x:Static SystemColors.WindowFrameBrush}" Color="MidnightBlue"/>
+
+    <SolidColorBrush x:Key="PageBackGround" Color="#FF5188CA"/>
+
+    <SolidColorBrush x:Key="ColorWindowsDefault" Color="#FF044680" />
+    <SolidColorBrush x:Key="ColorBarDefault" Color="#FF0E1557" />
     
     <!-- #FF132B5B Azul -->
     <!-- EndRegion Brushes -->
