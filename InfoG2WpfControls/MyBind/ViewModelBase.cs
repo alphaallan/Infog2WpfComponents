@@ -1,31 +1,19 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using System.Windows;
 using System.Windows.Input;
 
 namespace InfoG2WpfControls.MyBind
 {
-    public abstract class ViewModelBase : DependencyObject, INotifyPropertyChanged, IFocusMover
+    public abstract class ViewModelBase : NotifyPropertyChangedObject, IFocusMover
     {
-        /// <summary>
-        /// Função para notificar a mudança de uma propriedade para o uso de Binding
-        /// </summary>
-        /// <param name="prop">Nome da propriedade que se deseja notificar a mudança</param>
-        public void RaisePropertyChanged(string prop)
-        {
-            if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs(prop)); }
-        }
-        public event PropertyChangedEventHandler PropertyChanged;
-
         /// <summary>
         /// Classe de Par Chave Valor genérica, implementa notificação de mudança para binding
         /// Implementa hashCode pela chave e função Equals que compara apenas a chave para definir iqualdade
         /// </summary>
         /// <typeparam name="Tkey"> Tipo da Chave do item</typeparam>
         /// <typeparam name="Tvalue"> Tipo do valor </typeparam>
-        public class KeyValuePair<Tkey, Tvalue> : INotifyPropertyChanged
+        public class KeyValuePair<Tkey, Tvalue> : NotifyPropertyChangedObject
         {
             public KeyValuePair(Tkey key, Tvalue val)
             {
@@ -36,24 +24,14 @@ namespace InfoG2WpfControls.MyBind
             public Tkey Key
             {
                 get { return _Key; }
-                set
-                {
-                    _Key = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Key")); }
-                }
+                set { SetProperty(ref _Key, value); }
             }
 
             public Tvalue Value
             {
                 get { return _Value; }
-                set
-                {
-                    _Value = value;
-                    if (PropertyChanged != null) { PropertyChanged(this, new PropertyChangedEventArgs("Value")); }
-                }
+                set { SetProperty(ref _Value, value); }
             }
-
-            public event PropertyChangedEventHandler PropertyChanged;
 
             public override string ToString()
             {
@@ -208,7 +186,7 @@ namespace InfoG2WpfControls.MyBind
 
         public event EventHandler<MoveFocusEventArgs> MoveFocus;
 
-        public void RaiseMoveFocus(string focusedProperty)
+        protected void RaiseMoveFocus(string focusedProperty)
         {
             var handler = this.MoveFocus;
             if (handler != null)
@@ -217,6 +195,5 @@ namespace InfoG2WpfControls.MyBind
                 handler(this, args);
             }
         }
-
     }
 }

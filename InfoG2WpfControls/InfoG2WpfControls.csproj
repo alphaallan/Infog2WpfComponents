@@ -139,6 +139,7 @@
     <Compile Include="MyBind\FocusBinding.cs" />
     <Compile Include="MyBind\FocusController.cs" />
     <Compile Include="MyBind\IFocusMover.cs" />
+    <Compile Include="MyBind\NotifyPropertyChangedObject.cs" />
     <Compile Include="MyBind\ViewModelBase.cs" />
     <Compile Include="Controls\MyButton.cs" />
     <Compile Include="Controls\MyComboBox.cs" />
