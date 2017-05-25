@@ -2,18 +2,19 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:InfoG2WpfControls">
 
-    <!-- Region Brushes -->
+    <!--#region Brushes-->
     <SolidColorBrush x:Key="DisabledForegroundBrush" Color="#EEE" />
-
     <SolidColorBrush x:Key="DisabledBackgroundBrush" Color="#7F555555" />
-
     <SolidColorBrush x:Key="DisabledBorderBrush" Color="#7F333333" />
-    
-    <SolidColorBrush x:Key="SolidBorderBrush" Color="#888" />
-    
-    <SolidColorBrush x:Key="LightBorderBrush" Color="CornflowerBlue" />
+
+    <SolidColorBrush x:Key="EnabledTextBoxForeground" Color="White" />
+    <SolidColorBrush x:Key="EnabledBackgroundBrush" Color="#5F000000" />
+    <SolidColorBrush x:Key="EnabledLabelForeground" Color="White" />
 
     <SolidColorBrush x:Key="FocusedBackgroundBrush" Color="#FF3C3C3C" />
+
+    <SolidColorBrush x:Key="SolidBorderBrush" Color="#888" />
+    <SolidColorBrush x:Key="LightBorderBrush" Color="CornflowerBlue" />
 
     <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="#FF2B2B2B"/>
     <SolidColorBrush x:Key="{x:Static SystemColors.WindowFrameBrush}" Color="#FF2B2B2B"/>
@@ -23,44 +24,48 @@
     <SolidColorBrush x:Key="ColorWindowsDefault" Color="#FF044680" />
     <SolidColorBrush x:Key="ColorBarDefault" Color="#FF0E1557" />
 
+    <SolidColorBrush x:Key="DarkOverlayBrush" Color="#5F000000" />
 
+    <!--#endregion Brushes-->
 
-    <!-- #FF132B5B Azul -->
-    <!-- EndRegion Brushes -->
-
-    <!-- Region Templates -->
+    <!--#region Templates-->
     <DataTemplate x:Key="DarkWatermarkTemplate">
         <ContentControl Content="{Binding}" Margin="5,0,0,0" Foreground="LightGray" Focusable="False" />
     </DataTemplate>
-    <!-- EndRegion Templates -->
+    <!--#endregion Templates-->
     
-    <!-- Region Controles Locais -->
+    <!--#region Controles Locais-->
     <Style TargetType="{x:Type local:EnumRadioButton}">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="{StaticResource EnabledLabelForeground}"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
     </Style>
 
     <Style TargetType="{x:Type local:MyComboBox}">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="Foreground" Value="White"/>
-        <Setter Property="Background" Value="#5F000000"/>
+        <Setter Property="Foreground" Value="{StaticResource EnabledTextBoxForeground}"/>
+        <Setter Property="Background" Value="{StaticResource EnabledBackgroundBrush}"/>
         <Setter Property="HaveFocusColor" Value="{StaticResource FocusedBackgroundBrush}"/>
         <Setter Property="ListBackground" Value="#FF272727"/>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{StaticResource DisabledBackgroundBrush}"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
     <Style TargetType="{x:Type local:MyDatePicker}">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="Foreground" Value="White"/>
-        <Setter Property="Background" Value="#5F000000"/>
+        <Setter Property="Foreground" Value="{StaticResource EnabledTextBoxForeground}"/>
+        <Setter Property="Background" Value="{StaticResource EnabledBackgroundBrush}"/>
         <Setter Property="HaveFocusColor" Value="{StaticResource FocusedBackgroundBrush}"/>
     </Style>
 
     <Style TargetType="{x:Type local:MyTextBox}">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="{StaticResource EnabledTextBoxForeground}"/>
         <Setter Property="HaveFocusColor" Value="{StaticResource FocusedBackgroundBrush}"/>
-        <Setter Property="Background" Value="#5F000000"/>
+        <Setter Property="Background" Value="{StaticResource EnabledBackgroundBrush}"/>
         <Setter Property="WatermarkTemplate" Value="{StaticResource DarkWatermarkTemplate}"/>
     </Style>
 
@@ -71,52 +76,63 @@
 
     <Style TargetType="{x:Type local:MyDataGrid}">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="Foreground" Value="White"/>
-        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="{StaticResource EnabledTextBoxForeground}"/>
         <Setter Property="RowBackground" Value="#FF4B4B4B"/>
         <Setter Property="AlternatingRowBackground" Value="#FF303030" />
-        <Setter Property="Background" Value="#5F000000"/>
+        <Setter Property="Background" Value="{StaticResource EnabledBackgroundBrush}"/>
+        <Setter Property="BorderBrush" Value="#FFA5B4C3"/>
     </Style>
     
     <Style TargetType="{x:Type local:Header}">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="{StaticResource EnabledLabelForeground}"/>
     </Style>
     
     <Style TargetType="{x:Type local:NumberSpinner}">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="{StaticResource EnabledTextBoxForeground}"/>
         <Setter Property="HaveFocusColor" Value="{StaticResource FocusedBackgroundBrush}"/>
-        <Setter Property="Background" Value="#5F000000"/>
+        <Setter Property="Background" Value="{StaticResource EnabledBackgroundBrush}"/>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{StaticResource DisabledBackgroundBrush}"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
-    <!-- EndRegion Controles Locais -->
+    <!--#endregion Controles Locais-->
 
-    <!-- Region Controles Padrão -->
+    <!--#region Controles Padrão-->
     <Style TargetType="Page">
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
     </Style>
     
     <Style TargetType="Label">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="{StaticResource EnabledLabelForeground}"/>
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Foreground" Value="{StaticResource EnabledLabelForeground}"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
     <Style TargetType="GroupBox">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="{StaticResource EnabledLabelForeground}"/>
         <Setter Property="BorderBrush" Value="Gray"/>
         <Setter Property="Margin" Value="5"/>
     </Style>
 
     <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
+        <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
         <Setter Property="Foreground" Value="White"/>
-        <Setter Property="Background" Value="#5F000000"/>
+        <Setter Property="Background" Value="{StaticResource DarkOverlayBrush}"/>
         <Setter Property="Padding" Value="4"/>
     </Style>
 
     <Style TargetType="GridViewColumnHeader" BasedOn="{StaticResource {x:Type GridViewColumnHeader}}">
-        <Setter Property="Foreground" Value="White"/>
-        <Setter Property="Background" Value="#5F000000"/>
+        <Setter Property="Foreground" Value="{StaticResource EnabledLabelForeground}"/>
+        <Setter Property="Background" Value="{StaticResource DarkOverlayBrush}"/>
         <Setter Property="Padding" Value="4"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
     </Style>
@@ -133,7 +149,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListView">
-                    <ScrollViewer Name="Border" Background="#5F000000" >
+                    <ScrollViewer Name="Border" Background="{StaticResource DarkOverlayBrush}" >
                         <ItemsPresenter />
                     </ScrollViewer>
                     <ControlTemplate.Triggers>
@@ -141,11 +157,7 @@
                             <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter TargetName="Border" Property="Background">
-                                <Setter.Value>
-                                    <SolidColorBrush Color="{DynamicResource DisabledBorderLightColor}" />
-                                </Setter.Value>
-                            </Setter>
+                            <Setter TargetName="Border" Property="Background" Value="{StaticResource DisabledBackgroundBrush}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -155,14 +167,14 @@
 
     <Style TargetType="CheckBox">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="{StaticResource EnabledLabelForeground}"/>
         <Setter Property="Margin" Value="5,5,5,0"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
     </Style>
 
     <Style TargetType="RadioButton">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="{StaticResource EnabledLabelForeground}"/>
     </Style>
 
     <Style TargetType="TabControl">
@@ -170,8 +182,8 @@
     </Style>
 
     <Style TargetType="TabItem">
-        <Setter Property="Foreground" Value="White"/>
-        <Setter Property="Background" Value="#5F000000"/>
+        <Setter Property="Foreground" Value="{StaticResource EnabledLabelForeground}"/>
+        <Setter Property="Background" Value="{StaticResource DarkOverlayBrush}"/>
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -212,19 +224,20 @@
 
     <Style TargetType="PasswordBox">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="Foreground" Value="White"/>
-        <Setter Property="BorderBrush" Value="#888"/>
-        <Setter Property="Background" Value="#5F000000"/>
+        <Setter Property="Foreground" Value="{StaticResource EnabledTextBoxForeground}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource SolidBorderBrush}"/>
+        <Setter Property="Background" Value="{StaticResource EnabledTextBoxForeground}"/>
         <Style.Triggers>
             <Trigger Property="IsFocused" Value="True">
-                <Setter Property="Background" Value="Gray"/>
+                <Setter Property="Background" Value="{StaticResource FocusedBackgroundBrush}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
     
     <Style TargetType="TreeView">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="{StaticResource EnabledLabelForeground}"/>
+        <Setter Property="Background" Value="{StaticResource DarkOverlayBrush}"/>
     </Style>
     
     <Style TargetType="TreeViewItem">
@@ -240,10 +253,10 @@
         <Border Background="{TemplateBinding Background}" BorderThickness="0" />
     </ControlTemplate>
 
-    <!-- Template automático para scrollbar (Mudança entre horizontal e vertical via style trigger) -->
+    <!-- Template automático para scrollbar (Mudança entre horizontal e vertical via style trigger)-->
     <Style TargetType="{x:Type ScrollBar}" BasedOn="{StaticResource {x:Type ScrollBar}}">
 
-        <!-- Region Template Barra Vertical -->
+        <!--#region Template Barra Vertical-->
         <Setter Property="Background">
             <Setter.Value>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
@@ -287,9 +300,9 @@
 
             </Setter.Value>
         </Setter>
-        <!-- EndRegion Template Barra Vertical -->
+        <!--#endregion Template Barra Vertical-->
 
-        <!-- Region Template Barra Horizontal -->
+        <!--#region Template Barra Horizontal-->
         <Style.Triggers>
             <Trigger Property="Orientation" Value="Horizontal">
                 <Setter Property="Background">
@@ -336,10 +349,9 @@
                 </Setter>
             </Trigger>
         </Style.Triggers>
-        <!-- EndRegion Template Barra Horizontal -->
+        <!--#endregion Template Barra Horizontal-->
 
     </Style>
-
-    <!-- EndRegion Controles Padrão -->
+    <!--#endregion Controles Padrão-->
 
 </ResourceDictionary>
