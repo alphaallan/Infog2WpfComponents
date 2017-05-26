@@ -26,6 +26,8 @@
 
     <SolidColorBrush x:Key="DarkOverlayBrush" Color="#5F0E18F3" />
 
+    <SolidColorBrush x:Key="TableHeaderForeground" Color="White" />
+
     <!--#endregion Brushes-->
 
     <!--#region Templates-->
@@ -125,7 +127,7 @@
 
     <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="Foreground" Value="{StaticResource EnabledLabelForeground}"/>
+        <Setter Property="Foreground" Value="{StaticResource TableHeaderForeground}"/>
         <Setter Property="Padding" Value="4"/>
         <Setter Property="Background">
             <Setter.Value>
@@ -140,7 +142,7 @@
     </Style>
 
     <Style TargetType="GridViewColumnHeader" BasedOn="{StaticResource {x:Type GridViewColumnHeader}}">
-        <Setter Property="Foreground" Value="{StaticResource EnabledLabelForeground}"/>
+        <Setter Property="Foreground" Value="{StaticResource TableHeaderForeground}"/>
         <Setter Property="Background" Value="{StaticResource DarkOverlayBrush}"/>
         <Setter Property="Padding" Value="4"/>
         <Setter Property="BorderBrush" Value="Transparent"/>

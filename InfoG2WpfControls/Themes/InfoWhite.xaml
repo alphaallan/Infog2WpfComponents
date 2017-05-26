@@ -3,28 +3,28 @@
                     xmlns:local="clr-namespace:InfoG2WpfControls">
 
     <!--#region Brushes-->
-    <SolidColorBrush x:Key="DisabledForegroundBrush" Color="#EEE" />
-    <SolidColorBrush x:Key="DisabledBackgroundBrush" Color="#7F555555" />
-    <SolidColorBrush x:Key="DisabledBorderBrush" Color="#7F333333" />
+    <SolidColorBrush x:Key="DisabledForegroundBrush" Color="#FF404040" />
+    <SolidColorBrush x:Key="DisabledBackgroundBrush" Color="#FFD8D8D8" />
+    <SolidColorBrush x:Key="DisabledBorderBrush" Color="Transparent" />
 
-    <SolidColorBrush x:Key="EnabledTextBoxForeground" Color="White" />
-    <SolidColorBrush x:Key="EnabledBackgroundBrush" Color="#5F000000" />
-    <SolidColorBrush x:Key="EnabledLabelForeground" Color="White" />
+    <SolidColorBrush x:Key="EnabledTextBoxForeground" Color="Black" />
+    <SolidColorBrush x:Key="EnabledBackgroundBrush" Color="White" />
+    <SolidColorBrush x:Key="EnabledLabelForeground" Color="Black" />
 
-    <SolidColorBrush x:Key="FocusedBackgroundBrush" Color="#FF3C3C3C" />
+    <SolidColorBrush x:Key="FocusedBackgroundBrush" Color="#FFF9C4" />
 
     <SolidColorBrush x:Key="SolidBorderBrush" Color="#888" />
     <SolidColorBrush x:Key="LightBorderBrush" Color="CornflowerBlue" />
 
-    <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="#FF2B2B2B"/>
-    <SolidColorBrush x:Key="{x:Static SystemColors.WindowFrameBrush}" Color="#FF2B2B2B"/>
+    <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="#FFEFEFEF"/>
+    <SolidColorBrush x:Key="{x:Static SystemColors.WindowFrameBrush}" Color="MidnightBlue"/>
 
-    <SolidColorBrush x:Key="PageBackGround" Color="#FF383838"/>
+    <SolidColorBrush x:Key="PageBackGround" Color="#FFEFEFEF"/>
 
     <SolidColorBrush x:Key="ColorWindowsDefault" Color="#FF044680" />
     <SolidColorBrush x:Key="ColorBarDefault" Color="#FF0E1557" />
 
-    <SolidColorBrush x:Key="DarkOverlayBrush" Color="#5F000000" />
+    <SolidColorBrush x:Key="DarkOverlayBrush" Color="#4F000000" />
 
     <SolidColorBrush x:Key="TableHeaderForeground" Color="White" />
 
@@ -35,7 +35,7 @@
         <ContentControl Content="{Binding}" Margin="5,0,0,0" Foreground="LightGray" Focusable="False" />
     </DataTemplate>
     <!--#endregion Templates-->
-    
+
     <!--#region Controles Locais-->
     <Style TargetType="{x:Type local:EnumRadioButton}">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
@@ -48,7 +48,7 @@
         <Setter Property="Foreground" Value="{StaticResource EnabledTextBoxForeground}"/>
         <Setter Property="Background" Value="{StaticResource EnabledBackgroundBrush}"/>
         <Setter Property="HaveFocusColor" Value="{StaticResource FocusedBackgroundBrush}"/>
-        <Setter Property="ListBackground" Value="#FF272727"/>
+        <Setter Property="ListBackground" Value="White"/>
         <Style.Triggers>
             <Trigger Property="IsEnabled" Value="False">
                 <Setter Property="Background" Value="{StaticResource DisabledBackgroundBrush}"/>
@@ -73,23 +73,23 @@
 
     <Style TargetType="{x:Type local:MyButton}">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
     </Style>
 
     <Style TargetType="{x:Type local:MyDataGrid}">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
         <Setter Property="Foreground" Value="{StaticResource EnabledTextBoxForeground}"/>
-        <Setter Property="RowBackground" Value="#FF4B4B4B"/>
-        <Setter Property="AlternatingRowBackground" Value="#FF303030" />
+        <Setter Property="RowBackground" Value="#E0F7FA"/>
+        <Setter Property="AlternatingRowBackground" Value="White" />
         <Setter Property="Background" Value="{StaticResource EnabledBackgroundBrush}"/>
         <Setter Property="BorderBrush" Value="#FFA5B4C3"/>
     </Style>
-    
+
     <Style TargetType="{x:Type local:Header}">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
         <Setter Property="Foreground" Value="{StaticResource EnabledLabelForeground}"/>
     </Style>
-    
+
     <Style TargetType="{x:Type local:NumberSpinner}">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
         <Setter Property="Foreground" Value="{StaticResource EnabledTextBoxForeground}"/>
@@ -107,7 +107,7 @@
     <Style TargetType="Page">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
     </Style>
-    
+
     <Style TargetType="Label">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
         <Setter Property="Foreground" Value="{StaticResource EnabledLabelForeground}"/>
@@ -128,8 +128,8 @@
     <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
         <Setter Property="Foreground" Value="{StaticResource TableHeaderForeground}"/>
-        <Setter Property="Background" Value="{StaticResource DarkOverlayBrush}"/>
         <Setter Property="Padding" Value="4"/>
+        <Setter Property="Background" Value="{StaticResource DarkOverlayBrush}"/>
     </Style>
 
     <Style TargetType="GridViewColumnHeader" BasedOn="{StaticResource {x:Type GridViewColumnHeader}}">
@@ -151,7 +151,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ListView">
-                    <ScrollViewer Name="Border" Background="{StaticResource DarkOverlayBrush}" >
+                    <ScrollViewer Name="Border" Background="White" >
                         <ItemsPresenter />
                     </ScrollViewer>
                     <ControlTemplate.Triggers>
@@ -184,9 +184,9 @@
     </Style>
 
     <Style TargetType="TabItem">
+        <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
         <Setter Property="Foreground" Value="{StaticResource EnabledLabelForeground}"/>
         <Setter Property="Background" Value="{StaticResource DarkOverlayBrush}"/>
-        <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabItem}">
@@ -219,9 +219,9 @@
     </Style>
 
     <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}">
-        <Setter Property="Background" Value="#FF132B5B"/>
+        <Setter Property="Background" Value="#FF447BBD"/>
         <Setter Property="FontSize" Value="14"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="{StaticResource EnabledTextBoxForeground}"/>
     </Style>
 
     <Style TargetType="PasswordBox">
@@ -235,16 +235,16 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    
+
     <Style TargetType="TreeView">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
         <Setter Property="Foreground" Value="{StaticResource EnabledLabelForeground}"/>
         <Setter Property="Background" Value="{StaticResource DarkOverlayBrush}"/>
     </Style>
-    
+
     <Style TargetType="TreeViewItem">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="Foreground" Value="White"/>       
+        <Setter Property="Foreground" Value="White"/>
     </Style>
 
     <ControlTemplate x:Key="RBTemplate" TargetType="RepeatButton">
@@ -262,8 +262,8 @@
         <Setter Property="Background">
             <Setter.Value>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
-                    <GradientStop Offset="0" Color="#5d5e5d" />
-                    <GradientStop Offset="1" Color="#0e0e0e" />
+                    <GradientStop Offset="0" Color="Blue" />
+                    <GradientStop Offset="1" Color="DarkBlue" />
                 </LinearGradientBrush>
             </Setter.Value>
         </Setter>
@@ -277,8 +277,8 @@
                             <Border.Background>
                                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
                                     <GradientStop Offset="0" Color="#777777" />
-                                    <GradientStop Offset="0.75" Color="#cccccc" />
-                                    <GradientStop Offset="1" Color="#cccccc" />
+                                    <GradientStop Offset="0.75" Color="LightBlue" />
+                                    <GradientStop Offset="1" Color="LightBlue" />
                                 </LinearGradientBrush>
                             </Border.Background>
 
@@ -310,8 +310,8 @@
                 <Setter Property="Background">
                     <Setter.Value>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                            <GradientStop Offset="0" Color="#5d5e5d" />
-                            <GradientStop Offset="1" Color="#0e0e0e" />
+                            <GradientStop Offset="0" Color="Blue" />
+                            <GradientStop Offset="1" Color="DarkBlue" />
                         </LinearGradientBrush>
                     </Setter.Value>
                 </Setter>
@@ -325,8 +325,8 @@
                                     <Border.Background>
                                         <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                                             <GradientStop Offset="0" Color="#777777" />
-                                            <GradientStop Offset="0.75" Color="#cccccc" />
-                                            <GradientStop Offset="1" Color="#cccccc" />
+                                            <GradientStop Offset="0.75" Color="LightBlue" />
+                                            <GradientStop Offset="1" Color="LightBlue" />
                                         </LinearGradientBrush>
                                     </Border.Background>
 
@@ -354,6 +354,7 @@
         <!--#endregion Template Barra Horizontal-->
 
     </Style>
+
     <!--#endregion Controles Padrão-->
 
 </ResourceDictionary>
