@@ -17,7 +17,7 @@
     <SolidColorBrush x:Key="LightBorderBrush" Color="CornflowerBlue" />
 
     <SolidColorBrush x:Key="{x:Static SystemColors.WindowBrushKey}" Color="#FFEFEFEF"/>
-    <SolidColorBrush x:Key="{x:Static SystemColors.WindowFrameBrush}" Color="MidnightBlue"/>
+    <SolidColorBrush x:Key="{x:Static SystemColors.WindowFrameBrush}" Color="#FFEFEFEF"/>
 
     <SolidColorBrush x:Key="PageBackGround" Color="#FFEFEFEF"/>
 
@@ -26,7 +26,11 @@
 
     <SolidColorBrush x:Key="DarkOverlayBrush" Color="#4F000000" />
 
+    <SolidColorBrush x:Key="TableHeaderBackground" Color="#4F000000" />
     <SolidColorBrush x:Key="TableHeaderForeground" Color="White" />
+
+    <SolidColorBrush x:Key="DropDownListBackground" Color="White" />
+    
 
     <!--#endregion Brushes-->
 
@@ -39,36 +43,36 @@
     <!--#region Controles Locais-->
     <Style TargetType="{x:Type local:EnumRadioButton}">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="Foreground" Value="{StaticResource EnabledLabelForeground}"/>
+        <Setter Property="Foreground" Value="{DynamicResource EnabledLabelForeground}"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
     </Style>
 
     <Style TargetType="{x:Type local:MyComboBox}">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="Foreground" Value="{StaticResource EnabledTextBoxForeground}"/>
-        <Setter Property="Background" Value="{StaticResource EnabledBackgroundBrush}"/>
-        <Setter Property="HaveFocusColor" Value="{StaticResource FocusedBackgroundBrush}"/>
-        <Setter Property="ListBackground" Value="White"/>
+        <Setter Property="Foreground" Value="{DynamicResource EnabledTextBoxForeground}"/>
+        <Setter Property="Background" Value="{DynamicResource EnabledBackgroundBrush}"/>
+        <Setter Property="HaveFocusColor" Value="{DynamicResource FocusedBackgroundBrush}"/>
+        <Setter Property="ListBackground" Value="{DynamicResource DropDownListBackground}"/>
         <Style.Triggers>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Background" Value="{StaticResource DisabledBackgroundBrush}"/>
+                <Setter Property="Background" Value="{DynamicResource DisabledBackgroundBrush}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
 
     <Style TargetType="{x:Type local:MyDatePicker}">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="Foreground" Value="{StaticResource EnabledTextBoxForeground}"/>
-        <Setter Property="Background" Value="{StaticResource EnabledBackgroundBrush}"/>
-        <Setter Property="HaveFocusColor" Value="{StaticResource FocusedBackgroundBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource EnabledTextBoxForeground}"/>
+        <Setter Property="Background" Value="{DynamicResource EnabledBackgroundBrush}"/>
+        <Setter Property="HaveFocusColor" Value="{DynamicResource FocusedBackgroundBrush}"/>
     </Style>
 
     <Style TargetType="{x:Type local:MyTextBox}">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="Foreground" Value="{StaticResource EnabledTextBoxForeground}"/>
-        <Setter Property="HaveFocusColor" Value="{StaticResource FocusedBackgroundBrush}"/>
-        <Setter Property="Background" Value="{StaticResource EnabledBackgroundBrush}"/>
-        <Setter Property="WatermarkTemplate" Value="{StaticResource DarkWatermarkTemplate}"/>
+        <Setter Property="Foreground" Value="{DynamicResource EnabledTextBoxForeground}"/>
+        <Setter Property="HaveFocusColor" Value="{DynamicResource FocusedBackgroundBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource EnabledBackgroundBrush}"/>
+        <Setter Property="WatermarkTemplate" Value="{DynamicResource DarkWatermarkTemplate}"/>
     </Style>
 
     <Style TargetType="{x:Type local:MyButton}">
@@ -78,26 +82,26 @@
 
     <Style TargetType="{x:Type local:MyDataGrid}">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="Foreground" Value="{StaticResource EnabledTextBoxForeground}"/>
+        <Setter Property="Foreground" Value="{DynamicResource EnabledTextBoxForeground}"/>
         <Setter Property="RowBackground" Value="#E0F7FA"/>
         <Setter Property="AlternatingRowBackground" Value="White" />
-        <Setter Property="Background" Value="{StaticResource EnabledBackgroundBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource EnabledBackgroundBrush}"/>
         <Setter Property="BorderBrush" Value="#FFA5B4C3"/>
     </Style>
 
     <Style TargetType="{x:Type local:Header}">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="Foreground" Value="{StaticResource EnabledLabelForeground}"/>
+        <Setter Property="Foreground" Value="{DynamicResource EnabledLabelForeground}"/>
     </Style>
 
     <Style TargetType="{x:Type local:NumberSpinner}">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="Foreground" Value="{StaticResource EnabledTextBoxForeground}"/>
-        <Setter Property="HaveFocusColor" Value="{StaticResource FocusedBackgroundBrush}"/>
-        <Setter Property="Background" Value="{StaticResource EnabledBackgroundBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource EnabledTextBoxForeground}"/>
+        <Setter Property="HaveFocusColor" Value="{DynamicResource FocusedBackgroundBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource EnabledBackgroundBrush}"/>
         <Style.Triggers>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Background" Value="{StaticResource DisabledBackgroundBrush}"/>
+                <Setter Property="Background" Value="{DynamicResource DisabledBackgroundBrush}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -110,31 +114,31 @@
 
     <Style TargetType="Label">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="Foreground" Value="{StaticResource EnabledLabelForeground}"/>
+        <Setter Property="Foreground" Value="{DynamicResource EnabledLabelForeground}"/>
         <Style.Triggers>
             <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Foreground" Value="{StaticResource EnabledLabelForeground}"/>
+                <Setter Property="Foreground" Value="{DynamicResource EnabledLabelForeground}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
 
     <Style TargetType="GroupBox">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="Foreground" Value="{StaticResource EnabledLabelForeground}"/>
+        <Setter Property="Foreground" Value="{DynamicResource EnabledLabelForeground}"/>
         <Setter Property="BorderBrush" Value="Gray"/>
         <Setter Property="Margin" Value="5"/>
     </Style>
 
     <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource {x:Type DataGridColumnHeader}}">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="Foreground" Value="{StaticResource TableHeaderForeground}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TableHeaderForeground}"/>
         <Setter Property="Padding" Value="4"/>
-        <Setter Property="Background" Value="{StaticResource DarkOverlayBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource DarkOverlayBrush}"/>
     </Style>
 
     <Style TargetType="GridViewColumnHeader" BasedOn="{StaticResource {x:Type GridViewColumnHeader}}">
-        <Setter Property="Foreground" Value="{StaticResource TableHeaderForeground}"/>
-        <Setter Property="Background" Value="{StaticResource DarkOverlayBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TableHeaderForeground}"/>
+        <Setter Property="Background" Value="{DynamicResource TableHeaderBackground}"/>
         <Setter Property="Padding" Value="4"/>
         <Setter Property="BorderBrush" Value="Transparent"/>
     </Style>
@@ -146,7 +150,7 @@
         <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
         <Setter Property="ScrollViewer.CanContentScroll" Value="true" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
-        <Setter Property="Foreground" Value="{StaticResource TableHeaderForeground}"/>
+        <Setter Property="Foreground" Value="{DynamicResource TableHeaderForeground}"/>
 
         <Setter Property="Template">
             <Setter.Value>
@@ -159,7 +163,7 @@
                             <Setter Property="ScrollViewer.CanContentScroll" Value="false" />
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="false">
-                            <Setter TargetName="Border" Property="Background" Value="{StaticResource DisabledBackgroundBrush}"/>
+                            <Setter TargetName="Border" Property="Background" Value="{DynamicResource DisabledBackgroundBrush}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -169,14 +173,14 @@
 
     <Style TargetType="CheckBox">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="Foreground" Value="{StaticResource EnabledLabelForeground}"/>
+        <Setter Property="Foreground" Value="{DynamicResource EnabledLabelForeground}"/>
         <Setter Property="Margin" Value="5,5,5,0"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
     </Style>
 
     <Style TargetType="RadioButton">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="Foreground" Value="{StaticResource EnabledLabelForeground}"/>
+        <Setter Property="Foreground" Value="{DynamicResource EnabledLabelForeground}"/>
     </Style>
 
     <Style TargetType="TabControl">
@@ -185,8 +189,8 @@
 
     <Style TargetType="TabItem">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="Foreground" Value="{StaticResource EnabledLabelForeground}"/>
-        <Setter Property="Background" Value="{StaticResource DarkOverlayBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource EnabledLabelForeground}"/>
+        <Setter Property="Background" Value="{DynamicResource DarkOverlayBrush}"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type TabItem}">
@@ -221,25 +225,25 @@
     <Style TargetType="Window" BasedOn="{StaticResource {x:Type Window}}">
         <Setter Property="Background" Value="#FF447BBD"/>
         <Setter Property="FontSize" Value="14"/>
-        <Setter Property="Foreground" Value="{StaticResource EnabledTextBoxForeground}"/>
+        <Setter Property="Foreground" Value="{DynamicResource EnabledTextBoxForeground}"/>
     </Style>
 
     <Style TargetType="PasswordBox">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="Foreground" Value="{StaticResource EnabledTextBoxForeground}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource SolidBorderBrush}"/>
-        <Setter Property="Background" Value="{StaticResource EnabledBackgroundBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource EnabledTextBoxForeground}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource SolidBorderBrush}"/>
+        <Setter Property="Background" Value="{DynamicResource EnabledBackgroundBrush}"/>
         <Style.Triggers>
             <Trigger Property="IsFocused" Value="True">
-                <Setter Property="Background" Value="{StaticResource FocusedBackgroundBrush}"/>
+                <Setter Property="Background" Value="{DynamicResource FocusedBackgroundBrush}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
 
     <Style TargetType="TreeView">
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
-        <Setter Property="Foreground" Value="{StaticResource EnabledLabelForeground}"/>
-        <Setter Property="Background" Value="{StaticResource DarkOverlayBrush}"/>
+        <Setter Property="Foreground" Value="{DynamicResource EnabledLabelForeground}"/>
+        <Setter Property="Background" Value="{DynamicResource DarkOverlayBrush}"/>
     </Style>
 
     <Style TargetType="TreeViewItem">
