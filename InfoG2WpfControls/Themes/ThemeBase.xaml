@@ -54,7 +54,7 @@
         <Setter Property="RowBackground" Value="{DynamicResource TableRowBackground}"/>
         <Setter Property="AlternatingRowBackground" Value="{DynamicResource TableAlternatingRowBackground}" />
         <Setter Property="Background" Value="{DynamicResource TableBackground}"/>
-        <Setter Property="BorderBrush" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource DarkOverlayBrush}"/>
     </Style>
 
     <Style TargetType="{x:Type local:Header}">
@@ -212,6 +212,12 @@
         <Setter Property="ToolTipService.ShowOnDisabled" Value="True"/>
         <Setter Property="Foreground" Value="{DynamicResource EnabledLabelForeground}"/>
         <Setter Property="Background" Value="{DynamicResource DarkOverlayBrush}"/>
+
+        <Style.Triggers>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{DynamicResource DisabledBackgroundBrush}"/>
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
     <Style TargetType="TreeViewItem">
